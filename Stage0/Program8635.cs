@@ -8,7 +8,6 @@ namespace targil0
         {
             Welcome8635();
             Welcome1878();
-            Console.ReadKey();
         }
 
         static partial void Welcome1878();
