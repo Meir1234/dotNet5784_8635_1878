@@ -10,7 +10,7 @@ namespace targil0
     {
         static partial void Welcome1878()
         {
-            Console.WriteLine("I am also here AND WE WILL ENJOY!");
+            Console.WriteLine("I am also here AND WE WILL ENJOY VERY MUCH!");
         }
     }
 }
