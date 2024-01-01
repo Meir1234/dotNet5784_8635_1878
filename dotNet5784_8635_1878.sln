@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalFacade", "DalFacade\DalFacade.csproj", "{F06D91D4-F50B-4E82-8661-F9E578BE575A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{0A9E3F7C-8397-4186-9495-9CEBE0A7CF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A9E3F7C-8397-4186-9495-9CEBE0A7CF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A9E3F7C-8397-4186-9495-9CEBE0A7CF5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F06D91D4-F50B-4E82-8661-F9E578BE575A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F06D91D4-F50B-4E82-8661-F9E578BE575A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F06D91D4-F50B-4E82-8661-F9E578BE575A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F06D91D4-F50B-4E82-8661-F9E578BE575A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
