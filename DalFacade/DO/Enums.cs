@@ -1,5 +1,10 @@
 ﻿namespace DalFacade.DO;
 
-internal class Enums
+public enum Level
 {
+  Beginner,
+  AdvancedBeginner,
+  Intermediate,
+  Advanced,
+  Expert
 }
