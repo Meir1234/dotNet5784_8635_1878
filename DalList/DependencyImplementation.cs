@@ -16,9 +16,16 @@ public class DependencyImplementation : IDependency
         
     }
 
-    public Dependency? Read(int Id)
+    public Dependency? Read(int ID)
     {
-       
+        foreach (Dependency? Dep in DataSource.Dependencys)
+        {
+            if (Dep.Id == ID)
+            {
+                return Dep;
+            }
+            return null;
+        }
     }
 
     public List<Dependency> ReadAll()

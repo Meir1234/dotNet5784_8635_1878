@@ -22,7 +22,14 @@ public class TaskImplementation : ITask
 
     public Task? Read(int id)
     {
-        return DataSource.Tasks.Find(item => item.id == id);
+        foreach (Task? Dep in DataSource.Tasks)
+        {
+            if (Dep.Id == id)
+            {
+                return Dep;
+            }
+            return null;
+        }
     }
 
     public void Update(Task item)

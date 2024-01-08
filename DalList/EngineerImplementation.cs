@@ -16,9 +16,16 @@ public class EngineerImplementation : IEngineer
         
     }
 
-    public Engineer? Read(int Id)
+    public Engineer? Read(int ID)
     {
-        
+        foreach (Engineer? Eng in DataSource.Engineers)
+        {
+            if (Eng.Id == ID)
+            {
+                return Eng;
+            }
+            return null;
+        }
     }
 
     public List<Engineer> ReadAll()
