@@ -6,6 +6,7 @@ using DalFacade.DO;
 using System;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 public static class Initialization
 {
@@ -59,25 +60,70 @@ public static class Initialization
             s_dalEngineer!.Create(newEng);
         }
     }
-
-
- private static void createTasks()
+    private static void createDependencys()
     {
+        // Function to add random dependencies for a task
+        for (int _dependent = 0; _dependent < 20; _dependent++)
+        {
+            int _dependsOn;
+            do
+                _dependsOn = s_rand.Next(1, 20);
+            while (_dependsOn != _dependent);
+
+            Dependency newDep = new(_id, _dependent, _dependsOn);
+
+            s_dalDependency!.Create(newDep);
+        }   
+    }
+
+    private static void createTasks()
+    {
+        static DateTime GenerateRandomDate()
+        {
+            Random random = new Random();
+
+            // Define a range of days, for example, the difference between 2000-01-01 and today
+            int days = (new DateTime(2024, 1, 1) - new DateTime(2000, 1, 1)).Days;
+
+            // Generate a random date within the specified range
+            DateTime startDate = new DateTime(2000, 1, 1);
+            DateTime randomDate = startDate.AddDays(random.Next(days));
+
+            return randomDate;
+        }
+
+        static TimeSpan GenerateRandomDuration()
+        {
+            Random random = new Random();
+
+            // Define a range of hours for example, between 1 and 24 hours
+            int randomHours = random.Next(1, 25);
+
+            // Define a range of minutes for example, between 0 and 59 minutes
+            int randomMinutes = random.Next(60);
+
+            // Create a TimeSpan using the random values
+            TimeSpan randomDuration = new TimeSpan(randomHours, randomMinutes, 0);
+
+            return randomDuration;
+        }
+
+        int id = 6;
 
         string[] Alias = { "code", "examination", "combination", "Brainstorming", "Summary",  "learneing", "requirements", "problems", "bugs", "deep", "keep","update", "match","tech",
             "Collaborate", "design", "analyze", "check", "market", "fix" };
         string[] Description = { "writing code", "Code inspection", "Joining programs", "General thinking about work", " Drawing conclusions and drawing lessons", "Structure the requirements in an agreed and logical way", "Solving general problems in the project", "Debugging", "Broadening horizons and deepening knowledge",
             "Ensure that software applications remain functional and up-to-date", "Software update",
-            "Ensure that software solutions meet the specific requirements and needs of the organization.","Stay up-to-date on the latest technologies and trends in the industry.", "You will work closely with designers, project managers and other professionals to successfully complete projects," };
+            "Ensure that software solutions meet the specific requirements and needs of the organization.","Stay up-to-date on the latest technologies and trends in the industry.", "You will work closely with designers, project managers and other professionals to successfully complete projects,",
         "Collaborate with cross-functional teams", "Analyze user needs", "check the quality and integrity of the software","Marketing the software to the customer base", "Make sure the problem is fixed"};
- foreach (var _name in Alias)
-    {
+        for (int i = 0;i<20;i++)
+        {
+            string? _alias = Alias[i];
+            string? _description = Description[i];
 
 
-        string? Description,
-    DateTime? CreatedAtDate,
-            
-        TimeSpan RequiredEffortTime = s_rand.Next(1,7);
+            DateTime _created = GenerateRandomDate();
+            TimeSpan RequiredEffortTime = GenerateRandomDuration();
 
     bool ? IsMilestone = false;
     DateTime StartDate,
@@ -87,25 +133,6 @@ public static class Initialization
     string? Remarks,
     int Engineerld
         };
-    private static void createDependencys()
-    {
-    // Function to add random dependencies for a task
-        for (int i = 0; i < 40; i++)
-        {
-            int _id = s_rand.Next(200000000, 400000000);
-        while (randomDependsOnTaskId == dependentTaskId) // Ensure not dependent on itself
-        {
-            randomDependsOnTaskId = tasks[random.Next(tasks.Count)].Id;
-        }
-
-        var dependency = new Dependency
-        {
-            Id = tasks.Count + 1,
-            DependentTask = dependentTaskId,
-            DependsOnTask = randomDependsOnTaskId
-        };
-
-        dependentTask?.Dependencies.Add(dependency);
-    }
+    
 }
 

@@ -12,7 +12,7 @@ public record Task
     bool? IsMilestone,
     DateTime StartDate,
     DateTime DeadlineDate,
-    DateTime CompleteDate,
+    DateTime? CompleteDate,
     string? Deliverables,
     string? Remarks,
     int Engineerld
