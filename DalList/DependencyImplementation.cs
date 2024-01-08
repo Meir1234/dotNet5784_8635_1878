@@ -2,6 +2,7 @@
 namespace Dal;
     using DalFacade.DalApi;
 using DalFacade.DO;
+using System.Collections.Generic;
 
 public class DependencyImplementation : IDependency
 {
@@ -12,17 +13,22 @@ public class DependencyImplementation : IDependency
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        
     }
 
     public Dependency? Read(int Id)
     {
-        throw new NotImplementedException();
+       
+    }
+
+    public List<Dependency> ReadAll()
+    {
+       
     }
 
     public void Update(Dependency item)
     {
-        throw new NotImplementedException();
+        
     }
 }
 
