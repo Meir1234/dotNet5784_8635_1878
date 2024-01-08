@@ -11,9 +11,9 @@ internal static class DataSource
 
         internal static int NextTaskid => nextTaskid++;
 
-        internal const int startEngineerId = 1;
-        private static int nextEngineerId = startEngineerId;
-        internal static int NextEngineerId { get => nextEngineerId++; }
+        internal const int startDependencyId = 1;
+        private static int nextDependencyId = startDependencyId;
+        internal static int NextDependencyId { get => nextDependencyId++; }
     }
     internal static List<DalFacade.DO.Engineer> Engineers { get; } = new();
     internal static List<DalFacade.DO.Dependency> Dependencys { get; } = new();

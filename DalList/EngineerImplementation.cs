@@ -8,12 +8,15 @@ public class EngineerImplementation : IEngineer
 {
     public int Create(Engineer item)
     {
-        
+        if (Read(item.Id) is not null)
+            throw new Exception($"Student with ID={item.Id} already exists");
+        DataSource.Engineers.Add(item);
+        return item.Id;
     }
 
     public void Delete(int id)
     {
-        
+        DataSource.Engineers.RemoveAll(task => task.Id == id);
     }
 
     public Engineer? Read(int ID)
@@ -24,8 +27,9 @@ public class EngineerImplementation : IEngineer
             {
                 return Eng;
             }
-            return null;
+            
         }
+        return null;
     }
 
     public List<Engineer> ReadAll()

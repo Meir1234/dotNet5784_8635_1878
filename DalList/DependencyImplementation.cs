@@ -8,15 +8,15 @@ public class DependencyImplementation : IDependency
 {
     public int Create(Dependency item)
     {
-        int idNum = DataSource.Config.id;
+        int idNum = DataSource.Config.NextDependencyId;
 
-        DataSource.Dependency.Add(item with { Id = idNum });
+        DataSource.Dependencys.Add(item with { Id = idNum });
         return idNum;
     }
 
     public void Delete(int id)
     {
-        
+        DataSource.Dependencys.RemoveAll(task => task.Id == id);
     }
 
     public Dependency? Read(int ID)
@@ -27,8 +27,9 @@ public class DependencyImplementation : IDependency
             {
                 return Dep;
             }
-            return null;
+            
         }
+        return null;
     }
 
     public List<Dependency> ReadAll()
