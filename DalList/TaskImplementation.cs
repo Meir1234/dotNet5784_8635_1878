@@ -17,7 +17,7 @@ public class TaskImplementation : ITask
 
     public void Delete(int id)
     {
-        DataSource.Tasks.Remove(item => item.id == id);
+        DataSource.Tasks.Remove(item => task.id == id);
     }
 
     public Task? Read(int id)
