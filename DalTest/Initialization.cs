@@ -68,17 +68,26 @@ public static class Initialization
             "Ensure that software applications remain functional and up-to-date", "Software update",
             "Ensure that software solutions meet the specific requirements and needs of the organization.","Stay up-to-date on the latest technologies and trends in the industry.", "You will work closely with designers, project managers and other professionals to successfully complete projects," };
         "Collaborate with cross-functional teams", "Analyze user needs", "check the quality and integrity of the software","Marketing the software to the customer base", "Make sure the problem is fixed"};
- foreach (var _name in Alias)
+    string[] hardness { Beginner, Advanced Beginner, Intermediate, Advanced, Expert };
+ foreach (string var in Alias)
+
+           DateTime? CreatedAtDate, = new DateTime(1995, 1, 1);
+    int range = (DateTime.Today - start).Days;
+    DateTime DeadlineDate,= (DateTime.CreatedAtDate + RequiredEffortTime);
+
+
+
     {
+
 
 
         string? Description,
     DateTime? CreatedAtDate,
             
-        TimeSpan RequiredEffortTime = s_rand.Next(1,7);
+        
 
-    bool ? IsMilestone = false;
-    DateTime StartDate,
+    bool? IsMilestone = false;
+    
     DateTime DeadlineDate,
     DateTime CompleteDate,
     string? Deliverables,
