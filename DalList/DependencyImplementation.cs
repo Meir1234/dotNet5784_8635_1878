@@ -23,7 +23,7 @@ public class DependencyImplementation : IDependency
 
     public List<Dependency> ReadAll()
     {
-       
+        return new List<Dependency>(DataSource.Dependencys);
     }
 
     public void Update(Dependency item)
