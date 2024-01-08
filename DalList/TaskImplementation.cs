@@ -1,27 +1,32 @@
 ﻿namespace Dal;
-using DalApi;
+using DalFacade.DalApi;
 using DalFacade.DO;
-using DO;
-public class TaskImplementation : DalFacade.DalApi.ITask
+
+
+
+public class TaskImplementation : ITask
 
 {
     public int Create(Task item)
     {
-        throw new NotImplementedException();
+        int idNum = DataSource.Config.NextTaskid;
+
+        DataSource.Tasks.Add(item with { id = idNum  }) ;
+        return idNum;
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        Task.RemoveAll(item => item.id == id);
     }
 
-    public Task? Read(int Id)
+    public Task? Read(int id)
     {
-        throw new NotImplementedException();
+        
     }
 
     public void Update(Task item)
     {
-        throw new NotImplementedException();
+       
     }
 }
