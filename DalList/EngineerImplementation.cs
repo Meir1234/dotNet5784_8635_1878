@@ -40,9 +40,9 @@ public class EngineerImplementation : IEngineer
             int updatedObjectId = item.Id;
             bool found = false;
 
-            foreach (Task? obj in DataSource.Tasks)
+            foreach (Engineer? obj in DataSource.Engineers)
             {
-                if (obj.id == updatedObjectId)
+                if (obj.Id == updatedObjectId)
                 {
                     bool v = DataSource.Engineers.Remove(obj);
                     DataSource.Engineers.Add(item);
