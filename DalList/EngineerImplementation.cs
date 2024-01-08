@@ -34,7 +34,27 @@ public class EngineerImplementation : IEngineer
     }
 
     public void Update(Engineer item)
+    
     {
-        
+        {
+            int updatedObjectId = item.Id;
+            bool found = false;
+
+            foreach (Task? obj in DataSource.Tasks)
+            {
+                if (obj.id == updatedObjectId)
+                {
+                    bool v = DataSource.Engineers.Remove(obj);
+                    DataSource.Engineers.Add(item);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                throw new ArgumentException($"Object  with ID {updatedObjectId} does not exist.");
+            }
+        }
     }
 }

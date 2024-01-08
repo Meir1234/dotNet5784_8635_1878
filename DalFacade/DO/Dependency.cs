@@ -2,8 +2,10 @@
 namespace DalFacade.DO;
 
 public record Dependency
-{
-    int Id;
-    int DependentTask;
-    int DependsOnTask;
-}
+(
+    int Id,
+    int DependentTask,
+    int DependsOnTask
+);
+
+

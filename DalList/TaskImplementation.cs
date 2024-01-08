@@ -36,7 +36,26 @@ public class TaskImplementation : ITask
 
     public void Update(Task item)
     {
-        
+        {
+            int updatedObjectId = item.id;
+            bool found = false;
+
+            foreach (Task? obj in DataSource.Tasks)
+            {
+                if (obj.id == updatedObjectId)
+                {
+                    DataSource.Tasks.Remove(obj);
+                    DataSource.Tasks.Add(item);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                throw new ArgumentException($"Object  with ID {updatedObjectId} does not exist.");
+            }
+        }
     }
     public List<Task> ReadAll()
     {
