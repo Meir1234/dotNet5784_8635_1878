@@ -13,8 +13,8 @@ public record Task
     DateTime StartDate;
     DateTime DeadlineDate;
     DateTime CompleteDate;
-    string Deliverables;
-    string Remarks;
+    string? Deliverables;
+    string? Remarks;
     int Engineerld;
   
 }
