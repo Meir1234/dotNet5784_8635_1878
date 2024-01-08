@@ -17,7 +17,6 @@ internal static class DataSource
     }
     internal static List<DalFacade.DO.Engineer> Engineers { get; } = new();
     internal static List<DalFacade.DO.Dependency> Dependencys { get; } = new();
-
     internal static List<DalFacade.DO.Task> Tasks { get; } = new();
 
 }
