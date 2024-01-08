@@ -5,6 +5,7 @@ using DalFacade.DalApi;
 using DalFacade.DO;
 using System;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 public static class Initialization
 {
@@ -60,7 +61,7 @@ public static class Initialization
     }
 
 
-        private static void createTasks()
+ private static void createTasks()
     {
 
         string[] Alias = { "code", "examination", "combination", "Brainstorming", "Summary",  "learneing", "requirements", "problems", "bugs", "deep", "keep","update", "match","tech",
@@ -88,23 +89,23 @@ public static class Initialization
         };
     private static void createDependencys()
     {
-        // Function to add random dependencies for a task
+    // Function to add random dependencies for a task
         for (int i = 0; i < 40; i++)
         {
-            int _tas = s_rand.Next(1, 21);
-            while (randomDependsOnTaskId == dependentTaskId) // Ensure not dependent on itself
-            {
-                randomDependsOnTaskId = tasks[random.Next(tasks.Count)].Id;
-            }
-
-            var dependency = new Dependency
-            {
-                Id = tasks.Count + 1,
-                DependentTask = dependentTaskId,
-                DependsOnTask = randomDependsOnTaskId
-            };
-
-            dependentTask?.Dependencies.Add(dependency);
+            int _id = s_rand.Next(200000000, 400000000);
+        while (randomDependsOnTaskId == dependentTaskId) // Ensure not dependent on itself
+        {
+            randomDependsOnTaskId = tasks[random.Next(tasks.Count)].Id;
         }
+
+        var dependency = new Dependency
+        {
+            Id = tasks.Count + 1,
+            DependentTask = dependentTaskId,
+            DependsOnTask = randomDependsOnTaskId
+        };
+
+        dependentTask?.Dependencies.Add(dependency);
     }
+}
 
