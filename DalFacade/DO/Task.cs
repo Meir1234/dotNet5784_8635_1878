@@ -15,5 +15,9 @@ public record Task
     DateTime? CompleteDate,
     string? Deliverables,
     string? Remarks,
-    int Engineerld
-);
+    int Engineerld,
+    string hardness
+)
+{
+
+};
