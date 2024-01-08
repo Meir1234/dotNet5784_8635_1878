@@ -3,6 +3,7 @@
 namespace DalTest;
 using DalFacade.DalApi;
 using DalFacade.DO;
+using System;
 using System.Security.Cryptography;
 
 public static class Initialization
@@ -84,10 +85,26 @@ public static class Initialization
     string? Deliverables,
     string? Remarks,
     int Engineerld
-    }
+        };
     private static void createDependencys()
     {
+        // Function to add random dependencies for a task
+        for (int i = 0; i < 40; i++)
+        {
+            int _tas = s_rand.Next(1, 21);
+            while (randomDependsOnTaskId == dependentTaskId) // Ensure not dependent on itself
+            {
+                randomDependsOnTaskId = tasks[random.Next(tasks.Count)].Id;
+            }
 
+            var dependency = new Dependency
+            {
+                Id = tasks.Count + 1,
+                DependentTask = dependentTaskId,
+                DependsOnTask = randomDependsOnTaskId
+            };
 
+            dependentTask?.Dependencies.Add(dependency);
+        }
     }
-}
+
