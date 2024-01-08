@@ -17,16 +17,22 @@ public class TaskImplementation : ITask
 
     public void Delete(int id)
     {
-        Task.RemoveAll(item => item.id == id);
+        DataSource.Tasks.Remove(item => item.id == id);
     }
 
     public Task? Read(int id)
     {
-        
+        return DataSource.Tasks.Find(item => item.id == id);
     }
 
     public void Update(Task item)
     {
-       
+        
+    }
+    public List<Task> ReadAll()
+    {
+
     }
 }
+
+
