@@ -17,7 +17,4 @@ public record Task
     string? Remarks,
     int Engineerld,
     string hardness
-)
-{
-
-};
+);
