@@ -96,16 +96,10 @@ public static class Initialization
         {
             Random random = new Random();
 
-            // Define a range of hours for example, between 1 and 24 hours
-            int randomHours = random.Next(1, 25);
-
-            // Define a range of minutes for example, between 0 and 59 minutes
-            int randomMinutes = random.Next(60);
-
-            // Create a TimeSpan using the random values
-            TimeSpan randomDuration = new TimeSpan(randomHours, randomMinutes, 0);
-
-            return randomDuration;
+            int randomDays = random.Next(1, 8); // מספרים רנדומליים בין 1 ל-7
+            TimeSpan randomTimeSpan = TimeSpan.FromDays(randomDays);
+            return randomTimeSpan;
+          
         }
 
         int id = 6;
@@ -116,23 +110,24 @@ public static class Initialization
             "Ensure that software applications remain functional and up-to-date", "Software update",
             "Ensure that software solutions meet the specific requirements and needs of the organization.","Stay up-to-date on the latest technologies and trends in the industry.", "You will work closely with designers, project managers and other professionals to successfully complete projects,",
         "Collaborate with cross-functional teams", "Analyze user needs", "check the quality and integrity of the software","Marketing the software to the customer base", "Make sure the problem is fixed"};
+        string[] Deliverables= {
+"Functional and modular code components", "High-quality code with enhanced safety measures", "Integrated and cohesive applications", "Creative and innovative problem-solving approaches",
+            "Improved workflows and processes based on insights gained", "Comprehensive and clear requirement documents", "Successful completion of advanced projects",
+            "Resolved software issues and improved stability", "Enhanced skills and in-depth expertise", "Robust and updated software applications", "Updated and advanced software versions", "Tailored and maintained software solutions", "Current and informed approach towards industry trends and technologies", "Efficient project completion through collaboration with diverse professionals", "Effective teamwork across varied disciplines", "Customized and user-oriented products or solutions", "High-quality and robust software", "Successfully marketed software with appealing features and benefits", "Resolved issues leading to improved software functionality", "Refined processes and workflows based on experiences and lessons learned"}
         for (int i = 0;i<20;i++)
         {
             string? _alias = Alias[i];
             string? _description = Description[i];
 
 
-            DateTime _created = GenerateRandomDate();
+            DateTime StartDate = GenerateRandomDate();
             TimeSpan RequiredEffortTime = GenerateRandomDuration();
-
-    bool ? IsMilestone = false;
-    DateTime StartDate,
-    DateTime DeadlineDate,
-    DateTime CompleteDate,
-    string? Deliverables,
-    string? Remarks,
-    int Engineerld
+            DateTime DeadlineDate = StartDate + RequiredEffortTime;
+             bool? IsMilestone = false;
+            Level _level = (Level)s_rand.Next(1, 5);
+            DateTime? CompleteDate = null;
+            string? _deliverables = Deliverables[i];
         };
     
-}
+
 
