@@ -92,7 +92,7 @@ internal class Program
         }
     }
 
-    private static void ExitEngineerMenu()
+    public static void ExitEngineerMenu()
     {
         Environment.Exit(0);
     }
@@ -163,7 +163,7 @@ internal class Program
     }
 
 
-public static void DisplayDependencyOptions()
+    public static void DisplayDependencyOptions()
     {
         Console.WriteLine("Dependency options:");
         Console.WriteLine("1. Exit dependency menu");
