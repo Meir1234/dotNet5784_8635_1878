@@ -61,11 +61,22 @@ public static class Initialization
     private static void createDependencys()
     {
         // Function to add random dependencies for a task
-        for (int i = 1; i <= 20; i++)
+        for (int i = 1; i < 5; i++)
         {
-            Dependency newDep = new(i, i, (i % 3) + 1);
+            int j = i * 5;
+            for(int k = 0; k < 2; k++)
+            {
+                Dependency newDep = new(1, j-k-1, j-k);
 
-            s_dalDependency!.Create(newDep);
+                s_dalDependency!.Create(newDep);
+            }
+
+            for(int k = 1;k < 3; k++)
+            {
+                Dependency newDep = new(1, j - 2 - k, j - 2);
+
+                s_dalDependency!.Create(newDep);
+            }
         }
     }
 
@@ -126,9 +137,7 @@ public static class Initialization
              StartDate, DeadlineDate, null, _deliverables, 0, _level);
 
             s_dalTask!.Create(newTask);
-
-        }
-
+        };
 
     }
 }
