@@ -1,15 +1,21 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Dal;
+using DalApi;
+using DalFacade.DalApi;
 using DalFacade.DO;
+using DalTest;
 using DO;
 
 
 
-class Program  
-    
+class Program
+
 {
-    private static Engineer? s_daEngineer = new EngineerImplementation(); //stage 1
-    private static Dependency? s_Dependency = new DependencyImplementation(); //stage 1
-    private static Task? s_dalTask = new TaskImplementation(); //stage 1
+    private static IEngineer? s_dalEngineer = new EngineerImplementation(); //stage 1
+    private static IDependency? s_dalDependency = new DependencyImplementation(); //stage 1
+    private static ITask? s_dalTask = new TaskImplementation(); //stage 1
+    Initialization.Do(s_dalEngineer, s_dalDependency, s_dalTask);
+
 }
+
 

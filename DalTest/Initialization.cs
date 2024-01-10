@@ -64,14 +64,14 @@ public static class Initialization
         for (int i = 1; i < 5; i++)
         {
             int j = i * 5;
-            for(int k = 0; k < 2; k++)
+            for (int k = 0; k < 2; k++)
             {
-                Dependency newDep = new(1, j-k-1, j-k);
+                Dependency newDep = new(1, j - k - 1, j - k);
 
                 s_dalDependency!.Create(newDep);
             }
 
-            for(int k = 1;k < 3; k++)
+            for (int k = 1; k < 3; k++)
             {
                 Dependency newDep = new(1, j - 2 - k, j - 2);
 
@@ -107,7 +107,7 @@ public static class Initialization
         }
 
 
-        int id = 6;
+  
 
         string[] Alias = { "code", "examination", "combination", "Brainstorming", "Summary", "learneing", "requirements", "problems", "bugs", "deep", "keep", "update", "match", "tech",
             "Collaborate", "design", "analyze", "check", "market", "fix" };
@@ -137,7 +137,10 @@ public static class Initialization
              StartDate, DeadlineDate, null, _deliverables, 0, _level);
 
             s_dalTask!.Create(newTask);
-        };
+
+
+        }
+
 
     }
 }

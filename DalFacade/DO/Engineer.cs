@@ -15,5 +15,10 @@ namespace DO
         {
             throw new NotImplementedException();
         }
+
+        public static implicit operator Engineer(global::Dal.EngineerImplementation v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
