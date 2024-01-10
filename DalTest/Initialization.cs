@@ -3,8 +3,6 @@
 namespace DalTest;
 
 using DalApi;
-using DalFacade.DalApi;
-using DalFacade.DO;
 using DO;
 public static class Initialization
 {
@@ -58,20 +56,20 @@ public static class Initialization
             s_dalEngineer!.Create(newEng);
         }
     }
-    private static void createDependencys()
+    private static void createDependencies()
     {
         // Function to add random dependencies for a task
         for (int i = 1; i < 5; i++)
         {
             int j = i * 5;
-            for(int k = 0; k < 2; k++)
+            for (int k = 0; k < 2; k++)
             {
-                Dependency newDep = new(1, j-k-1, j-k);
+                Dependency newDep = new(1, j - k - 1, j - k);
 
                 s_dalDependency!.Create(newDep);
             }
 
-            for(int k = 1;k < 3; k++)
+            for (int k = 1; k < 3; k++)
             {
                 Dependency newDep = new(1, j - 2 - k, j - 2);
 
@@ -79,8 +77,6 @@ public static class Initialization
             }
         }
     }
-
-
     private static void createTasks()
     {
         static DateTime GenerateRandomDate()
@@ -106,8 +102,6 @@ public static class Initialization
 
         }
 
-
-        int id = 6;
 
         string[] Alias = { "code", "examination", "combination", "Brainstorming", "Summary", "learneing", "requirements", "problems", "bugs", "deep", "keep", "update", "match", "tech",
             "Collaborate", "design", "analyze", "check", "market", "fix" };
@@ -138,9 +132,21 @@ public static class Initialization
 
             s_dalTask!.Create(newTask);
         };
-
     }
+
+    public static void Do(IEngineer? dalEngineer, ITask? dalTask, IDependency? dalDependency)
+    { 
+        s_dalEngineer = dalEngineer ?? throw new NullReferenceException("DAL can not be null!");
+        s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");
+        s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
+
+        createEngineers();
+        createTasks();
+        createDependencies();
+    }
+
 }
+
 
 
 
