@@ -203,11 +203,147 @@ public static void PerformTaskAction(int choice)
     private static void DeleteDependency() { /* Implement delete logic */ }
 
 
+//public static void AddEngineer()
 
-    private static void ExitTaskMenu() { /* Implement exit logic */ }
-    private static void AddNewTask() { /* Implement add task logic */ }
-    private static void DisplayTaskByID() { /* Implement display by ID logic */ }
-    private static void DisplayAllTasks() { /* Implement display all logic */ }
-    private static void UpdateTaskDetails() { /* Implement update logic */ }
-    private static void DeleteTask() { /* Implement delete logic */ }
+//{
+//    int id;
+//    double cost;
+//    string? name, email;
+//    DO.EngineerExperience level;
+//    Console.WriteLine("Enter the engineer's id:");
+//    id = Console.Read();
+//    Console.WriteLine("Enter the salary:");
+//    cost = Console.Read();
+//    Console.WriteLine("Enter the engineer's name:");
+//    name = Console.ReadLine();
+//    Console.WriteLine("Enter the engineer's email:");
+//    email = Console.ReadLine();
+//    Console.WriteLine("Enter the engineer's level:");
+//    level = (DO.EngineerExperience)Console.Read();
 
+
+//    Engineer New = new Engineer(id, cost, name, email, level);
+//    try
+//    {
+//        s_Engineer!.Create(New);
+//    }
+//    catch (Exception e)
+//    {
+//        Console.WriteLine(e);
+//    }
+//}
+//public static void UpdateEngineer(Engineer E)
+//{
+//    int id = 0;
+//    double cost = 0;
+//    string? name, email;
+//    DO.EngineerExperience level;
+//    Console.WriteLine("Enter the new engineer's data:");
+//    id = Console.Read();
+//    cost = Console.Read();
+//    name = Console.ReadLine();
+//    email = Console.ReadLine();
+//    level = (DO.EngineerExperience)Console.Read();
+
+//}
+//}
+
+
+
+
+
+
+private static void ExitTaskMenu() { /* Implement exit logic */  }
+
+private static void AddNewTask() { /* Implement add task logic */
+    // Get input for all variables
+    Console.WriteLine("Enter Task ID:");
+    int id = int.Parse(Console.ReadLine());
+
+    Console.WriteLine("Enter Alias:");
+    string? Alias = Console.ReadLine();
+
+    Console.WriteLine("Enter Description:");
+    string? Description = Console.ReadLine();
+
+    Console.WriteLine("Enter Created At Date (yyyy-MM-dd):");
+    DateTime CreatedAtDate = DateTime.Parse(Console.ReadLine());
+
+    Console.WriteLine("Enter Required Effort Time (in hours):");
+    TimeSpan RequiredEffortTime = TimeSpan.FromHours(double.Parse(Console.ReadLine()));
+
+    Console.WriteLine("Is this a milestone? (true/false):");
+    bool IsMilestone = bool.Parse(Console.ReadLine());
+
+    Console.WriteLine("Enter Start Date (yyyy-MM-dd):");
+    DateTime StartDate = DateTime.Parse(Console.ReadLine());
+
+    Console.WriteLine("Enter Deadline Date (yyyy-MM-dd):");
+    DateTime DeadlineDate = DateTime.Parse(Console.ReadLine());
+
+    Console.WriteLine("Enter Complete Date (yyyy-MM-dd) if applicable, otherwise press Enter:");
+    DateTime? CompleteDate = null;
+    string userInput = Console.ReadLine();
+    if (!string.IsNullOrWhiteSpace(userInput))
+    {
+        CompleteDate = DateTime.Parse(userInput);
+    }
+
+    Console.WriteLine("Enter Deliverables:");
+    string? Deliverables = Console.ReadLine();
+
+    Console.WriteLine("Enter Engineer ID:");
+    int EngineerId = int.Parse(Console.ReadLine());
+
+    Console.WriteLine("Enter Level of Hardness (integer value):");
+    Level hardness;
+   
+    hardness = (Level)Enum.Parse(typeof(Level), Console.ReadLine());
+
+    // Create Task object using the provided input
+    Task newTask = new Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
+                             StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
+
+    newTask.createTasks();
+     }
+
+    private static void DisplayTaskByID(int taskId) { /* Implement display by ID logic */
+
+    Task task = Tasks.Read(t => t.Id == taskId);
+    if (task != null)
+    {
+        Console.WriteLine($"Task ID: {task.id}");
+        Console.WriteLine($"Alias: {task.Alias}");
+        Console.WriteLine($"Description: {task.Description}");
+        Console.WriteLine($"CreatedAtDate: {task.CreatedAtDate}");
+        Console.WriteLine($"RequiredEffortTime: {task.RequiredEffortTime}");
+        Console.WriteLine($"IsMilestone: {task.IsMilestone}");
+        Console.WriteLine($"StartDate: {task.StartDate}");
+        Console.WriteLine($"DeadlineDate: {task.DeadlineDate}");
+        Console.WriteLine($"CompleteDate: {task.CompleteDate}");
+        Console.WriteLine($"Deliverables: {task.Deliverables}");
+        Console.WriteLine($"EngineerId: {task.EngineerId}");
+        Console.WriteLine($"Hardness: {task.Hardness}");
+    }
+    else
+    {
+        Console.WriteLine("Task not found!");
+    }
+}
+private static void DisplayAllTasks() { /* Implement display all logic */
+    Console.WriteLine(s_dalTask!.ReadAll());
+}
+
+private static void UpdateTaskDetails() { /* Implement update logic */ }
+    private static void DeleteTask(Task tasks) { /* Implement delete logic */
+    Tasks.Delete(tasks.id);
+}
+
+
+public static void ExitEngineerMenu() { /* Implement exit logic */ }
+    public static void AddNewEngineer() { /* Implement add engineer logic */ }
+    public static void DisplayEngineerByID() { /* Implement display by ID logic */ }
+    public static void DisplayAllEngineers() { /* Implement display all logic */ }
+    public static void UpdateEngineerDetails() { /* Implement update logic */ }
+    public static void DeleteEngineer() { /* Implement delete logic */ }
+}

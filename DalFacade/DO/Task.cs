@@ -19,5 +19,8 @@ public record Task
     Level hardness
 )
 {
-
+    public void createTasks()
+    {
+        throw new NotImplementedException();
+    }
 }
