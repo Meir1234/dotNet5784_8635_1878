@@ -91,7 +91,6 @@ public static class Initialization
 
             return randomDate;
         }
-
         static TimeSpan GenerateRandomDuration()
         {
             Random random = new Random();
@@ -118,8 +117,6 @@ public static class Initialization
         {
             string? _alias = Alias[i];
             string? _description = Description[i];
-
-
             DateTime StartDate = GenerateRandomDate();
             TimeSpan RequiredEffortTime = GenerateRandomDuration();
             DateTime DeadlineDate = StartDate + RequiredEffortTime;

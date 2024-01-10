@@ -3,7 +3,7 @@
 
 
 
-namespace DalFacade.DalApi;
+namespace DalApi;
 using DO;
 
 public interface IDependency

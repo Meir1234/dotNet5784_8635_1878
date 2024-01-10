@@ -1,8 +1,7 @@
 ﻿
 namespace Dal;
-using DalFacade.DalApi;
-using DalFacade.DO;
-using System.Collections.Generic;
+using DalApi;
+using DO;
 
 public class EngineerImplementation : IEngineer
 {

@@ -2,7 +2,7 @@
 
 using DalFacade.DO;
 
-namespace DalFacade.DalApi;
+namespace DalApi;
 
 public interface IEngineer
 {
