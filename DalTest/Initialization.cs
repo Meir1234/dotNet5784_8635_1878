@@ -3,10 +3,7 @@
 namespace DalTest;
 
 using DalApi;
-using DalFacade.DalApi;
-using DalFacade.DO;
 using DO;
-
 public static class Initialization
 {
     private static IEngineer? s_dalEngineer; //stage 1
@@ -62,18 +59,14 @@ public static class Initialization
     private static void createDependencys()
     {
         // Function to add random dependencies for a task
-        for (int _dependent = 0; _dependent < 20; _dependent++)
+        for (int i = 1; i <= 20; i++)
         {
-            int _dependsOn;
-            do
-                _dependsOn = s_rand.Next(1, 20);
-            while (_dependsOn != _dependent);
-
-            Dependency newDep = new(_id, _dependent, _dependsOn);
+            Dependency newDep = new(i, i, (i % 3) + 1);
 
             s_dalDependency!.Create(newDep);
         }
     }
+
 
     private static void createTasks()
     {
