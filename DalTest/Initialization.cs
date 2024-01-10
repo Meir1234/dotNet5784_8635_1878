@@ -3,8 +3,6 @@
 namespace DalTest;
 
 using DalApi;
-using DalFacade.DalApi;
-using DalFacade.DO;
 using DO;
 public static class Initialization
 {
@@ -58,7 +56,7 @@ public static class Initialization
             s_dalEngineer!.Create(newEng);
         }
     }
-    private static void createDependencys()
+    private static void createDependencies()
     {
         // Function to add random dependencies for a task
         for (int i = 1; i < 5; i++)
@@ -79,8 +77,6 @@ public static class Initialization
             }
         }
     }
-
-
     private static void createTasks()
     {
         static DateTime GenerateRandomDate()
@@ -106,8 +102,6 @@ public static class Initialization
 
         }
 
-
-  
 
         string[] Alias = { "code", "examination", "combination", "Brainstorming", "Summary", "learneing", "requirements", "problems", "bugs", "deep", "keep", "update", "match", "tech",
             "Collaborate", "design", "analyze", "check", "market", "fix" };
@@ -137,13 +131,22 @@ public static class Initialization
              StartDate, DeadlineDate, null, _deliverables, 0, _level);
 
             s_dalTask!.Create(newTask);
-
-
-        }
-
-
+        };
     }
+
+    public static void Do(IEngineer? dalEngineer, ITask? dalTask, IDependency? dalDependency)
+    { 
+        s_dalEngineer = dalEngineer ?? throw new NullReferenceException("DAL can not be null!");
+        s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");
+        s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
+
+        createEngineers();
+        createTasks();
+        createDependencies();
+    }
+
 }
+
 
 
 
