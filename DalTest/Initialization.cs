@@ -3,6 +3,8 @@
 namespace DalTest;
 
 using DalApi;
+using DalFacade.DalApi;
+using DalFacade.DO;
 using DO;
 public static class Initialization
 {
@@ -103,7 +105,7 @@ public static class Initialization
             "Ensure that software solutions meet the specific requirements and needs of the organization.", "Stay up-to-date on the latest technologies and trends in the industry.", "You will work closely with designers, project managers and other professionals to successfully complete projects,",
             "Collaborate with cross-functional teams", "Analyze user needs", "check the quality and integrity of the software", "Marketing the software to the customer base", "Make sure the problem is fixed" };
 
-      
+
         string[] Deliverables = {
             "Functional and modular code components", "High-quality code with enhanced safety measures", "Integrated and cohesive applications", "Creative and innovative problem-solving approaches",
             "Improved workflows and processes based on insights gained", "Comprehensive and clear requirement documents", "Successful completion of advanced projects",
@@ -120,38 +122,15 @@ public static class Initialization
             DateTime? CompleteDate = null;
             string? _deliverables = Deliverables[i];
 
-            Task newTask = new(id ,_alias, _description, StartDate);
+            Task newTask = new(0, _alias, _description, null, RequiredEffortTime, IsMilestone,
+             StartDate, DeadlineDate, null, _deliverables, 0, _level);
 
             s_dalTask!.Create(newTask);
-   
+
         }
 
-        int id,
-    string? Alias,
-    string? Description,
-    DateTime? CreatedAtDate,
-    TimeSpan RequiredEffortTime,
-    bool? IsMilestone,
-    DateTime StartDate,
-    DateTime DeadlineDate,
-    DateTime? CompleteDate,
-    string? Deliverables,
-    string? Remarks,
-    int Engineerld,
-    string hardness
-            Task newTas = new()
-        };
 
     }
-    //public  class Do
-    //{
-    //    Engineer engineer1;
-    //    createEngineers(engineer1);
-
-    //     createTasks(Task task) { }
-    //    createDependencys(Dependency dependency) { }
-    //}
-
 }
 
 

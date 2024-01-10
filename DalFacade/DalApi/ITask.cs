@@ -9,4 +9,5 @@ public interface ITask
     public List<Task> ReadAll();
     public void Update(Task item);
     public void Delete(int id);
+    void Create(DO.Task newTask);
 }
