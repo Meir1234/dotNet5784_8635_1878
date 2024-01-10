@@ -378,6 +378,52 @@ internal class Program
 
 
 
+    //    double cost;
+    //    string? name, email;
+    //    DO.EngineerExperience level;
+    //    Console.WriteLine("Enter the engineer's id:");
+    //    id = Console.Read();
+    //    Console.WriteLine("Enter the salary:");
+    //    cost = Console.Read();
+    //    Console.WriteLine("Enter the engineer's name:");
+    //    name = Console.ReadLine();
+    //    Console.WriteLine("Enter the engineer's email:");
+    //    email = Console.ReadLine();
+    //    Console.WriteLine("Enter the engineer's level:");
+    //    level = (DO.EngineerExperience)Console.Read();
+
+
+    //    Engineer New = new Engineer(id, cost, name, email, level);
+    //    try
+    //    {
+    //        s_Engineer!.Create(New);
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        Console.WriteLine(e);
+    //    }
+    //}
+    //public static void UpdateEngineer(Engineer E)
+    //{
+    //    int id = 0;
+    //    double cost = 0;
+    //    string? name, email;
+    //    DO.EngineerExperience level;
+    //    Console.WriteLine("Enter the new engineer's data:");
+    //    id = Console.Read();
+    //    cost = Console.Read();
+    //    name = Console.ReadLine();
+    //    email = Console.ReadLine();
+    //    level = (DO.EngineerExperience)Console.Read();
+
+    //}
+    //}
+
+
+
+
+
+
     private static void ExitTaskMenu() { /* Implement exit logic */  }
 
     private static void AddNewTask()
@@ -409,7 +455,7 @@ internal class Program
 
         Console.WriteLine("Enter Complete Date (yyyy-MM-dd) if applicable, otherwise press Enter:");
         DateTime? CompleteDate = null;
-        string userInput = Console.ReadLine();
+        string userInput = Console.ReadLine()!;
         if (!string.IsNullOrWhiteSpace(userInput))
         {
             CompleteDate = DateTime.Parse(userInput);
@@ -419,12 +465,12 @@ internal class Program
         string? Deliverables = Console.ReadLine();
 
         Console.WriteLine("Enter Engineer ID:");
-        int EngineerId = int.Parse(Console.ReadLine());
+        int EngineerId = Console.Read()!;
 
         Console.WriteLine("Enter Level of Hardness (integer value):");
         Level hardness;
 
-        hardness = (Level)Enum.Parse(typeof(Level), Console.ReadLine());
+        hardness = (Level)Enum.Parse(typeof(Level), Console.ReadLine()!);
 
     // Create Task object using the provided input
     Task newTask = new Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
@@ -438,8 +484,7 @@ internal class Program
         // Create Task object using the provided input
         Task newTask = new Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
                                  StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
-
-        newTask.createTasks();
+        s_dalTask!.Create(newTask);
     }
 
    
@@ -493,7 +538,7 @@ private static void DisplayAllTasks() { /* Implement display all logic */
         }
     }
     private static void DisplayAllTasks()
-    { /* Implement display all logic */
+    { 
         Console.WriteLine(s_dalTask!.ReadAll());
     }
 
@@ -533,8 +578,10 @@ private static void DisplayAllTasks() { /* Implement display all logic */
         }
     private static void UpdateTaskDetails() { /* Implement update logic */ }
     private static void DeleteTask(Task tasks)
-    { /* Implement delete logic */
-        Tasks.Delete(tasks.id);
+    {
+        Console.WriteLine("Enter Task ID:");
+        int id = Console.Read();
+        s_dalTask!.Delete(id);
     }
         private static void UpdateTaskDetails() { /* Implement update logic */ 
         Console.WriteLine("Enter Deliverables:");
