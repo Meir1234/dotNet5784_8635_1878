@@ -393,10 +393,11 @@ private static void DisplayAllTasks() { /* Implement display all logic */
 private static void UpdateTaskDetails() { /* Implement update logic */ }
     private static void DeleteTask(Task tasks) { /* Implement delete logic */
     Tasks.Delete(tasks.id);
-}
+    }
 
 
-public static void ExitEngineerMenu() { /* Implement exit logic */ }
+    public static void ExitEngineerMenu() { /* Implement exit logic */ }
+
     public static void AddNewEngineer() { /* Implement add engineer logic */ }
     public static void DisplayEngineerByID() { /* Implement display by ID logic */ }
     public static void DisplayAllEngineers() { /* Implement display all logic */ }
