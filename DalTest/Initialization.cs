@@ -54,7 +54,7 @@ public static class Initialization
 
             Level _level = (Level)s_rand.Next(1, 5);
 
-            double _cost = s_rand.NextDouble()*200 + 200;
+            double _cost = s_rand.NextDouble() * 200 + 200;
 
             Engineer newEng = new(_id, _name, _email, _level, _cost);
 
@@ -64,12 +64,12 @@ public static class Initialization
     private static void createDependencys()
     {
         // Function to add random dependencies for a task
-        for (int i = 0; i < 20; i++)
+        for (int i = 1; i <= 20; i++)
         {
             Dependency newDep = new(i, i, (i % 3) + 1);
 
             s_dalDependency!.Create(newDep);
-        }   
+        }
     }
 
     private static void createTasks()
@@ -126,5 +126,6 @@ public static class Initialization
             string? _deliverables = Deliverables[i];
         };
     }
+};
 
 
