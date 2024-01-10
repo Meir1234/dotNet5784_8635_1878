@@ -158,7 +158,7 @@ internal class Program
     private static void DeleteEngineer()
     {
         Console.WriteLine("Enter Engineer ID:");
-        int id = int.Parse(Console.ReadLine());
+        int id = Console.Read();
         s_dalEngineer!.Delete(id);
     }
 
