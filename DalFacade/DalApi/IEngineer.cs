@@ -3,6 +3,7 @@
 using DalFacade.DO;
 
 namespace DalApi;
+using DO;
 
 public interface IEngineer
 {
