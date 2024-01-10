@@ -373,52 +373,6 @@ internal class Program
         }
     }
 
-<<<<<<< HEAD
-    //public static void AddEngineer()
-
-    //{
-    //    int id;
-    //    double cost;
-    //    string? name, email;
-    //    DO.EngineerExperience level;
-    //    Console.WriteLine("Enter the engineer's id:");
-    //    id = Console.Read();
-    //    Console.WriteLine("Enter the salary:");
-    //    cost = Console.Read();
-    //    Console.WriteLine("Enter the engineer's name:");
-    //    name = Console.ReadLine();
-    //    Console.WriteLine("Enter the engineer's email:");
-    //    email = Console.ReadLine();
-    //    Console.WriteLine("Enter the engineer's level:");
-    //    level = (DO.EngineerExperience)Console.Read();
-
-
-    //    Engineer New = new Engineer(id, cost, name, email, level);
-    //    try
-    //    {
-    //        s_Engineer!.Create(New);
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Console.WriteLine(e);
-    //    }
-    //}
-    //public static void UpdateEngineer(Engineer E)
-    //{
-    //    int id = 0;
-    //    double cost = 0;
-    //    string? name, email;
-    //    DO.EngineerExperience level;
-    //    Console.WriteLine("Enter the new engineer's data:");
-    //    id = Console.Read();
-    //    cost = Console.Read();
-    //    name = Console.ReadLine();
-    //    email = Console.ReadLine();
-    //    level = (DO.EngineerExperience)Console.Read();
-
-    //}
-    //}
-
 
 
 
@@ -476,7 +430,7 @@ internal class Program
     Task newTask = new Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
                              StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
         s_dalTask!.Create(newTask);
-    }
+    
 
 
 
@@ -488,8 +442,7 @@ internal class Program
         newTask.createTasks();
     }
 
-    private static void DisplayTaskByID(int taskId)
-    { /* Implement display by ID logic */
+   
 
     private static void DisplayTaskByID() { /* Implement display by ID logic */
         Console.WriteLine("Enter task ID: ");
@@ -517,7 +470,7 @@ internal class Program
 }
 private static void DisplayAllTasks() { /* Implement display all logic */
     Console.WriteLine(s_dalTask!.ReadAll());
-    }
+    
         Task task = Tasks.Read(t => t.Id == taskId);
         if (task != null)
         {
@@ -583,7 +536,7 @@ private static void DisplayAllTasks() { /* Implement display all logic */
     { /* Implement delete logic */
         Tasks.Delete(tasks.id);
     }
-
+        private static void UpdateTaskDetails() { /* Implement update logic */ 
         Console.WriteLine("Enter Deliverables:");
         string? Deliverables = Console.ReadLine();
 
