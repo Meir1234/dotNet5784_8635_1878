@@ -77,7 +77,7 @@ internal class Program
         PerformEngineerAction(choice);
     }
 
-    private void PerformEngineerAction(int choice)
+    public static void PerformEngineerAction(int choice)
     {
         switch (choice)
         {
@@ -106,7 +106,7 @@ internal class Program
     }
 
 
-    private void DisplayDependencyOptions()
+    public static void DisplayDependencyOptions()
         {
             Console.WriteLine("Dependency options:");
             Console.WriteLine("1. Exit dependency menu");
@@ -120,9 +120,10 @@ internal class Program
             int choice = int.Parse(Console.ReadLine());
 
         PerformDependencyAction(choice);
+        return;
     }
 
-    private void PerformDependencyAction(int choice)
+    public static void PerformDependencyAction(int choice)
     {
         switch (choice)
         {
@@ -149,7 +150,7 @@ internal class Program
                 break;
         }
     }
-    private void DisplayTaskOptions()
+    public static  void DisplayTaskOptions()
         {
             Console.WriteLine("Task options:");
             Console.WriteLine("1. Exit task menu");
@@ -166,7 +167,7 @@ internal class Program
         }
     PerformTaskAction(choice);
 }
-private void PerformTaskAction(int choice)
+public static void PerformTaskAction(int choice)
 {
     switch (choice)
     {
@@ -193,3 +194,20 @@ private void PerformTaskAction(int choice)
             break;
     }
 }
+
+    public static void ExitDependencyMenu() { /* Implement exit logic */ }
+    private static void AddNewDependency() { /* Implement add dependency logic */ }
+    private static void DisplayDependencyByID() { /* Implement display by ID logic */ }
+    private static void DisplayAllDependencies() { /* Implement display all logic */ }
+    private static void UpdateDependencyDetails() { /* Implement update logic */ }
+    private static void DeleteDependency() { /* Implement delete logic */ }
+
+
+
+    private static void ExitTaskMenu() { /* Implement exit logic */ }
+    private static void AddNewTask() { /* Implement add task logic */ }
+    private static void DisplayTaskByID() { /* Implement display by ID logic */ }
+    private static void DisplayAllTasks() { /* Implement display all logic */ }
+    private static void UpdateTaskDetails() { /* Implement update logic */ }
+    private static void DeleteTask() { /* Implement delete logic */ }
+
