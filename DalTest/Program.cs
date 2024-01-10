@@ -1,12 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 namespace DalTest;
 using Dal;
-
 using DalApi;
-using DalFacade.DalApi;
 using DO;
-using System.Reflection.Emit;
-using System.Xml.Linq;
+
 
 internal class Program
 
@@ -167,18 +164,7 @@ internal class Program
                 break;
         }
     }
-    public static void ExitDependencyMenu() { /* Implement exit logic */ }
-    private static void AddNewDependency() { /* Implement add dependency logic */ }
-    private static void DisplayDependencyByID() { /* Implement display by ID logic */ }
-    private static void DisplayAllDependencies() { /* Implement display all logic */ }
-    private static void UpdateDependencyDetails() { /* Implement update logic */ }
-    private static void DeleteDependency() { /* Implement delete logic */ }
 
-
-
-
-
-    public static void ExitEngineerMenu()
     public static void Exit()
     {
         Environment.Exit(0);
@@ -340,17 +326,13 @@ internal class Program
         Console.WriteLine("4. Display all tasks");
         Console.WriteLine("5. Update task details");
         Console.WriteLine("6. Delete task");
-
-
-    private static void ExitTaskMenu() { /* Implement exit logic */  Environment.Exit(0); }
-        // Implement logic for task options...
     }
     public static void PerformTaskAction(int choice)
     {
         switch (choice)
         {
             case 1:
-                ExitTaskMenu();
+                Exit();
                 break;
             case 2:
                 AddNewTask();
@@ -372,59 +354,6 @@ internal class Program
                 break;
         }
     }
-
-
-
-
-
-
-    //    double cost;
-    //    string? name, email;
-    //    DO.EngineerExperience level;
-    //    Console.WriteLine("Enter the engineer's id:");
-    //    id = Console.Read();
-    //    Console.WriteLine("Enter the salary:");
-    //    cost = Console.Read();
-    //    Console.WriteLine("Enter the engineer's name:");
-    //    name = Console.ReadLine();
-    //    Console.WriteLine("Enter the engineer's email:");
-    //    email = Console.ReadLine();
-    //    Console.WriteLine("Enter the engineer's level:");
-    //    level = (DO.EngineerExperience)Console.Read();
-
-
-    //    Engineer New = new Engineer(id, cost, name, email, level);
-    //    try
-    //    {
-    //        s_Engineer!.Create(New);
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Console.WriteLine(e);
-    //    }
-    //}
-    //public static void UpdateEngineer(Engineer E)
-    //{
-    //    int id = 0;
-    //    double cost = 0;
-    //    string? name, email;
-    //    DO.EngineerExperience level;
-    //    Console.WriteLine("Enter the new engineer's data:");
-    //    id = Console.Read();
-    //    cost = Console.Read();
-    //    name = Console.ReadLine();
-    //    email = Console.ReadLine();
-    //    level = (DO.EngineerExperience)Console.Read();
-
-    //}
-    //}
-
-
-
-
-
-
-    private static void ExitTaskMenu() { /* Implement exit logic */  }
 
     private static void AddNewTask()
     { /* Implement add task logic */
