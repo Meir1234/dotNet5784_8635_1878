@@ -59,9 +59,14 @@ public static class Initialization
     private static void createDependencys()
     {
         // Function to add random dependencies for a task
-        for (int i = 1; i <= 20; i++)
+        for (int _dependent = 0; _dependent < 20; _dependent++)
         {
-            Dependency newDep = new(i, i, (i % 3) + 1);
+            int _dependsOn;
+            do
+                _dependsOn = s_rand.Next(1, 20);
+            while (_dependsOn != _dependent);
+
+            Dependency newDep = new(_id, _dependent, _dependsOn);
 
             s_dalDependency!.Create(newDep);
         }
@@ -91,16 +96,19 @@ public static class Initialization
             return randomTimeSpan;
 
         }
-        string[] Alias = { "code", "examination", "combination", "Brainstorming", "Summary",  "learneing", "requirements", "problems", "bugs", "deep", "keep","update", "match","tech",
+
+        int id = 6;
+
+        string[] Alias = { "code", "examination", "combination", "Brainstorming", "Summary", "learneing", "requirements", "problems", "bugs", "deep", "keep", "update", "match", "tech",
             "Collaborate", "design", "analyze", "check", "market", "fix" };
         string[] Description = { "writing code", "Code inspection", "Joining programs", "General thinking about work", " Drawing conclusions and drawing lessons", "Structure the requirements in an agreed and logical way", "Solving general problems in the project", "Debugging", "Broadening horizons and deepening knowledge",
             "Ensure that software applications remain functional and up-to-date", "Software update",
-            "Ensure that software solutions meet the specific requirements and needs of the organization.","Stay up-to-date on the latest technologies and trends in the industry.", "You will work closely with designers, project managers and other professionals to successfully complete projects,",
-            "Collaborate with cross-functional teams", "Analyze user needs", "check the quality and integrity of the software","Marketing the software to the customer base", "Make sure the problem is fixed"};
+            "Ensure that software solutions meet the specific requirements and needs of the organization.", "Stay up-to-date on the latest technologies and trends in the industry.", "You will work closely with designers, project managers and other professionals to successfully complete projects,",
+            "Collaborate with cross-functional teams", "Analyze user needs", "check the quality and integrity of the software", "Marketing the software to the customer base", "Make sure the problem is fixed" };
         string[] Deliverables = {
             "Functional and modular code components", "High-quality code with enhanced safety measures", "Integrated and cohesive applications", "Creative and innovative problem-solving approaches",
             "Improved workflows and processes based on insights gained", "Comprehensive and clear requirement documents", "Successful completion of advanced projects",
-            "Resolved software issues and improved stability", "Enhanced skills and in-depth expertise", "Robust and updated software applications", "Updated and advanced software versions", "Tailored and maintained software solutions", "Current and informed approach towards industry trends and technologies", "Efficient project completion through collaboration with diverse professionals", "Effective teamwork across varied disciplines", "Customized and user-oriented products or solutions", "High-quality and robust software", "Successfully marketed software with appealing features and benefits", "Resolved issues leading to improved software functionality", "Refined processes and workflows based on experiences and lessons learned"}
+            "Resolved software issues and improved stability", "Enhanced skills and in-depth expertise", "Robust and updated software applications", "Updated and advanced software versions", "Tailored and maintained software solutions", "Current and informed approach towards industry trends and technologies", "Efficient project completion through collaboration with diverse professionals", "Effective teamwork across varied disciplines", "Customized and user-oriented products or solutions", "High-quality and robust software", "Successfully marketed software with appealing features and benefits", "Resolved issues leading to improved software functionality", "Refined processes and workflows based on experiences and lessons learned" };
         for (int i = 0; i < 20; i++)
         {
             string? _alias = Alias[i];
@@ -112,10 +120,38 @@ public static class Initialization
             Level _level = (Level)s_rand.Next(1, 5);
             DateTime? CompleteDate = null;
             string? _deliverables = Deliverables[i];
+            Task newTask = new(id,_alias, _description, StartDate);
 
-            Task newTas = new()
-        };
+            s_dalTask!.Create(newTask);
+            int id,
+    string? Alias,
+    string? Description,
+    DateTime? CreatedAtDate,
+    TimeSpan RequiredEffortTime,
+    bool? IsMilestone,
+    DateTime StartDate,
+    DateTime DeadlineDate,
+    DateTime? CompleteDate,
+    string? Deliverables,
+    string? Remarks,
+    int Engineerld,
+    string hardness
+        }
     }
-};
+    //public  class Do
+    //{
+    //    Engineer engineer1;
+    //    createEngineers(engineer1);
+
+    //     createTasks(Task task) { }
+    //    createDependencys(Dependency dependency) { }
+    //}
+
+}
+
+
+
+
+
 
 

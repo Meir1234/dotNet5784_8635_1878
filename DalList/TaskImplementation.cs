@@ -62,6 +62,11 @@ public class TaskImplementation : ITask
     {
         return new List<Task>(DataSource.Tasks);
     }
+
+    public static implicit operator System.Threading.Tasks.Task(TaskImplementation v)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 
