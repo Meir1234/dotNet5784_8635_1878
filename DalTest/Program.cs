@@ -256,6 +256,7 @@ internal class Program
     private static void DisplayAllDependencies() { /* Implement display all logic */ }
     private static void UpdateDependencyDetails() { /* Implement update logic */ }
     private static void DeleteDependency() { /* Implement delete logic */ }
+<<<<<<< HEAD
 
 
 //public static void AddEngineer()
@@ -402,10 +403,7 @@ public static void ExitEngineerMenu() { /* Implement exit logic */ }
     public static void UpdateEngineerDetails() { /* Implement update logic */ }
     public static void DeleteEngineer() { /* Implement delete logic */ }
 }
-    private static void ExitTaskMenu() { /* Implement exit logic */ }
-    private static void AddNewTask() { /* Implement add task logic */ }
-    private static void DisplayTaskByID() { /* Implement display by ID logic */ }
-    private static void DisplayAllTasks() { /* Implement display all logic */ }
-    private static void UpdateTaskDetails() { /* Implement update logic */ }
-    private static void DeleteTask() { /* Implement delete logic */ }
-}
+
+  
+
+
