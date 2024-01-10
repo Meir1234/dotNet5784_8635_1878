@@ -82,7 +82,6 @@ public static class Initialization
 
             return randomDate;
         }
-
         static TimeSpan GenerateRandomDuration()
         {
             Random random = new Random();
@@ -92,10 +91,8 @@ public static class Initialization
             return randomTimeSpan;
 
         }
-
         string[] Alias = { "code", "examination", "combination", "Brainstorming", "Summary",  "learneing", "requirements", "problems", "bugs", "deep", "keep","update", "match","tech",
             "Collaborate", "design", "analyze", "check", "market", "fix" };
-
         string[] Description = { "writing code", "Code inspection", "Joining programs", "General thinking about work", " Drawing conclusions and drawing lessons", "Structure the requirements in an agreed and logical way", "Solving general problems in the project", "Debugging", "Broadening horizons and deepening knowledge",
             "Ensure that software applications remain functional and up-to-date", "Software update",
             "Ensure that software solutions meet the specific requirements and needs of the organization.","Stay up-to-date on the latest technologies and trends in the industry.", "You will work closely with designers, project managers and other professionals to successfully complete projects,",
@@ -108,8 +105,6 @@ public static class Initialization
         {
             string? _alias = Alias[i];
             string? _description = Description[i];
-
-
             DateTime StartDate = GenerateRandomDate();
             TimeSpan RequiredEffortTime = GenerateRandomDuration();
             DateTime DeadlineDate = StartDate + RequiredEffortTime;

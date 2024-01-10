@@ -1,5 +1,5 @@
 ﻿
-namespace DalFacade.DalApi;
+namespace DalApi;
 using DalFacade.DO;
 
 public interface ITask

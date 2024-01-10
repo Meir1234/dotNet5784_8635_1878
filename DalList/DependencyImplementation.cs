@@ -1,8 +1,7 @@
 ﻿
 namespace Dal;
-    using DalFacade.DalApi;
-using DalFacade.DO;
-using System.Collections.Generic;
+using DalApi;
+using DO;
 
 public class DependencyImplementation : IDependency
 {
@@ -28,7 +27,7 @@ public class DependencyImplementation : IDependency
             {
                 return Dep;
             }
-            
+
         }
         return null;
     }

@@ -1,6 +1,6 @@
 ﻿namespace Dal;
-using DalFacade.DalApi;
-using DalFacade.DO;
+using DalApi;
+using DO;
 
 
 

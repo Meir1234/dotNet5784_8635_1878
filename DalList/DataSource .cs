@@ -1,6 +1,6 @@
 ﻿
 namespace Dal;
-
+using DO;
 
 internal static class DataSource
 {
@@ -15,8 +15,8 @@ internal static class DataSource
         private static int nextDependencyId = startDependencyId;
         internal static int NextDependencyId { get => nextDependencyId++; }
     }
-    internal static List<DalFacade.DO.Engineer> Engineers { get; } = new();
-    internal static List<DalFacade.DO.Dependency> Dependencys { get; } = new();
-    internal static List<DalFacade.DO.Task> Tasks { get; } = new();
+    internal static List<Engineer> Engineers { get; } = new();
+    internal static List<Dependency> Dependencys { get; } = new();
+    internal static List<Task> Tasks { get; } = new();
 
 }
