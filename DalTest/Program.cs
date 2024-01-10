@@ -16,34 +16,35 @@ internal class Program
         try
         {
             Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
+            Console.WriteLine("Choose an entity:");
+            Console.WriteLine("1. Engineer");
+            Console.WriteLine("2. Dependency");
+            Console.WriteLine("3. Task");
+            Console.Write("Enter your choice: ");
+            int entityChoice = Console.Read();
+
+            switch (entityChoice)
+            {
+                case 1:
+                    DisplayEngineerOptions();
+                    break;
+                case 2:
+                    DisplayDependencyOptions();
+                    break;
+                case 3:
+                    DisplayTaskOptions();
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice!");
+                    break;
+            }
         }
         catch (Exception exp)
         {
             Console.WriteLine(exp);
         }
 
-        Console.WriteLine("Choose an entity:");
-        Console.WriteLine("1. Engineer");
-        Console.WriteLine("2. Dependency");
-        Console.WriteLine("3. Task");
-        Console.Write("Enter your choice: ");
-        int entityChoice = Console.Read();
-
-        switch (entityChoice)
-        {
-            case 1:
-                DisplayEngineerOptions();
-                break;
-            case 2:
-                DisplayDependencyOptions();
-                break;
-            case 3:
-                DisplayTaskOptions();
-                break;
-            default:
-                Console.WriteLine("Invalid choice!");
-                break;
-        }
+        
 
     }
     private static void DisplayEngineerOptions()
@@ -69,7 +70,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                ExitEngineerMenu();
+                Exit();
                 break;
             case 2:
                 AddNewEngineer();
@@ -92,7 +93,7 @@ internal class Program
         }
     }
 
-    public static void ExitEngineerMenu()
+    public static void Exit()
     {
         Environment.Exit(0);
     }
@@ -174,7 +175,7 @@ internal class Program
         Console.WriteLine("6. Delete dependency");
 
         Console.Write("Enter your choice: ");
-        int choice = int.Parse(Console.ReadLine());
+        int choice = Console.Read();
 
         PerformDependencyAction(choice);
         return;
@@ -185,7 +186,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                ExitDependencyMenu();
+                Exit();
                 break;
             case 2:
                 AddNewDependency();
@@ -207,6 +208,42 @@ internal class Program
                 break;
         }
     }
+
+    private static void AddNewDependency()
+    {
+        Console.WriteLine("Enter Dependent Task ID");
+        int depTask = Console.Read();
+        Console.WriteLine("Enter Dependent On Task ID");
+        int depOnTask = Console.Read();
+        Dependency newDep = new(0, depTask, depOnTask);
+        s_dalDependency!.Create(newDep);
+    }
+    private static void DisplayDependencyByID() 
+    {
+        Console.WriteLine("Enter Dependency ID:");
+        int id = Console.Read();
+        Console.WriteLine(s_dalDependency!.Read(id));
+    }
+    private static void DisplayAllDependencies()
+    {
+        Console.WriteLine(s_dalDependency!.ReadAll());
+    }
+    private static void UpdateDependencyDetails()
+    {
+        Console.WriteLine("Enter Dependent Task ID");
+        int depTask = Console.Read();
+        Console.WriteLine("Enter Dependent On Task ID");
+        int depOnTask = Console.Read();
+        Dependency newDep = new(0, depTask, depOnTask);
+        s_dalDependency!.Update(newDep);
+    }
+    private static void DeleteDependency() 
+    {
+        Console.WriteLine("Enter Engineer ID:");
+        int id = Console.Read();
+        s_dalEngineer!.Delete(id);
+    }
+
 
     public static void DisplayTaskOptions()
     {
@@ -250,13 +287,6 @@ internal class Program
                 break;
         }
     }
-    public static void ExitDependencyMenu() { /* Implement exit logic */ }
-    private static void AddNewDependency() { /* Implement add dependency logic */ }
-    private static void DisplayDependencyByID() { /* Implement display by ID logic */ }
-    private static void DisplayAllDependencies() { /* Implement display all logic */ }
-    private static void UpdateDependencyDetails() { /* Implement update logic */ }
-    private static void DeleteDependency() { /* Implement delete logic */ }
-
 
 <<<<<<< HEAD
     //public static void AddEngineer()
