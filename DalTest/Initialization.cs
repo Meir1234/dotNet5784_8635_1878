@@ -2,8 +2,8 @@
 
 namespace DalTest;
 
-using DalFacade.DalApi;
-using DalFacade.DO;
+using DalApi;
+using DO;
 public static class Initialization
 {
     private static IEngineer? s_dalEngineer; //stage 1
