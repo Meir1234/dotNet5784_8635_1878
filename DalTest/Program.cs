@@ -5,16 +5,9 @@ using DalApi;
 using DO;
 
 
-using System.Reflection.Emit;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-
-
 
 
 internal class Program
-
 {
     private static IEngineer? s_dalEngineer = new EngineerImplementation(); //stage 1
     private static readonly IDependency? s_dalDependency = new DependencyImplementation(); //stage 1
@@ -55,7 +48,7 @@ internal class Program
             Console.WriteLine(exp);
         }
 
-        
+
 
     }
     private static void DisplayEngineerOptions()
@@ -181,11 +174,6 @@ internal class Program
     //private static void UpdateDependencyDetails() { /* Implement update logic */ }
     //private static void DeleteDependency() { /* Implement delete logic */ }
 
-
-
-
-
-
     public static void PerformTaskAction(int choice)
     {
         switch (choice)
@@ -213,8 +201,6 @@ internal class Program
                 break;
         }
     }
-
-
     public static void Exit()
     {
         Environment.Exit(0);
@@ -285,7 +271,6 @@ internal class Program
         s_dalEngineer!.Delete(id);
     }
 
-
     public static void DisplayDependencyOptions()
     {
         Console.WriteLine("Dependency options:");
@@ -340,7 +325,7 @@ internal class Program
         Dependency newDep = new(0, depTask, depOnTask);
         s_dalDependency!.Create(newDep);
     }
-    private static void DisplayDependencyByID() 
+    private static void DisplayDependencyByID()
     {
         Console.WriteLine("Enter Dependency ID:");
         int id = Console.Read();
@@ -359,7 +344,7 @@ internal class Program
         Dependency newDep = new(0, depTask, depOnTask);
         s_dalDependency!.Update(newDep);
     }
-    private static void DeleteDependency() 
+    private static void DeleteDependency()
     {
         Console.WriteLine("Enter Engineer ID:");
         int id = Console.Read();
@@ -472,7 +457,7 @@ internal class Program
         DO.Task newTask = new DO.Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
                              StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
         s_dalTask!.Create(newTask);
-    
+
     }
 
     private static void DisplayTaskByID()
@@ -482,56 +467,56 @@ internal class Program
         Console.WriteLine(s_dalTask!.Read(id));
     }
 
-//    private static void DisplayTaskByID() { /* Implement display by ID logic */
-//        Console.WriteLine("Enter task ID: ");
-//        int id = int.Parse(Console.ReadLine()!);
-//        DO.Task task = System.Threading.Tasks.Task.Read(t => t.Id == id);
-//    if (task != null)
-//    {
-//        Console.WriteLine($"Task ID: {task.id}");
-//        Console.WriteLine($"Alias: {task.Alias}");
-//        Console.WriteLine($"Description: {task.Description}");
-//        Console.WriteLine($"CreatedAtDate: {task.CreatedAtDate}");
-//        Console.WriteLine($"RequiredEffortTime: {task.RequiredEffortTime}");
-//        Console.WriteLine($"IsMilestone: {task.IsMilestone}");
-//        Console.WriteLine($"StartDate: {task.StartDate}");
-//        Console.WriteLine($"DeadlineDate: {task.DeadlineDate}");
-//        Console.WriteLine($"CompleteDate: {task.CompleteDate}");
-//        Console.WriteLine($"Deliverables: {task.Deliverables}");
-//        Console.WriteLine($"EngineerId: {task.EngineerId}");
-//        Console.WriteLine($"Hardness: {task.Hardness}");
-//    }
-//    else
-//    {
-//        Console.WriteLine("Task not found!");
-//    }
-//}
-//private static void DisplayAllTasks() { /* Implement display all logic */
-//    Console.WriteLine(s_dalTask!.ReadAll());
-    
-//        Task task = Tasks.Read(t => t.Id == taskId);
-//        if (task != null)
-//        {
-//            Console.WriteLine($"Task ID: {task.id}");
-//            Console.WriteLine($"Alias: {task.Alias}");
-//            Console.WriteLine($"Description: {task.Description}");
-//            Console.WriteLine($"CreatedAtDate: {task.CreatedAtDate}");
-//            Console.WriteLine($"RequiredEffortTime: {task.RequiredEffortTime}");
-//            Console.WriteLine($"IsMilestone: {task.IsMilestone}");
-//            Console.WriteLine($"StartDate: {task.StartDate}");
-//            Console.WriteLine($"DeadlineDate: {task.DeadlineDate}");
-//            Console.WriteLine($"CompleteDate: {task.CompleteDate}");
-//            Console.WriteLine($"Deliverables: {task.Deliverables}");
-//            Console.WriteLine($"EngineerId: {task.EngineerId}");
-//            Console.WriteLine($"Hardness: {task.Hardness}");
-//        }
-//        else
-//        {
-//            Console.WriteLine("Task not found!");
-//        }
-//    }
+    //    private static void DisplayTaskByID() { /* Implement display by ID logic */
+    //        Console.WriteLine("Enter task ID: ");
+    //        int id = int.Parse(Console.ReadLine()!);
+    //        DO.Task task = System.Threading.Tasks.Task.Read(t => t.Id == id);
+    //    if (task != null)
+    //    {
+    //        Console.WriteLine($"Task ID: {task.id}");
+    //        Console.WriteLine($"Alias: {task.Alias}");
+    //        Console.WriteLine($"Description: {task.Description}");
+    //        Console.WriteLine($"CreatedAtDate: {task.CreatedAtDate}");
+    //        Console.WriteLine($"RequiredEffortTime: {task.RequiredEffortTime}");
+    //        Console.WriteLine($"IsMilestone: {task.IsMilestone}");
+    //        Console.WriteLine($"StartDate: {task.StartDate}");
+    //        Console.WriteLine($"DeadlineDate: {task.DeadlineDate}");
+    //        Console.WriteLine($"CompleteDate: {task.CompleteDate}");
+    //        Console.WriteLine($"Deliverables: {task.Deliverables}");
+    //        Console.WriteLine($"EngineerId: {task.EngineerId}");
+    //        Console.WriteLine($"Hardness: {task.Hardness}");
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine("Task not found!");
+    //    }
+    //}
+    //private static void DisplayAllTasks() { /* Implement display all logic */
+    //    Console.WriteLine(s_dalTask!.ReadAll());
+
+    //        Task task = Tasks.Read(t => t.Id == taskId);
+    //        if (task != null)
+    //        {
+    //            Console.WriteLine($"Task ID: {task.id}");
+    //            Console.WriteLine($"Alias: {task.Alias}");
+    //            Console.WriteLine($"Description: {task.Description}");
+    //            Console.WriteLine($"CreatedAtDate: {task.CreatedAtDate}");
+    //            Console.WriteLine($"RequiredEffortTime: {task.RequiredEffortTime}");
+    //            Console.WriteLine($"IsMilestone: {task.IsMilestone}");
+    //            Console.WriteLine($"StartDate: {task.StartDate}");
+    //            Console.WriteLine($"DeadlineDate: {task.DeadlineDate}");
+    //            Console.WriteLine($"CompleteDate: {task.CompleteDate}");
+    //            Console.WriteLine($"Deliverables: {task.Deliverables}");
+    //            Console.WriteLine($"EngineerId: {task.EngineerId}");
+    //            Console.WriteLine($"Hardness: {task.Hardness}");
+    //        }
+    //        else
+    //        {
+    //            Console.WriteLine("Task not found!");
+    //        }
+    //    }
     private static void DisplayAllTasks()
-    { 
+    {
         Console.WriteLine(s_dalTask!.ReadAll());
     }
 
@@ -576,13 +561,13 @@ internal class Program
         int id = Console.Read();
         s_dalTask!.Delete(id);
     }
-       
-  
+
+
 }
 
 
-  
-  
+
+
 
 
 

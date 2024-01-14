@@ -64,15 +64,6 @@ public class TaskImplementation : ITask
     }
 }
 
-    //void ITask.Create(Task newTask)
-    //{
-    //    throw new NotImplementedException();
-    //}
 
-//    public static implicit operator System.Threading.Tasks.Task(TaskImplementation v)
-//    {
-//        throw new NotImplementedException();
-//    }
-//}
 
 
