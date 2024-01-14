@@ -27,13 +27,18 @@ public static class Initialization
             "ArielaLevin", "DinaKlein", "ShiraIsraelof"
         };
 
-        static string GenerateRandomEmail()   // Method to generate a random email address
+        static string GenerateRandomEmail(string[] username)   // Method to generate a random email address
         {
             // Array of possible domain options
             string[] domainOptions = { "gmail.com", "yahoo.com", "hotmail.com", "example.com" };
 
-            // Generate a random username by appending "user" to a unique GUID
+
+          // Generate a random username by appending "user" to a unique GUID
             string randomUsername = "user" + Guid.NewGuid().ToString().Substring(0, 8);
+
+            // Generate a username by appending "user" to a unique GUID
+           
+
 
 
             // Choose a random domain from the list
@@ -41,7 +46,7 @@ public static class Initialization
             string randomDomain = domainOptions[rand.Next(domainOptions.Length)];
 
             // Create the final email address
-            string randomEmail = $"{Username}@{randomDomain}";
+            string randomEmail = $"{username}@{randomDomain}";
 
             return randomEmail;
         }
@@ -53,7 +58,7 @@ public static class Initialization
                 _id = s_rand.Next(200000000, 400000000);
             while (s_dalEngineer!.Read(_id) != null);
 
-            string? _email = GenerateRandomEmail();
+            string? _email = GenerateRandomEmail(Username);
 
             Level _level = (Level)s_rand.Next(1, 5);
 
