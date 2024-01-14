@@ -83,6 +83,7 @@ internal class Program
 
         Console.Write("Enter your choice: ");
         int choice = int.Parse(Console.ReadLine());
+        PerformTaskAction(choice);
     }
     public static void DisplayDependencyOptions()
     {
