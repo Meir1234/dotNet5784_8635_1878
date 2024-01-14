@@ -3,11 +3,6 @@ namespace DalTest;
 using Dal;
 using DalApi;
 using DO;
-using System.Reflection.Emit;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-
 internal class Program
 
 {
