@@ -21,6 +21,12 @@ public static class Initialization
         "Ariela Levin", "Dina Klein", "Shira Israelof"
         };
 
+        string[] Username =
+        {
+            "DaniLevi", "EliAmar", "YairCohen",
+            "ArielaLevin", "DinaKlein", "ShiraIsraelof"
+        };
+
         static string GenerateRandomEmail()   // Method to generate a random email address
         {
             // Array of possible domain options
@@ -35,7 +41,7 @@ public static class Initialization
             string randomDomain = domainOptions[rand.Next(domainOptions.Length)];
 
             // Create the final email address
-            string randomEmail = $"{randomUsername}@{randomDomain}";
+            string randomEmail = $"{Username}@{randomDomain}";
 
             return randomEmail;
         }

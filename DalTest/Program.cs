@@ -102,7 +102,6 @@ internal class Program
         }
     }
 
-
     public static void PerformDependencyAction(int choice)
     {
         switch (choice)
@@ -143,8 +142,6 @@ internal class Program
 
         Console.Write("Enter your choice: ");
         int choice = int.Parse(Console.ReadLine());
-
-        // Implement logic for task options...
     }
 
     //public static void PerformTaskAction(int choice)
@@ -423,14 +420,6 @@ internal class Program
     //    }
     //}
 
-
-
-
-
-
-
-    private static void ExitTaskMenu() { /* Implement exit logic */  }
-
     private static void AddNewTask()
     { /* Implement add task logic */
         // Get input for all variables
@@ -482,14 +471,6 @@ internal class Program
                              StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
         s_dalTask!.Create(newTask);
     
-
-
-
-  
-        //// Create Task object using the provided input
-        //Task newTask = new Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
-        //                         StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
-        //s_dalTask!.Create(newTask);
     }
 
     private static void DisplayTaskByID()
