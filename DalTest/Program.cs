@@ -140,47 +140,7 @@ internal class Program
 
         Console.Write("Enter your choice: ");
         int choice = int.Parse(Console.ReadLine());
-
-        // Implement logic for task options...
     }
-    //public static void PerformTaskAction(int choice)
-    //{
-    //    switch (choice)
-    //    {
-    //        case 1:
-    //            Exit();
-    //            break;
-    //        case 2:
-    //            AddNewTask();
-    //            break;
-    //        case 3:
-    //            DisplayTaskByID();
-    //            break;
-    //        case 4:
-    //            DisplayAllTasks();
-    //            break;
-    //        case 5:
-    //            UpdateTaskDetails();
-    //            break;
-    //        case 6:
-    //            DeleteTask();
-    //            break;
-    //        default:
-    //            Console.WriteLine("Invalid choice!");
-    //            break;
-    //    }
-    //}
-    //public static void ExitDependencyMenu() { /* Implement exit logic */ }
-    //private static void AddNewDependency() { /* Implement add dependency logic */ }
-    //private static void DisplayDependencyByID() { /* Implement display by ID logic */ }
-    //private static void DisplayAllDependencies() { /* Implement display all logic */ }
-    //private static void UpdateDependencyDetails() { /* Implement update logic */ }
-    //private static void DeleteDependency() { /* Implement delete logic */ }
-
-
-
-
-
 
     public static void Exit()
     {
@@ -376,14 +336,6 @@ internal class Program
         }
     }
 
-
-
-
-
-
-
-    private static void ExitTaskMenu() { /* Implement exit logic */  }
-
     private static void AddNewTask()
     { /* Implement add task logic */
         // Get input for all variables
@@ -435,14 +387,6 @@ internal class Program
                              StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
         s_dalTask!.Create(newTask);
     
-
-
-
-  
-        //// Create Task object using the provided input
-        //Task newTask = new Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
-        //                         StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
-        //s_dalTask!.Create(newTask);
     }
 
     private static void DisplayTaskByID()
