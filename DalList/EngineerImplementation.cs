@@ -15,7 +15,7 @@ public class EngineerImplementation : IEngineer
 
     public void Delete(int id)
     {
-        DataSource.Engineers.RemoveAll(task => task.Id == id);
+        DataSource.Engineers.RemoveAll(Engineer => Engineer.Id == id);
     }
 
     public Engineer? Read(int ID)

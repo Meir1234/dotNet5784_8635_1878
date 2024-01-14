@@ -21,35 +21,20 @@ public static class Initialization
         "Ariela Levin", "Dina Klein", "Shira Israelof"
         };
 
-        string[] Username =
+        
+        static string GenerateEmails(string name)
         {
-            "DaniLevi", "EliAmar", "YairCohen",
-            "ArielaLevin", "DinaKlein", "ShiraIsraelof"
-        };
+            string result = "";
 
-        static string GenerateRandomEmail(string[] username)   // Method to generate a random email address
-        {
-            // Array of possible domain options
-            string[] domainOptions = { "gmail.com", "yahoo.com", "hotmail.com", "example.com" };
+            // המרת שם המהנדס לכתובת מייל בפורמט קבוע
+            string email = $"{name.Replace(" ", "_")}@gmail.com";
 
+                // הוספת הכתובת לתוצאה
+            result += email + Environment.NewLine;
 
-          // Generate a random username by appending "user" to a unique GUID
-            string randomUsername = "user" + Guid.NewGuid().ToString().Substring(0, 8);
-
-            // Generate a username by appending "user" to a unique GUID
-           
-
-
-
-            // Choose a random domain from the list
-            Random rand = new Random();
-            string randomDomain = domainOptions[rand.Next(domainOptions.Length)];
-
-            // Create the final email address
-            string randomEmail = $"{username}@{randomDomain}";
-
-            return randomEmail;
+            return result;
         }
+
 
         foreach (var _name in EngineerNames)
         {
@@ -58,7 +43,7 @@ public static class Initialization
                 _id = s_rand.Next(200000000, 400000000);
             while (s_dalEngineer!.Read(_id) != null);
 
-            string? _email = GenerateRandomEmail(Username);
+            string _email = GenerateEmails(_name);
 
             Level _level = (Level)s_rand.Next(1, 5);
 
@@ -69,12 +54,6 @@ public static class Initialization
             s_dalEngineer!.Create(newEng);
         }
     }
-
-    private static Guid NewMethod()
-    {
-        return Guid.NewGuid();
-    }
-
     private static void CreateDependencies()
     {
         // Function to add random dependencies for a task
