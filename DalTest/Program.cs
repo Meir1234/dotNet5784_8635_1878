@@ -94,7 +94,6 @@ internal class Program
         }
     }
 
-
     public static void PerformDependencyAction(int choice)
     {
         switch (choice)
