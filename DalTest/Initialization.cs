@@ -85,7 +85,10 @@ public static class Initialization
             {
                 Dependency newDep = new(1, j - k - 1, j - k);
 
-                s_dalDependency!.Create(newDep);
+                if (s_dalDependency != null)
+                {
+                    s_dalDependency.Create(newDep);
+                }
             }
 
             for (int k = 1; k < 3; k++)
@@ -134,7 +137,7 @@ public static class Initialization
             "Functional and modular code components", "High-quality code with enhanced safety measures", "Integrated and cohesive applications", "Creative and innovative problem-solving approaches",
             "Improved workflows and processes based on insights gained", "Comprehensive and clear requirement documents", "Successful completion of advanced projects",
             "Resolved software issues and improved stability", "Enhanced skills and in-depth expertise", "Robust and updated software applications", "Updated and advanced software versions", "Tailored and maintained software solutions", "Current and informed approach towards industry trends and technologies", "Efficient project completion through collaboration with diverse professionals", "Effective teamwork across varied disciplines", "Customized and user-oriented products or solutions", "High-quality and robust software", "Successfully marketed software with appealing features and benefits", "Resolved issues leading to improved software functionality", "Refined processes and workflows based on experiences and lessons learned" };
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 19; i++)
         {
             string? _alias = Alias[i];
             string? _description = Description[i];

@@ -11,7 +11,7 @@ public class TaskImplementation : ITask
     {
         int idNum = DataSource.Config.NextTaskid;
         if (Read(item.Id) is not null)
-            throw new Exception($"Student with ID={item.Id} already exists");
+            throw new Exception($"Task with ID={item.Id} already exists");
         DataSource.Tasks.Add(item with { Id = idNum });
         return idNum;
     }

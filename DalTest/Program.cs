@@ -22,7 +22,7 @@ internal class Program
 
     public static object Do { get; private set; }
 
-    static void Main(string[] obj)
+    public static void Main(string[] obj)
     {
         try
         {

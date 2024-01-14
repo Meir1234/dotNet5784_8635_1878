@@ -8,7 +8,7 @@ public class EngineerImplementation : IEngineer
     public int Create(Engineer item)
     {
         if (Read(item.Id) is not null)
-            throw new Exception($"Student with ID={item.Id} already exists");
+            throw new Exception($"Engineer with ID={item.Id} already exists");
         DataSource.Engineers.Add(item);
         return item.Id;
     }

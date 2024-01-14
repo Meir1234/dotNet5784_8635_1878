@@ -9,7 +9,7 @@ public class DependencyImplementation : IDependency
     {
         int idNum = DataSource.Config.NextDependencyId;
         if (Read(item.Id) is not null)
-            throw new Exception($"Student with ID={item.Id} already exists");
+            throw new Exception($"Dependency with ID={item.Id} already exists");
         DataSource.Dependencys.Add(item with { Id = idNum });
         return idNum;
     }
