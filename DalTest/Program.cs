@@ -3,9 +3,12 @@ namespace DalTest;
 using Dal;
 using DalApi;
 using DO;
+
 using System.Reflection.Emit;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+
+
 
 
 internal class Program
@@ -143,6 +146,7 @@ internal class Program
 
         // Implement logic for task options...
     }
+
     //public static void PerformTaskAction(int choice)
     //{
     //    switch (choice)
@@ -180,6 +184,36 @@ internal class Program
 
 
 
+
+
+
+    public static void PerformTaskAction(int choice)
+    {
+        switch (choice)
+        {
+            case 1:
+                Exit();
+                break;
+            case 2:
+                AddNewTask();
+                break;
+            case 3:
+                DisplayTaskByID();
+                break;
+            case 4:
+                DisplayAllTasks();
+                break;
+            case 5:
+                UpdateTaskDetails();
+                break;
+            case 6:
+                DeleteTask();
+                break;
+            default:
+                Console.WriteLine("Invalid choice!");
+                break;
+        }
+    }
 
 
     public static void Exit()
@@ -334,6 +368,7 @@ internal class Program
     }
 
 
+
     //public static void DisplayTaskOptions()
     //{
     //    Console.WriteLine("Task options:");
@@ -348,33 +383,45 @@ internal class Program
     //    public static void ExitTaskMenu() { /* Implement exit logic */  Environment.Exit(0); }
     //    // Implement logic for task options...
     //}
-    public static void PerformTaskAction(int choice)
-    {
-        switch (choice)
-        {
-            case 1:
-                Exit();
-                break;
-            case 2:
-                AddNewTask();
-                break;
-            case 3:
-                DisplayTaskByID();
-                break;
-            case 4:
-                DisplayAllTasks();
-                break;
-            case 5:
-                UpdateTaskDetails();
-                break;
-            case 6:
-                DeleteTask();
-                break;
-            default:
-                Console.WriteLine("Invalid choice!");
-                break;
-        }
-    }
+
+    //public static void DisplayTaskOptions()
+    //{
+    //    Console.WriteLine("Task options:");
+    //    Console.WriteLine("1. Exit task menu");
+    //    Console.WriteLine("2. Add new task");
+    //    Console.WriteLine("3. Display task by ID");
+    //    Console.WriteLine("4. Display all tasks");
+    //    Console.WriteLine("5. Update task details");
+    //    Console.WriteLine("6. Delete task");
+    //}
+
+    //public static void PerformTaskAction(int choice)
+    //{
+    //    switch (choice)
+    //    {
+    //        case 1:
+    //            Exit();
+    //            break;
+    //        case 2:
+    //            AddNewTask();
+    //            break;
+    //        case 3:
+    //            DisplayTaskByID();
+    //            break;
+    //        case 4:
+    //            DisplayAllTasks();
+    //            break;
+    //        case 5:
+    //            UpdateTaskDetails();
+    //            break;
+    //        case 6:
+    //            DeleteTask();
+    //            break;
+    //        default:
+    //            Console.WriteLine("Invalid choice!");
+    //            break;
+    //    }
+    //}
 
 
 

@@ -27,7 +27,7 @@ public static class Initialization
             string[] domainOptions = { "gmail.com", "yahoo.com", "hotmail.com", "example.com" };
 
             // Generate a random username by appending "user" to a unique GUID
-            string randomUsername = { "user" + NewMethod().ToString().Substring(0, 8) };
+            string randomUsername = "user" + Guid.NewGuid().ToString().Substring(0, 8);
 
 
             // Choose a random domain from the list
@@ -64,7 +64,7 @@ public static class Initialization
         return Guid.NewGuid();
     }
 
-    private static void createDependencies()
+    private static void CreateDependencies()
     {
         // Function to add random dependencies for a task
         for (int i = 1; i < 5; i++)
@@ -85,7 +85,7 @@ public static class Initialization
             }
         }
     }
-    private static void createTasks()
+    private static void CreateTasks()
     {
         static DateTime GenerateRandomDate()
         {
@@ -149,8 +149,8 @@ public static class Initialization
         s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
 
         CreateEngineers();
-        createTasks();
-        createDependencies();
+        CreateTasks();
+        CreateDependencies();
     }
 
 }
