@@ -1,13 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 namespace DalTest;
 using Dal;
-
 using DalApi;
-using DalFacade.DalApi;
 using DO;
 using System.Reflection.Emit;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+
 
 internal class Program
 
@@ -354,7 +353,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                ExitTaskMenu();
+                Exit();
                 break;
             case 2:
                 AddNewTask();
