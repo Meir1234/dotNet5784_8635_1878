@@ -99,7 +99,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                ExitDependencyMenu();
+                Exit();
                 break;
             case 2:
                 AddNewDependency();
@@ -142,7 +142,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                ExitTaskMenu();
+                Exit();
                 break;
             case 2:
                 AddNewTask();
