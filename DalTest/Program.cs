@@ -25,17 +25,17 @@ internal class Program
             Console.WriteLine("2. Dependency");
             Console.WriteLine("3. Task");
             Console.Write("Enter your choice: ");
-            int entityChoice = Console.Read();
+            string entityChoice = Console.ReadLine();
 
             switch (entityChoice)
             {
-                case 1:
+                case "1":
                     DisplayEngineerOptions();
                     break;
-                case 2:
+                case "2":
                     DisplayDependencyOptions();
                     break;
-                case 3:
+                case "3":
                     DisplayTaskOptions();
                     break;
                 default:
