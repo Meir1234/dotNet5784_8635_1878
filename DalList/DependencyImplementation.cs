@@ -34,7 +34,7 @@ public class DependencyImplementation : IDependency
 
     public List<Dependency> ReadAll()
     {
-        return new List<Dependency>(DataSource.Dependencys);
+        return DataSource.Dependencys;
     }
 
     public void Update(Dependency item)

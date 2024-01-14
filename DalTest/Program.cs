@@ -47,9 +47,7 @@ internal class Program
         {
             Console.WriteLine(exp);
         }
-
-
-
+        Exit();
     }
 
     private static void DisplayEngineerOptions()
@@ -188,7 +186,7 @@ internal class Program
 
     public static void Exit()
     {
-        Environment.Exit(0);
+        Main(new string[] { });
     }
 
     private static void AddNewEngineer()
@@ -223,7 +221,9 @@ internal class Program
     }
     private static void DisplayAllEngineers()
     {
-        Console.WriteLine(s_dalEngineer!.ReadAll());
+        List<Engineer> engineers = s_dalEngineer!.ReadAll();
+        foreach(Engineer engineer in engineers)
+            Console.WriteLine(engineer);
     }
     private static void UpdateEngineerDetails()
     {
@@ -272,7 +272,9 @@ internal class Program
     }
     private static void DisplayAllDependencies()
     {
-        Console.WriteLine(s_dalDependency!.ReadAll());
+        List<Dependency> dependencies = s_dalDependency!.ReadAll();
+        foreach (Dependency dependency in dependencies)
+            Console.WriteLine(dependency);
     }
     private static void UpdateDependencyDetails()
     {
@@ -352,7 +354,11 @@ internal class Program
     }
     private static void DisplayAllTasks()
     {
-        Console.WriteLine(s_dalTask!.ReadAll());
+        List<Task> tasks = s_dalTask!.ReadAll();
+        foreach (Task task in tasks)
+        {
+            Console.WriteLine(task);
+        }
     }
     private static void UpdateTaskDetails()
     { /* Implement update logic */ /* Implement add task logic */
@@ -395,7 +401,6 @@ internal class Program
         int id = Console.Read();
         s_dalTask!.Delete(id);
     }
-
 
 }
 
