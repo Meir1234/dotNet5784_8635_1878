@@ -95,7 +95,7 @@ internal class Program
         Console.WriteLine("6. Delete dependency");
 
         Console.Write("Enter your choice: ");
-        int choice = Console.Read();
+        int choice = int.Parse(Console.ReadLine());
 
         PerformDependencyAction(choice);
         return;
