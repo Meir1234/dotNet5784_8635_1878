@@ -13,7 +13,7 @@ public static class Initialization
 
     private static readonly Random s_rand = new();
 
-    private static void createEngineers()
+    private static void CreateEngineers()
     {
         string[] EngineerNames =
         {
@@ -27,7 +27,8 @@ public static class Initialization
             string[] domainOptions = { "gmail.com", "yahoo.com", "hotmail.com", "example.com" };
 
             // Generate a random username by appending "user" to a unique GUID
-            string randomUsername = "user" + Guid.NewGuid().ToString().Substring(0, 8);
+            string randomUsername = { "user" + NewMethod().ToString().Substring(0, 8) };
+
 
             // Choose a random domain from the list
             Random rand = new Random();
@@ -57,6 +58,12 @@ public static class Initialization
             s_dalEngineer!.Create(newEng);
         }
     }
+
+    private static Guid NewMethod()
+    {
+        return Guid.NewGuid();
+    }
+
     private static void createDependencies()
     {
         // Function to add random dependencies for a task
@@ -104,7 +111,7 @@ public static class Initialization
         }
 
 
-        string[] Alias = { "code", "examination", "combination", "Brainstorming", "Summary", "learneing", "requirements", "problems", "bugs", "deep", "keep", "update", "match", "tech",
+        string[] Alias = { "code", "examination", "combination", "Brainstorming", "Summary", "learning", "requirements", "problems", "bugs", "deep", "keep", "update", "match", "tech",
             "Collaborate", "design", "analyze", "check", "market", "fix" };
         string[] Description = { "writing code", "Code inspection", "Joining programs", "General thinking about work", " Drawing conclusions and drawing lessons", "Structure the requirements in an agreed and logical way", "Solving general problems in the project", "Debugging", "Broadening horizons and deepening knowledge",
             "Ensure that software applications remain functional and up-to-date", "Software update",
@@ -141,7 +148,7 @@ public static class Initialization
         s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");
         s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
 
-        createEngineers();
+        CreateEngineers();
         createTasks();
         createDependencies();
     }

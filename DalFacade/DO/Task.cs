@@ -2,9 +2,9 @@
 
 namespace DO;
 
-public record Task
+public record Task  
 (
-    int id,
+    int Id,
     string? Alias,
     string? Description,
     DateTime? CreatedAtDate,
@@ -16,11 +16,16 @@ public record Task
     string? Deliverables,
 
     int Engineerld,
-    Level hardness
-)
-{
-    public void createTasks()
-    {
-        throw new NotImplementedException();
-    }
-}
+    Level Hardness
+);
+
+
+
+//    public object EngineerId { get; set; }
+//    public object Hardness { get; set; }
+
+//    public void createTasks()
+//    {
+//        throw new NotImplementedException();
+//    }
+//}

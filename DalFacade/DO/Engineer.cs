@@ -5,7 +5,7 @@ namespace DO
     public record Engineer
     (
         int Id,
-        string? name,
+        string? Name,
         string? Email,
         Enum? Level,
         double? Cost

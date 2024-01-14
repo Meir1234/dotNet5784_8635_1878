@@ -10,15 +10,15 @@ public class TaskImplementation : ITask
     public int Create(Task item)
     {
         int idNum = DataSource.Config.NextTaskid;
-        if (Read(item.id) is not null)
-            throw new Exception($"Student with ID={item.id} already exists");
-        DataSource.Tasks.Add(item with { id = idNum  }) ;
+        if (Read(item.Id) is not null)
+            throw new Exception($"Student with ID={item.Id} already exists");
+        DataSource.Tasks.Add(item with { Id = idNum });
         return idNum;
     }
 
     public void Delete(int id)
     {
-        DataSource.Tasks.RemoveAll(task => task.id == id);
+        DataSource.Tasks.RemoveAll(task => task.Id == id);
     }
 
     public Task? Read(int id)
@@ -26,7 +26,7 @@ public class TaskImplementation : ITask
 
         foreach (Task? tas in DataSource.Tasks)
         {
-            if (tas.id == id)
+            if (tas.Id == id)
             {
                 return tas;
             }
@@ -38,12 +38,12 @@ public class TaskImplementation : ITask
     public void Update(Task item)
     {
         {
-            int updatedObjectId = item.id;
+            int updatedObjectId = item.Id;
             bool found = false;
 
             foreach (Task? obj in DataSource.Tasks)
             {
-                if (obj.id == updatedObjectId)
+                if (obj.Id == updatedObjectId)
                 {
                     DataSource.Tasks.Remove(obj);
                     DataSource.Tasks.Add(item);
@@ -62,11 +62,17 @@ public class TaskImplementation : ITask
     {
         return new List<Task>(DataSource.Tasks);
     }
-
-    public static implicit operator System.Threading.Tasks.Task(TaskImplementation v)
-    {
-        throw new NotImplementedException();
-    }
 }
+
+    //void ITask.Create(Task newTask)
+    //{
+    //    throw new NotImplementedException();
+    //}
+
+//    public static implicit operator System.Threading.Tasks.Task(TaskImplementation v)
+//    {
+//        throw new NotImplementedException();
+//    }
+//}
 
 

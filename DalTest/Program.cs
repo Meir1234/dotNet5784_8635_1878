@@ -6,6 +6,7 @@ using DalApi;
 using DalFacade.DalApi;
 using DO;
 using System.Reflection.Emit;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 internal class Program
@@ -14,6 +15,9 @@ internal class Program
     private static IEngineer? s_dalEngineer = new EngineerImplementation(); //stage 1
     private static readonly IDependency? s_dalDependency = new DependencyImplementation(); //stage 1
     private static ITask? s_dalTask = new TaskImplementation(); //stage 1
+
+    public static object Do { get; private set; }
+
     static void Main(string[] obj)
     {
         try
@@ -102,7 +106,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                ExitDependencyMenu();
+                Exit();
                 break;
             case 2:
                 AddNewDependency();
@@ -140,45 +144,45 @@ internal class Program
 
         // Implement logic for task options...
     }
-    public static void PerformTaskAction(int choice)
-    {
-        switch (choice)
-        {
-            case 1:
-                ExitTaskMenu();
-                break;
-            case 2:
-                AddNewTask();
-                break;
-            case 3:
-                DisplayTaskByID();
-                break;
-            case 4:
-                DisplayAllTasks();
-                break;
-            case 5:
-                UpdateTaskDetails();
-                break;
-            case 6:
-                DeleteTask();
-                break;
-            default:
-                Console.WriteLine("Invalid choice!");
-                break;
-        }
-    }
-    public static void ExitDependencyMenu() { /* Implement exit logic */ }
-    private static void AddNewDependency() { /* Implement add dependency logic */ }
-    private static void DisplayDependencyByID() { /* Implement display by ID logic */ }
-    private static void DisplayAllDependencies() { /* Implement display all logic */ }
-    private static void UpdateDependencyDetails() { /* Implement update logic */ }
-    private static void DeleteDependency() { /* Implement delete logic */ }
+    //public static void PerformTaskAction(int choice)
+    //{
+    //    switch (choice)
+    //    {
+    //        case 1:
+    //            Exit();
+    //            break;
+    //        case 2:
+    //            AddNewTask();
+    //            break;
+    //        case 3:
+    //            DisplayTaskByID();
+    //            break;
+    //        case 4:
+    //            DisplayAllTasks();
+    //            break;
+    //        case 5:
+    //            UpdateTaskDetails();
+    //            break;
+    //        case 6:
+    //            DeleteTask();
+    //            break;
+    //        default:
+    //            Console.WriteLine("Invalid choice!");
+    //            break;
+    //    }
+    //}
+    //public static void ExitDependencyMenu() { /* Implement exit logic */ }
+    //private static void AddNewDependency() { /* Implement add dependency logic */ }
+    //private static void DisplayDependencyByID() { /* Implement display by ID logic */ }
+    //private static void DisplayAllDependencies() { /* Implement display all logic */ }
+    //private static void UpdateDependencyDetails() { /* Implement update logic */ }
+    //private static void DeleteDependency() { /* Implement delete logic */ }
 
 
 
 
 
-    public static void ExitEngineerMenu()
+
     public static void Exit()
     {
         Environment.Exit(0);
@@ -197,7 +201,7 @@ internal class Program
         Console.Write("Email: ");
         string email = Console.ReadLine()!;
 
-        Console.Write("Level: Beginner, AdvancedBeginner, Intermediate, Advanced, Expert. chooce 1-5");
+        Console.Write("Level: Beginner, AdvancedBeginner, Intermediate, Advanced, Expert. choice 1-5");
         Enum level = (Level)(Console.Read());
 
         Console.Write("Cost: ");
@@ -231,7 +235,7 @@ internal class Program
         Console.Write("Email: ");
         string email = Console.ReadLine()!;
 
-        Console.Write("Level: Beginner, AdvancedBeginner, Intermediate, Advanced, Expert. chooce 1-5");
+        Console.Write("Level: Beginner, AdvancedBeginner, Intermediate, Advanced, Expert. choice 1-5");
         Enum level = (Level)(Console.Read());
 
         Console.Write("Cost: ");
@@ -267,33 +271,33 @@ internal class Program
         return;
     }
 
-    public static void PerformDependencyAction(int choice)
-    {
-        switch (choice)
-        {
-            case 1:
-                Exit();
-                break;
-            case 2:
-                AddNewDependency();
-                break;
-            case 3:
-                DisplayDependencyByID();
-                break;
-            case 4:
-                DisplayAllDependencies();
-                break;
-            case 5:
-                UpdateDependencyDetails();
-                break;
-            case 6:
-                DeleteDependency();
-                break;
-            default:
-                Console.WriteLine("Invalid choice!");
-                break;
-        }
-    }
+    //public static void PerformDependencyAction(int choice)
+    //{
+    //    switch (choice)
+    //    {
+    //        case 1:
+    //            Exit();
+    //            break;
+    //        case 2:
+    //            AddNewDependency();
+    //            break;
+    //        case 3:
+    //            DisplayDependencyByID();
+    //            break;
+    //        case 4:
+    //            DisplayAllDependencies();
+    //            break;
+    //        case 5:
+    //            UpdateDependencyDetails();
+    //            break;
+    //        case 6:
+    //            DeleteDependency();
+    //            break;
+    //        default:
+    //            Console.WriteLine("Invalid choice!");
+    //            break;
+    //    }
+    //}
 
     private static void AddNewDependency()
     {
@@ -331,20 +335,20 @@ internal class Program
     }
 
 
-    public static void DisplayTaskOptions()
-    {
-        Console.WriteLine("Task options:");
-        Console.WriteLine("1. Exit task menu");
-        Console.WriteLine("2. Add new task");
-        Console.WriteLine("3. Display task by ID");
-        Console.WriteLine("4. Display all tasks");
-        Console.WriteLine("5. Update task details");
-        Console.WriteLine("6. Delete task");
+    //public static void DisplayTaskOptions()
+    //{
+    //    Console.WriteLine("Task options:");
+    //    Console.WriteLine("1. Exit task menu");
+    //    Console.WriteLine("2. Add new task");
+    //    Console.WriteLine("3. Display task by ID");
+    //    Console.WriteLine("4. Display all tasks");
+    //    Console.WriteLine("5. Update task details");
+    //    Console.WriteLine("6. Delete task");
 
 
-    private static void ExitTaskMenu() { /* Implement exit logic */  Environment.Exit(0); }
-        // Implement logic for task options...
-    }
+    //    public static void ExitTaskMenu() { /* Implement exit logic */  Environment.Exit(0); }
+    //    // Implement logic for task options...
+    //}
     public static void PerformTaskAction(int choice)
     {
         switch (choice)
@@ -373,51 +377,6 @@ internal class Program
         }
     }
 
-
-
-
-
-
-    //    double cost;
-    //    string? name, email;
-    //    DO.EngineerExperience level;
-    //    Console.WriteLine("Enter the engineer's id:");
-    //    id = Console.Read();
-    //    Console.WriteLine("Enter the salary:");
-    //    cost = Console.Read();
-    //    Console.WriteLine("Enter the engineer's name:");
-    //    name = Console.ReadLine();
-    //    Console.WriteLine("Enter the engineer's email:");
-    //    email = Console.ReadLine();
-    //    Console.WriteLine("Enter the engineer's level:");
-    //    level = (DO.EngineerExperience)Console.Read();
-
-
-    //    Engineer New = new Engineer(id, cost, name, email, level);
-    //    try
-    //    {
-    //        s_Engineer!.Create(New);
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Console.WriteLine(e);
-    //    }
-    //}
-    //public static void UpdateEngineer(Engineer E)
-    //{
-    //    int id = 0;
-    //    double cost = 0;
-    //    string? name, email;
-    //    DO.EngineerExperience level;
-    //    Console.WriteLine("Enter the new engineer's data:");
-    //    id = Console.Read();
-    //    cost = Console.Read();
-    //    name = Console.ReadLine();
-    //    email = Console.ReadLine();
-    //    level = (DO.EngineerExperience)Console.Read();
-
-    //}
-    //}
 
 
 
@@ -472,8 +431,8 @@ internal class Program
 
         hardness = (Level)Enum.Parse(typeof(Level), Console.ReadLine()!);
 
-    // Create Task object using the provided input
-    Task newTask = new Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
+        // Create Task object using the provided input
+        DO.Task newTask = new DO.Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
                              StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
         s_dalTask!.Create(newTask);
     
@@ -481,62 +440,67 @@ internal class Program
 
 
   
-        // Create Task object using the provided input
-        Task newTask = new Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
-                                 StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
-        s_dalTask!.Create(newTask);
+        //// Create Task object using the provided input
+        //Task newTask = new Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
+        //                         StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
+        //s_dalTask!.Create(newTask);
     }
 
-   
-
-    private static void DisplayTaskByID() { /* Implement display by ID logic */
+    private static void DisplayTaskByID()
+    {
         Console.WriteLine("Enter task ID: ");
         int id = int.Parse(Console.ReadLine()!);
-        Task task = Tasks.Read(t => t.Id == id);
-    if (task != null)
-    {
-        Console.WriteLine($"Task ID: {task.id}");
-        Console.WriteLine($"Alias: {task.Alias}");
-        Console.WriteLine($"Description: {task.Description}");
-        Console.WriteLine($"CreatedAtDate: {task.CreatedAtDate}");
-        Console.WriteLine($"RequiredEffortTime: {task.RequiredEffortTime}");
-        Console.WriteLine($"IsMilestone: {task.IsMilestone}");
-        Console.WriteLine($"StartDate: {task.StartDate}");
-        Console.WriteLine($"DeadlineDate: {task.DeadlineDate}");
-        Console.WriteLine($"CompleteDate: {task.CompleteDate}");
-        Console.WriteLine($"Deliverables: {task.Deliverables}");
-        Console.WriteLine($"EngineerId: {task.EngineerId}");
-        Console.WriteLine($"Hardness: {task.Hardness}");
+        Console.WriteLine(s_dalTask!.Read(id));
     }
-    else
-    {
-        Console.WriteLine("Task not found!");
-    }
-}
-private static void DisplayAllTasks() { /* Implement display all logic */
-    Console.WriteLine(s_dalTask!.ReadAll());
+
+//    private static void DisplayTaskByID() { /* Implement display by ID logic */
+//        Console.WriteLine("Enter task ID: ");
+//        int id = int.Parse(Console.ReadLine()!);
+//        DO.Task task = System.Threading.Tasks.Task.Read(t => t.Id == id);
+//    if (task != null)
+//    {
+//        Console.WriteLine($"Task ID: {task.id}");
+//        Console.WriteLine($"Alias: {task.Alias}");
+//        Console.WriteLine($"Description: {task.Description}");
+//        Console.WriteLine($"CreatedAtDate: {task.CreatedAtDate}");
+//        Console.WriteLine($"RequiredEffortTime: {task.RequiredEffortTime}");
+//        Console.WriteLine($"IsMilestone: {task.IsMilestone}");
+//        Console.WriteLine($"StartDate: {task.StartDate}");
+//        Console.WriteLine($"DeadlineDate: {task.DeadlineDate}");
+//        Console.WriteLine($"CompleteDate: {task.CompleteDate}");
+//        Console.WriteLine($"Deliverables: {task.Deliverables}");
+//        Console.WriteLine($"EngineerId: {task.EngineerId}");
+//        Console.WriteLine($"Hardness: {task.Hardness}");
+//    }
+//    else
+//    {
+//        Console.WriteLine("Task not found!");
+//    }
+//}
+//private static void DisplayAllTasks() { /* Implement display all logic */
+//    Console.WriteLine(s_dalTask!.ReadAll());
     
-        Task task = Tasks.Read(t => t.Id == taskId);
-        if (task != null)
-        {
-            Console.WriteLine($"Task ID: {task.id}");
-            Console.WriteLine($"Alias: {task.Alias}");
-            Console.WriteLine($"Description: {task.Description}");
-            Console.WriteLine($"CreatedAtDate: {task.CreatedAtDate}");
-            Console.WriteLine($"RequiredEffortTime: {task.RequiredEffortTime}");
-            Console.WriteLine($"IsMilestone: {task.IsMilestone}");
-            Console.WriteLine($"StartDate: {task.StartDate}");
-            Console.WriteLine($"DeadlineDate: {task.DeadlineDate}");
-            Console.WriteLine($"CompleteDate: {task.CompleteDate}");
-            Console.WriteLine($"Deliverables: {task.Deliverables}");
-            Console.WriteLine($"EngineerId: {task.EngineerId}");
-            Console.WriteLine($"Hardness: {task.Hardness}");
-        }
-        else
-        {
-            Console.WriteLine("Task not found!");
-        }
-    }
+//        Task task = Tasks.Read(t => t.Id == taskId);
+//        if (task != null)
+//        {
+//            Console.WriteLine($"Task ID: {task.id}");
+//            Console.WriteLine($"Alias: {task.Alias}");
+//            Console.WriteLine($"Description: {task.Description}");
+//            Console.WriteLine($"CreatedAtDate: {task.CreatedAtDate}");
+//            Console.WriteLine($"RequiredEffortTime: {task.RequiredEffortTime}");
+//            Console.WriteLine($"IsMilestone: {task.IsMilestone}");
+//            Console.WriteLine($"StartDate: {task.StartDate}");
+//            Console.WriteLine($"DeadlineDate: {task.DeadlineDate}");
+//            Console.WriteLine($"CompleteDate: {task.CompleteDate}");
+//            Console.WriteLine($"Deliverables: {task.Deliverables}");
+//            Console.WriteLine($"EngineerId: {task.EngineerId}");
+//            Console.WriteLine($"Hardness: {task.Hardness}");
+//        }
+//        else
+//        {
+//            Console.WriteLine("Task not found!");
+//        }
+//    }
     private static void DisplayAllTasks()
     { 
         Console.WriteLine(s_dalTask!.ReadAll());
@@ -576,34 +540,15 @@ private static void DisplayAllTasks() { /* Implement display all logic */
         {
             CompleteDate = DateTime.Parse(userInput);
         }
-    private static void UpdateTaskDetails() { /* Implement update logic */ }
-    private static void DeleteTask(Task tasks)
+    }
+    private static void DeleteTask()
     {
         Console.WriteLine("Enter Task ID:");
         int id = Console.Read();
         s_dalTask!.Delete(id);
     }
-        private static void UpdateTaskDetails() { /* Implement update logic */ 
-        Console.WriteLine("Enter Deliverables:");
-        string? Deliverables = Console.ReadLine();
-
-        Console.WriteLine("Enter Engineer ID:");
-        int EngineerId = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Enter Level of Hardness (integer value):");
-        Level hardness;
-
-        hardness = (Level)Enum.Parse(typeof(Level), Console.ReadLine());
-
-        // Create Task object using the provided input
-        Task newTask = new Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
-                                 StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
-        s_dalTask!.Update(newTask);
-    }
-
-    private static void DeleteTask(Task tasks) { /* Implement delete logic */
-    tasks.Delete(tasks.id);
-    }
+       
+  
 }
 
 
