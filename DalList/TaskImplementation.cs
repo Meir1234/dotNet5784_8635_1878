@@ -10,14 +10,16 @@ internal class TaskImplementation : ITask
     public int Create(Task item)
     {
         int idNum = DataSource.Config.NextTaskid;
-        if (Read(item.Id) is not null)
-            throw new Exception($"Task with ID={item.Id} already exists");
+        //if (Read(item.Id) is not null)
+        //    throw new Exception($"Task with ID={item.Id} already exists");
         DataSource.Tasks.Add(item with { Id = idNum });
         return idNum;
     }
 
     public void Delete(int id)
     {
+        if (!DataSource.Tasks.Any(task => task.Id == id))
+            throw new DalDoesNotExistException($"Task with ID={id} does not exist");
         DataSource.Tasks.RemoveAll(task => task.Id == id);
     }
 
@@ -64,7 +66,7 @@ internal class TaskImplementation : ITask
 
             if (!found)
             {
-                throw new ArgumentException($"Object  with ID {updatedObjectId} does not exist.");
+                throw new ArgumentException($"Task with ID {updatedObjectId} does not exist.");
             }
         }
     }
@@ -72,7 +74,7 @@ internal class TaskImplementation : ITask
     //{
     //    return new List<Task>(DataSource.Tasks);
     //}
-    public IEnumerable<Task?> ReadAll(Func<Task?, bool>? filter = null)
+    public IEnumerable<Task?> ReadAll(Func<Task, bool>? filter = null)
     {
         if (filter == null)
             return DataSource.Tasks.Select(item => item);

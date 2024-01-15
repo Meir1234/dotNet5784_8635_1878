@@ -43,8 +43,7 @@ public static class Initialization
             int _id;
             do
                 _id = s_rand.Next(200000000, 400000000);
-            while (s_dal.Engineer!.Read(_id) != null);
-            s_dal!.ReadAll().Count();//stage 2
+            while (s_dal!.Engineer.Read(_id) != null);
 
             string _email = GenerateEmails(_name);
 
@@ -69,7 +68,7 @@ public static class Initialization
                 Dependency newDep = new(0, j - k - 1, j - k);
 
                 //if (s_dalDependency != null)
-                if (s_dal.Dependency != null)
+                if (s_dal!.Dependency != null)
                 {
                     //s_dalDependency.Create(newDep);
                     s_dal.Dependency.Create(newDep);
@@ -81,7 +80,7 @@ public static class Initialization
                 Dependency newDep = new(0, j - 2 - k, j - 2);
 
                 //s_dalDependency!.Create(newDep);
-                s_dal.Dependency!.Create(newDep);
+                s_dal!.Dependency!.Create(newDep);
             }
         }
     }
