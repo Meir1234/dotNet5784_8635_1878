@@ -230,8 +230,9 @@ internal class Program
     {
         //Console.WriteLine(s_dalEngineer!.ReadAll());
         Console.WriteLine(s_dal.Engineer!.ReadAll());
-        List<Engineer> engineers = s_dalEngineer!.ReadAll();
-        foreach(Engineer engineer in engineers)
+        //List<Engineer> engineers = s_dalEngineer!.ReadAll();
+        List<Engineer> engineers = s_dal.Engineer!.ReadAll();
+        foreach (Engineer engineer in engineers)
             Console.WriteLine(engineer);
     }
     private static void UpdateEngineerDetails()
@@ -287,7 +288,8 @@ internal class Program
     {
         //Console.WriteLine(s_dalDependency!.ReadAll());
         Console.WriteLine(s_dal.Dependency!.ReadAll());
-        List<Dependency> dependencies = s_dalDependency!.ReadAll();
+        //List<Dependency> dependencies = s_dalDependency!.ReadAll();
+        List<Dependency> dependencies = s_dal.Dependency!.ReadAll();
         foreach (Dependency dependency in dependencies)
             Console.WriteLine(dependency);
     }
@@ -375,7 +377,8 @@ internal class Program
     {
         //Console.WriteLine(s_dalTask!.ReadAll());
         Console.WriteLine(s_dal.Task!.ReadAll());
-        List<Task> tasks = s_dalTask!.ReadAll();
+        List<Task> tasks = s_dal.Task!.ReadAll();
+        //List<Task> tasks = s_dalTask!.ReadAll();
         foreach (Task task in tasks)
         {
             Console.WriteLine(task);
