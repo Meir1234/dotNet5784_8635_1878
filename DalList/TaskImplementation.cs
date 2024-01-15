@@ -21,18 +21,28 @@ internal class TaskImplementation : ITask
         DataSource.Tasks.RemoveAll(task => task.Id == id);
     }
 
+    //public Task? Read(int id)
+    //{
+
+    //    foreach (Task? tas in DataSource.Tasks)
+    //    {
+    //        if (tas.Id == id)
+    //        {
+    //            return tas;
+    //        }
+    //    }
+    //    return null;
+
+    //}
+
     public Task? Read(int id)
     {
-
-        foreach (Task? tas in DataSource.Tasks)
-        {
-            if (tas.Id == id)
-            {
-                return tas;
-            }
-        }
-        return null;
-
+        Task? foundTask = DataSource.Tasks.FirstOrDefault(task => task.Id == id);
+        return foundTask;
+    }
+    public Task? Read(Func<Task, bool> filter)
+    {
+        return DataSource.Tasks.FirstOrDefault(filter);
     }
 
     public void Update(Task item)
@@ -58,9 +68,16 @@ internal class TaskImplementation : ITask
             }
         }
     }
-    public List<Task> ReadAll()
+    //public List<Task> ReadAll()
+    //{
+    //    return new List<Task>(DataSource.Tasks);
+    //}
+    public IEnumerable<Task?> ReadAll(Func<Task?, bool>? filter = null)
     {
-        return new List<Task>(DataSource.Tasks);
+        if (filter == null)
+            return DataSource.Tasks.Select(item => item);
+        else
+            return DataSource.Tasks.Where(filter);
     }
 }
 

@@ -2,6 +2,7 @@
 namespace Dal;
 using DalApi;
 using DO;
+using System.Linq;
 
 internal class EngineerImplementation : IEngineer
 {
@@ -18,21 +19,38 @@ internal class EngineerImplementation : IEngineer
         DataSource.Engineers.RemoveAll(Engineer => Engineer.Id == id);
     }
 
+    //public Engineer? Read(int ID)
+    //{
+    //    foreach (Engineer? Eng in DataSource.Engineers)
+    //    {
+    //        if (Eng.Id == ID)
+    //        {
+    //            return Eng;
+    //        }   
+    //    }
+    //    return null;
+    //}
     public Engineer? Read(int ID)
     {
-        foreach (Engineer? Eng in DataSource.Engineers)
-        {
-            if (Eng.Id == ID)
-            {
-                return Eng;
-            }   
-        }
-        return null;
+        Engineer? foundEngineer = DataSource.Engineers.FirstOrDefault(engineer => engineer.Id == ID);
+        return foundEngineer;
     }
 
-    public List<Engineer> ReadAll()
+    public Engineer? Read(Func<Engineer, bool> filter)
     {
-        return DataSource.Engineers;
+        return DataSource.Engineers.FirstOrDefault(filter);
+    }
+
+    //public List<Engineer> ReadAll()
+    //{
+    //    return DataSource.Engineers;
+    //}
+    public IEnumerable<Engineer?> ReadAll(Func<Engineer?, bool>? filter = null)
+    {
+        if (filter == null)
+            return DataSource.Engineers.Select(item => item);
+        else
+            return DataSource.Engineers.Where(filter);
     }
 
     public void Update(Engineer item)
