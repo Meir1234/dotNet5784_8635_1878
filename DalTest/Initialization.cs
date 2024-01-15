@@ -24,7 +24,7 @@ public static class Initialization
         };
 
         
-        static string GenerateEmails(string name)
+        string GenerateEmails(string name)
         {
             string result = "";
 
@@ -43,8 +43,8 @@ public static class Initialization
             int _id;
             do
                 _id = s_rand.Next(200000000, 400000000);
-            //while (s_dalEngineer!.Read(_id) != null);
-            //s_dal!.Course.ReadAll().Count();//stage 2
+            while (s_dal.Engineer!.Read(_id) != null);
+            s_dal!.ReadAll().Count();//stage 2
 
             string _email = GenerateEmails(_name);
 

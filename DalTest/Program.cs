@@ -21,7 +21,7 @@ internal class Program
     {
         try
         {
-            Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
+            Initialization.Do(s_dal.Engineer, s_dal.Task, s_dal.Dependency);
             MainMnue();
         }
         catch (Exception exp)
