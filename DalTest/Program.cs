@@ -21,6 +21,23 @@ internal class Program
     {
         try
         {
+            Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
+            MainMnue();
+        }
+        catch (Exception exp)
+        {
+            Console.WriteLine(exp);
+        }
+    }
+
+    static void MainMnue()
+    {
+        Console.WriteLine("Choose an entity:");
+        Console.WriteLine("1. Engineer");
+        Console.WriteLine("2. Dependency");
+        Console.WriteLine("3. Task");
+        Console.Write("Enter your choice: ");
+        int entityChoice = int.Parse(Console.ReadLine()!);
             //Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
             Initialization.Do(s_dal); //stage 2
 
@@ -31,29 +48,23 @@ internal class Program
             Console.Write("Enter your choice: ");
             int entityChoice = int.Parse(Console.ReadLine());
 
-            switch (entityChoice)
-            {
-                case 1:
-                    DisplayEngineerOptions();
-                    break;
-                case 2:
-                    DisplayDependencyOptions();
-                    break;
-                case 3:
-                    DisplayTaskOptions();
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice!");
-                    break;
-            }
-        }
-        catch (Exception exp)
+        switch (entityChoice)
         {
-            Console.WriteLine(exp);
+            case 1:
+                DisplayEngineerOptions();
+                break;
+            case 2:
+                DisplayDependencyOptions();
+                break;
+            case 3:
+                DisplayTaskOptions();
+                break;
+            default:
+                Console.WriteLine("Invalid choice!");
+                break;
         }
-        Exit();
+        MainMnue();
     }
-
     private static void DisplayEngineerOptions()
     {
         Console.WriteLine("Engineer options:");
@@ -110,7 +121,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                Exit();
+                MainMnue();
                 break;
             case 2:
                 AddNewEngineer();
@@ -137,7 +148,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                Exit();
+                MainMnue();
                 break;
             case 2:
                 AddNewTask();
@@ -164,7 +175,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                Exit();
+                MainMnue();
                 break;
             case 2:
                 AddNewDependency();
@@ -188,18 +199,13 @@ internal class Program
     }
 
 
-    public static void Exit()
-    {
-        Main(new string[] { });
-    }
-
     private static void AddNewEngineer()
     {
         Console.WriteLine("Enter Engineer Details:");
 
         // User input for engineer details
         Console.Write("Id: ");
-        int id = Console.Read();
+        int id = int.Parse(Console.ReadLine()!);
 
         Console.Write("Name: ");
         string name = Console.ReadLine()!;
@@ -208,7 +214,8 @@ internal class Program
         string email = Console.ReadLine()!;
 
         Console.Write("Level: Beginner, AdvancedBeginner, Intermediate, Advanced, Expert. choice 1-5");
-        Enum level = (Level)(Console.Read());
+        int _level = int.Parse(Console.ReadLine()!);
+        Enum level = (Level)_level;
 
         Console.Write("Cost: ");
         double cost = double.Parse(Console.ReadLine()!);
@@ -238,7 +245,7 @@ internal class Program
     private static void UpdateEngineerDetails()
     {
         Console.WriteLine("Enter Engineer ID");
-        int id = Console.Read();
+        int id = int.Parse(Console.ReadLine()!);
 
         Console.Write("Name: ");
         string name = Console.ReadLine()!;
@@ -247,42 +254,39 @@ internal class Program
         string email = Console.ReadLine()!;
 
         Console.Write("Level: Beginner, AdvancedBeginner, Intermediate, Advanced, Expert. choice 1-5");
-        Enum level = (Level)(Console.Read());
+        int _level = int.Parse(Console.ReadLine()!);
+        Enum level = (Level)_level;
 
         Console.Write("Cost: ");
         double cost = double.Parse(Console.ReadLine()!);
 
         // Create an Engineer object from the user input
         Engineer newEngineer = new(id, name, email, level, cost);
-        //s_dalEngineer!.Update(newEngineer);
-        s_dal.Engineer!.Update(newEngineer);
+        s_dalEngineer!.Update(newEngineer);
 
     }
     private static void DeleteEngineer()
     {
         Console.WriteLine("Enter Engineer ID:");
-        int id = Console.Read();
-        //s_dalEngineer!.Delete(id);
-        s_dal.Engineer!.Delete(id);
+        int id = int.Parse(Console.ReadLine()!);
+        s_dalEngineer!.Delete(id);
     }
 
 
     private static void AddNewDependency()
     {
         Console.WriteLine("Enter Dependent Task ID");
-        int depTask = Console.Read();
+        int depTask = int.Parse(Console.ReadLine()!);
         Console.WriteLine("Enter Dependent On Task ID");
-        int depOnTask = Console.Read();
+        int depOnTask = int.Parse(Console.ReadLine()!);
         Dependency newDep = new(0, depTask, depOnTask);
-        //s_dalDependency!.Create(newDep);
-        s_dal.Dependency!.Create(newDep);
+        s_dalDependency!.Create(newDep);
     }
     private static void DisplayDependencyByID()
     {
         Console.WriteLine("Enter Dependency ID:");
-        int id = Console.Read();
-        //Console.WriteLine(s_dalDependency!.Read(id));
-        Console.WriteLine(s_dal.Dependency!.Read(id));
+        int id = int.Parse(Console.ReadLine()!);
+        Console.WriteLine(s_dalDependency!.Read(id));
     }
     private static void DisplayAllDependencies()
     {
@@ -295,20 +299,20 @@ internal class Program
     }
     private static void UpdateDependencyDetails()
     {
+        Console.WriteLine("Enter Dependency ID");
+        int id = int.Parse(Console.ReadLine()!);
         Console.WriteLine("Enter Dependent Task ID");
-        int depTask = Console.Read();
+        int depTask = int.Parse(Console.ReadLine()!);
         Console.WriteLine("Enter Dependent On Task ID");
-        int depOnTask = Console.Read();
-        Dependency newDep = new(0, depTask, depOnTask);
-        //s_dalDependency!.Update(newDep);
-        s_dal.Dependency!.Update(newDep);
+        int depOnTask = int.Parse(Console.ReadLine()!);
+        Dependency newDep = new(id, depTask, depOnTask);
+        s_dalDependency!.Update(newDep);
     }
     private static void DeleteDependency()
     {
-        Console.WriteLine("Enter Engineer ID:");
-        int id = Console.Read();
-        //s_dalEngineer!.Delete(id);
-        s_dal.Engineer!.Delete(id);
+        Console.WriteLine("Enter Dependency ID:");
+        int id = int.Parse(Console.ReadLine()!);
+        s_dalDependency!.Delete(id);
     }
 
 
@@ -317,7 +321,7 @@ internal class Program
     { /* Implement add task logic */
         // Get input for all variables
         Console.WriteLine("Enter Task ID:");
-        int id = int.Parse(Console.ReadLine());
+        int id = int.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Enter Alias:");
         string? Alias = Console.ReadLine();
@@ -326,19 +330,19 @@ internal class Program
         string? Description = Console.ReadLine();
 
         Console.WriteLine("Enter Created At Date (yyyy-MM-dd):");
-        DateTime CreatedAtDate = DateTime.Parse(Console.ReadLine());
+        DateTime CreatedAtDate = DateTime.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Enter Required Effort Time (in hours):");
-        TimeSpan RequiredEffortTime = TimeSpan.FromHours(double.Parse(Console.ReadLine()));
+        TimeSpan RequiredEffortTime = TimeSpan.FromHours(double.Parse(Console.ReadLine()!));
 
         Console.WriteLine("Is this a milestone? (true/false):");
-        bool IsMilestone = bool.Parse(Console.ReadLine());
+        bool IsMilestone = bool.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Enter Start Date (yyyy-MM-dd):");
-        DateTime StartDate = DateTime.Parse(Console.ReadLine());
+        DateTime StartDate = DateTime.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Enter Deadline Date (yyyy-MM-dd):");
-        DateTime DeadlineDate = DateTime.Parse(Console.ReadLine());
+        DateTime DeadlineDate = DateTime.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Enter Complete Date (yyyy-MM-dd) if applicable, otherwise press Enter:");
         DateTime? CompleteDate = null;
@@ -352,7 +356,7 @@ internal class Program
         string? Deliverables = Console.ReadLine();
 
         Console.WriteLine("Enter Engineer ID:");
-        int EngineerId = Console.Read()!;
+        int EngineerId = int.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Enter Level of Hardness (integer value):");
         Level hardness;
@@ -362,16 +366,14 @@ internal class Program
         // Create Task object using the provided input
         DO.Task newTask = new DO.Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
                              StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
-        //s_dalTask!.Create(newTask);
-        s_dal.Task!.Create(newTask);
+        s_dalTask!.Create(newTask);
 
     }
     private static void DisplayTaskByID()
     {
         Console.WriteLine("Enter task ID: ");
         int id = int.Parse(Console.ReadLine()!);
-        //Console.WriteLine(s_dalTask!.Read(id));
-        Console.WriteLine(s_dal.Task!.Read(id));
+        Console.WriteLine(s_dalTask!.Read(id));
     }
     private static void DisplayAllTasks()
     {
@@ -388,7 +390,7 @@ internal class Program
     { /* Implement update logic */ /* Implement add task logic */
         // Get input for all variables
         Console.WriteLine("Enter Task ID:");
-        int id = int.Parse(Console.ReadLine());
+        int id = int.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Enter Alias:");
         string? Alias = Console.ReadLine();
@@ -397,23 +399,23 @@ internal class Program
         string? Description = Console.ReadLine();
 
         Console.WriteLine("Enter Created At Date (yyyy-MM-dd):");
-        DateTime CreatedAtDate = DateTime.Parse(Console.ReadLine());
+        DateTime CreatedAtDate = DateTime.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Enter Required Effort Time (in hours):");
-        TimeSpan RequiredEffortTime = TimeSpan.FromHours(double.Parse(Console.ReadLine()));
+        TimeSpan RequiredEffortTime = TimeSpan.FromHours(double.Parse(Console.ReadLine())!);
 
         Console.WriteLine("Is this a milestone? (true/false):");
-        bool IsMilestone = bool.Parse(Console.ReadLine());
+        bool IsMilestone = bool.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Enter Start Date (yyyy-MM-dd):");
-        DateTime StartDate = DateTime.Parse(Console.ReadLine());
+        DateTime StartDate = DateTime.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Enter Deadline Date (yyyy-MM-dd):");
         DateTime DeadlineDate = DateTime.Parse(Console.ReadLine());
 
         Console.WriteLine("Enter Complete Date (yyyy-MM-dd) if applicable, otherwise press Enter:");
         DateTime? CompleteDate = null;
-        string userInput = Console.ReadLine();
+        string userInput = Console.ReadLine()!;
         if (!string.IsNullOrWhiteSpace(userInput))
         {
             CompleteDate = DateTime.Parse(userInput);
@@ -422,9 +424,8 @@ internal class Program
     private static void DeleteTask()
     {
         Console.WriteLine("Enter Task ID:");
-        int id = Console.Read();
-        //s_dalTask!.Delete(id);
-        s_dal.Task!.Delete(id);
+        int id = int.Parse(Console.ReadLine()!);
+        s_dalTask!.Delete(id);
     }
 
 }
