@@ -58,9 +58,11 @@ public static class Initialization
             int _id;
             do
                 _id = s_rand.Next(200000000, 400000000);
-            while (s_dalEngineer!.Read(_id) != null);
+            //while (s_dalEngineer!.Read(_id) != null);
+            //s_dal!.Course.ReadAll().Count();//stage 2
 
-            string? _email = GenerateRandomEmail(Username);
+            while (s_dal!.Engineer.Read(_id) != null);
+            string ? _email = GenerateRandomEmail(Username);
 
             Level _level = (Level)s_rand.Next(1, 5);
 
@@ -68,7 +70,8 @@ public static class Initialization
 
             Engineer newEng = new(_id, _name, _email, _level, _cost);
 
-            s_dalEngineer!.Create(newEng);
+            //s_dalEngineer!.Create(newEng);
+            s_dal.Engineer!.Create(newEng);
         }
     }
 
@@ -87,9 +90,11 @@ public static class Initialization
             {
                 Dependency newDep = new(0, j - k - 1, j - k);
 
-                if (s_dalDependency != null)
+                //if (s_dalDependency != null)
+                if (s_dal.Dependency != null)
                 {
-                    s_dalDependency.Create(newDep);
+                    //s_dalDependency.Create(newDep);
+                    s_dal.Dependency.Create(newDep);
                 }
             }
 
@@ -97,7 +102,8 @@ public static class Initialization
             {
                 Dependency newDep = new(0, j - 2 - k, j - 2);
 
-                s_dalDependency!.Create(newDep);
+                //s_dalDependency!.Create(newDep);
+                s_dal.Dependency!.Create(newDep);
             }
         }
     }
@@ -155,15 +161,20 @@ public static class Initialization
             Task newTask = new(0, _alias, _description, null, RequiredEffortTime, IsMilestone,
              StartDate, DeadlineDate, null, _deliverables, 0, _level);
 
-            s_dalTask!.Create(newTask);
+            //s_dalTask!.Create(newTask);
+            s_dal.Task!.Create(newTask);
         };
     }
 
-    public static void Do(IEngineer? dalEngineer, ITask? dalTask, IDependency? dalDependency)
-    { 
-        s_dalEngineer = dalEngineer ?? throw new NullReferenceException("DAL can not be null!");
-        s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");
-        s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
+    //public static void Do(IEngineer? dalEngineer, ITask? dalTask, IDependency? dalDependency)
+    public static void Do(IDal dal) //stage 2
+
+
+    {
+        //s_dalEngineer = dalEngineer ?? throw new NullReferenceException("DAL can not be null!");
+        //s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");
+        //s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
+        s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
 
         CreateEngineers();
         CreateTasks();

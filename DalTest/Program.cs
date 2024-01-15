@@ -2,6 +2,7 @@
 namespace DalTest;
 using Dal;
 using DalApi;
+using DalFacade.DalApi;
 using DO;
 
 
@@ -9,9 +10,10 @@ using DO;
 
 internal class Program
 {
-    private static IEngineer? s_dalEngineer = new EngineerImplementation(); //stage 1
-    private static readonly IDependency? s_dalDependency = new DependencyImplementation(); //stage 1
-    private static ITask? s_dalTask = new TaskImplementation(); //stage 1
+    //private static IEngineer? s_dalEngineer = new EngineerImplementation(); //stage 1
+    //private static readonly IDependency? s_dalDependency = new DependencyImplementation(); //stage 1
+    //private static ITask? s_dalTask = new TaskImplementation(); //stage 1
+    static readonly IDal s_dal = new DalList(); //stage 2
 
     public static object Do { get; private set; }
 
@@ -19,7 +21,9 @@ internal class Program
     {
         try
         {
-            Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
+            //Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
+            Initialization.Do(s_dal); //stage 2
+
             Console.WriteLine("Choose an entity:");
             Console.WriteLine("1. Engineer");
             Console.WriteLine("2. Dependency");
@@ -227,19 +231,23 @@ internal class Program
 
         // Create an Engineer object from the user input
         Engineer newEngineer = new(id, name, email, level, cost);
-        s_dalEngineer!.Create(newEngineer);
+        //s_dalEngineer!.Create(newEngineer);
+        s_dal.Engineer!.Create(newEngineer);
     }
 
     private static void DisplayEngineerByID()
     {
         Console.WriteLine("Enter Engineer ID: ");
         int id = int.Parse(Console.ReadLine()!);
-        Console.WriteLine(s_dalEngineer!.Read(id));
+        //Console.WriteLine(s_dalEngineer!.Read(id));
+        Console.WriteLine(s_dal.Engineer!.Read(id));
+
     }
 
     private static void DisplayAllEngineers()
     {
-        Console.WriteLine(s_dalEngineer!.ReadAll());
+        //Console.WriteLine(s_dalEngineer!.ReadAll());
+        Console.WriteLine(s_dal.Engineer!.ReadAll());
     }
 
     private static void UpdateEngineerDetails()
@@ -261,14 +269,16 @@ internal class Program
 
         // Create an Engineer object from the user input
         Engineer newEngineer = new(id, name, email, level, cost);
-        s_dalEngineer!.Update(newEngineer);
+        //s_dalEngineer!.Update(newEngineer);
+        s_dal.Engineer!.Update(newEngineer);
 
     }
     private static void DeleteEngineer()
     {
         Console.WriteLine("Enter Engineer ID:");
         int id = Console.Read();
-        s_dalEngineer!.Delete(id);
+        //s_dalEngineer!.Delete(id);
+        s_dal.Engineer!.Delete(id);
     }
 
     public static void DisplayDependencyOptions()
@@ -323,17 +333,20 @@ internal class Program
         Console.WriteLine("Enter Dependent On Task ID");
         int depOnTask = Console.Read();
         Dependency newDep = new(0, depTask, depOnTask);
-        s_dalDependency!.Create(newDep);
+        //s_dalDependency!.Create(newDep);
+        s_dal.Dependency!.Create(newDep);
     }
     private static void DisplayDependencyByID()
     {
         Console.WriteLine("Enter Dependency ID:");
         int id = Console.Read();
-        Console.WriteLine(s_dalDependency!.Read(id));
+        //Console.WriteLine(s_dalDependency!.Read(id));
+        Console.WriteLine(s_dal.Dependency!.Read(id));
     }
     private static void DisplayAllDependencies()
     {
-        Console.WriteLine(s_dalDependency!.ReadAll());
+        //Console.WriteLine(s_dalDependency!.ReadAll());
+        Console.WriteLine(s_dal.Dependency!.ReadAll());
     }
     private static void UpdateDependencyDetails()
     {
@@ -342,13 +355,15 @@ internal class Program
         Console.WriteLine("Enter Dependent On Task ID");
         int depOnTask = Console.Read();
         Dependency newDep = new(0, depTask, depOnTask);
-        s_dalDependency!.Update(newDep);
+        //s_dalDependency!.Update(newDep);
+        s_dal.Dependency!.Update(newDep);
     }
     private static void DeleteDependency()
     {
         Console.WriteLine("Enter Engineer ID:");
         int id = Console.Read();
-        s_dalEngineer!.Delete(id);
+        //s_dalEngineer!.Delete(id);
+        s_dal.Engineer!.Delete(id);
     }
 
 
@@ -456,7 +471,8 @@ internal class Program
         // Create Task object using the provided input
         DO.Task newTask = new DO.Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
                              StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
-        s_dalTask!.Create(newTask);
+        //s_dalTask!.Create(newTask);
+        s_dal.Task!.Create(newTask);
 
     }
 
@@ -464,7 +480,8 @@ internal class Program
     {
         Console.WriteLine("Enter task ID: ");
         int id = int.Parse(Console.ReadLine()!);
-        Console.WriteLine(s_dalTask!.Read(id));
+        //Console.WriteLine(s_dalTask!.Read(id));
+        Console.WriteLine(s_dal.Task!.Read(id));
     }
 
     //    private static void DisplayTaskByID() { /* Implement display by ID logic */
@@ -517,7 +534,8 @@ internal class Program
     //    }
     private static void DisplayAllTasks()
     {
-        Console.WriteLine(s_dalTask!.ReadAll());
+        //Console.WriteLine(s_dalTask!.ReadAll());
+        Console.WriteLine(s_dal.Task!.ReadAll());
     }
 
     private static void UpdateTaskDetails()
@@ -559,7 +577,8 @@ internal class Program
     {
         Console.WriteLine("Enter Task ID:");
         int id = Console.Read();
-        s_dalTask!.Delete(id);
+        //s_dalTask!.Delete(id);
+        s_dal.Task!.Delete(id);
     }
 
 
