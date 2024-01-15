@@ -3,13 +3,13 @@ namespace Dal;
 using DalApi;
 using DO;
 
-public class DependencyImplementation : IDependency
+internal class DependencyImplementation : IDependency
 {
     public int Create(Dependency item)
     {
         int idNum = DataSource.Config.NextDependencyId;
         if (Read(item.Id) is not null)
-            throw new Exception($"Student with ID={item.Id} already exists");
+            throw new Exception($"Dependency with ID={item.Id} already exists");
         DataSource.Dependencys.Add(item with { Id = idNum });
         return idNum;
     }
