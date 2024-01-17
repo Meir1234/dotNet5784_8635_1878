@@ -4,7 +4,6 @@
 
 namespace Dal;
 using DalApi;
-using DalFacade.DalApi;
 using DO;
 
 sealed public class DalList : IDal

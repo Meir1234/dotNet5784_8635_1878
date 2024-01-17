@@ -1,5 +1,5 @@
 ﻿
-namespace DalFacade.DalApi
+namespace DalApi
 {
     public interface ICrud<T> where T : class
     {

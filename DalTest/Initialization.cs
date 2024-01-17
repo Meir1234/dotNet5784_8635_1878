@@ -3,7 +3,6 @@
 namespace DalTest;
 
 using DalApi;
-using DalFacade.DalApi;
 using DO;
 public static class Initialization
 {

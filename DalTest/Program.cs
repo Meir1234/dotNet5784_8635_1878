@@ -2,7 +2,6 @@
 namespace DalTest;
 using Dal;
 using DalApi;
-using DalFacade.DalApi;
 using DO;
 
 
