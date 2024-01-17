@@ -1,6 +1,7 @@
 ﻿
 namespace Dal;
-
-internal class TaskImplementation
+using DalApi;
+using DO;
+internal class TaskImplementation : ITask
 {
 }
