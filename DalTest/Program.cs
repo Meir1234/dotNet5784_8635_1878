@@ -21,7 +21,9 @@ internal class Program
     {
         try
         {
-            Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
+            //Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
+            Initialization.Do(s_dal); //stage 2
+
             MainMnue();
         }
         catch (Exception exp)
@@ -46,7 +48,7 @@ internal class Program
             Console.WriteLine("2. Dependency");
             Console.WriteLine("3. Task");
             Console.Write("Enter your choice: ");
-            int entityChoice = int.Parse(Console.ReadLine());
+           
 
         switch (entityChoice)
         {
@@ -236,7 +238,7 @@ internal class Program
     private static void DisplayAllEngineers()
     {
         //Console.WriteLine(s_dalEngineer!.ReadAll());
-        Console.WriteLine(s_dal.Engineer!.ReadAll());
+        //Console.WriteLine(s_dal.Engineer!.ReadAll());
         //List<Engineer> engineers = s_dalEngineer!.ReadAll();
         List<Engineer> engineers = s_dal.Engineer!.ReadAll();
         foreach (Engineer engineer in engineers)
@@ -262,14 +264,14 @@ internal class Program
 
         // Create an Engineer object from the user input
         Engineer newEngineer = new(id, name, email, level, cost);
-        s_dalEngineer!.Update(newEngineer);
+        s_dal.Engineer!.Update(newEngineer);
 
     }
     private static void DeleteEngineer()
     {
         Console.WriteLine("Enter Engineer ID:");
         int id = int.Parse(Console.ReadLine()!);
-        s_dalEngineer!.Delete(id);
+        s_dal.Engineer!.Delete(id);
     }
 
 
@@ -280,18 +282,18 @@ internal class Program
         Console.WriteLine("Enter Dependent On Task ID");
         int depOnTask = int.Parse(Console.ReadLine()!);
         Dependency newDep = new(0, depTask, depOnTask);
-        s_dalDependency!.Create(newDep);
+        s_dal.Dependency!.Create(newDep);
     }
     private static void DisplayDependencyByID()
     {
         Console.WriteLine("Enter Dependency ID:");
         int id = int.Parse(Console.ReadLine()!);
-        Console.WriteLine(s_dalDependency!.Read(id));
+        Console.WriteLine(s_dal.Dependency!.Read(id));
     }
     private static void DisplayAllDependencies()
     {
         //Console.WriteLine(s_dalDependency!.ReadAll());
-        Console.WriteLine(s_dal.Dependency!.ReadAll());
+        //Console.WriteLine(s_dal.Dependency!.ReadAll());
         //List<Dependency> dependencies = s_dalDependency!.ReadAll();
         List<Dependency> dependencies = s_dal.Dependency!.ReadAll();
         foreach (Dependency dependency in dependencies)
@@ -306,13 +308,13 @@ internal class Program
         Console.WriteLine("Enter Dependent On Task ID");
         int depOnTask = int.Parse(Console.ReadLine()!);
         Dependency newDep = new(id, depTask, depOnTask);
-        s_dalDependency!.Update(newDep);
+        s_dal.Dependency!.Update(newDep);
     }
     private static void DeleteDependency()
     {
         Console.WriteLine("Enter Dependency ID:");
         int id = int.Parse(Console.ReadLine()!);
-        s_dalDependency!.Delete(id);
+        s_dal.Dependency!.Delete(id);
     }
 
 
@@ -366,19 +368,19 @@ internal class Program
         // Create Task object using the provided input
         DO.Task newTask = new DO.Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
                              StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
-        s_dalTask!.Create(newTask);
+        s_dal.Task!.Create(newTask);
 
     }
     private static void DisplayTaskByID()
     {
         Console.WriteLine("Enter task ID: ");
         int id = int.Parse(Console.ReadLine()!);
-        Console.WriteLine(s_dalTask!.Read(id));
+        Console.WriteLine(s_dal.Task!.Read(id));
     }
     private static void DisplayAllTasks()
     {
         //Console.WriteLine(s_dalTask!.ReadAll());
-        Console.WriteLine(s_dal.Task!.ReadAll());
+        //Console.WriteLine(s_dal.Task!.ReadAll());
         List<Task> tasks = s_dal.Task!.ReadAll();
         //List<Task> tasks = s_dalTask!.ReadAll();
         foreach (Task task in tasks)
@@ -425,7 +427,7 @@ internal class Program
     {
         Console.WriteLine("Enter Task ID:");
         int id = int.Parse(Console.ReadLine()!);
-        s_dalTask!.Delete(id);
+        s_dal.Task!.Delete(id);
     }
 
 }
