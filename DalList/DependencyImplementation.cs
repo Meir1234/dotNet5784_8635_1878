@@ -6,29 +6,28 @@ using System.Linq;
 
 internal class DependencyImplementation : IDependency
 {
- 
 
     public int Create(Dependency item)
     {
         int idNum = DataSource.Config.NextDependencyId;
 
         // בדיקה אם יש תלות קיימת עם אותו Id
-        bool dependencyExists = DataSource.Dependencys.Any(existingDependency => existingDependency.Id == item.Id);
-        if (dependencyExists)
-        {
-            throw new Exception($"Dependency with ID={item.Id} already exists");
-        }
-
+        //bool dependencyExists = DataSource.Dependencys.Any(existingDependency => existingDependency.Id == item.Id);
+        //if (dependencyExists)
+        //{
+        //    throw new Exception($"Dependency with ID={item.Id} already exists");
+        //}
         DataSource.Dependencys.Add(item with { Id = idNum });
         return idNum;
     }
- 
-
     public void Delete(int id)
     {
         List<Dependency> dependenciesToDelete = DataSource.Dependencys
             .Where(dependency => dependency.Id == id)
             .ToList();
+
+        if (dependenciesToDelete.Count == 0)
+            throw new DalDoesNotExistException($"Dependency with ID={id} does not exists");
 
         foreach (Dependency dependency in dependenciesToDelete)
         {
@@ -57,12 +56,12 @@ internal class DependencyImplementation : IDependency
     {
         return DataSource.Dependencys.FirstOrDefault(filter);
     }
-
+    
     //public List<Dependency> ReadAll()
     //{
     //    return DataSource.Dependencys;
     //}
-    public IEnumerable<Dependency?> ReadAll(Func<Dependency?, bool>? filter = null)
+    public IEnumerable<Dependency?> ReadAll(Func<Dependency, bool>? filter = null)
     {
         if (filter == null)
             return DataSource.Dependencys.Select(item => item);
@@ -89,7 +88,7 @@ internal class DependencyImplementation : IDependency
 
             if (!found)
             {
-                throw new ArgumentException($"Object  with ID {updatedObjectId} does not exist.");
+                throw new DalDoesNotExistException($"Dependency with ID {updatedObjectId} does not exist.");
             }
         }
     }

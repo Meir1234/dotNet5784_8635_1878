@@ -1,8 +1,7 @@
-﻿
+﻿    
 
-using DalApi;
 
-namespace DalFacade.DalApi;
+namespace DalApi;
 
 public interface IDal
 {

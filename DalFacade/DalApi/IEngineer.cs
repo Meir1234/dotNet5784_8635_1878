@@ -3,7 +3,6 @@
 
 namespace DalApi;
 
-using DalFacade.DalApi;
 using DO;
 public interface IEngineer : ICrud<Engineer> { }
 //public interface IEngineer

@@ -1,7 +1,6 @@
 ﻿
 namespace DalApi;
 
-using DalFacade.DalApi;
 using DO;
 
 
