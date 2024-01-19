@@ -14,12 +14,13 @@ internal class DependencyImplementation : IDependency
     }
     public void Delete(int id)
     {
-        List<Dependency> dependenciesToDelete = DataSource.Dependenceis
-            .Where(dependency => dependency.Id == id)
-            .ToList();
+        List<Dependency> dependenciesToDelete = (from dep in DataSource.Dependenceis
+                                                  where dep.Id == id
+                                                  select dep).ToList();
 
         if (dependenciesToDelete.Count == 0)
             throw new DalDoesNotExistException($"Dependency with ID={id} does not exists");
+
 
         foreach (Dependency dependency in dependenciesToDelete)
         {

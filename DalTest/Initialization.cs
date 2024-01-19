@@ -146,10 +146,10 @@ public static class Initialization
     public static void Do(IDal dal) //stage 2   
     {
         s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
-
-        CreateEngineers();
-        CreateTasks();
+        
         CreateDependencies();
+        //CreateEngineers();
+        //CreateTasks();
     }
 
 }

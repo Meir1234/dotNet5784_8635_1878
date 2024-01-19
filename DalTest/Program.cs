@@ -20,12 +20,12 @@ internal class Program
         try
         {
             Initialization.Do(s_dal);
-
             MainMnue();
         }
         catch (Exception exp)
         {
             Console.WriteLine(exp);
+            MainMnue();
         }
     }
 

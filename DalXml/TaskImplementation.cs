@@ -38,62 +38,62 @@ internal class TaskImplementation : ITask
         throw new NotImplementedException();
     }
 }
-/*{
-    readonly string s_tasks_xml = "tasks";
-    public int Create(Task item)
-    {
-        List<Task> Tasks = XMLTools.LoadListFromXMLElement<Task>(s_tasks_xml);
-        int nextId = Config.NextTaskId;
-        Task copy = item with(IDal = nextId);
-        Task.Add(copy);
-        XMLTools.SaveListToXMLElement(Tasks, s_tasks_xml);
-    }
+//{
+//    readonly string s_tasks_xml = "tasks";
+//    public int Create(Task item)
+//    {
+//        List<Task> Tasks = XMLTools.LoadListFromXMLElement<Task>(s_tasks_xml);
+//        int nextId = Config.NextTaskId;
+//        Task copy= item with(IDal = nextId);
+//        Task.Add(copy);
+//        XMLTools.SaveListToXMLElement(Tasks, s_tasks_xml);
+//    }
 
 
-    public void Delete(int id)
-    {
+//    public void Delete(int id)
+//    {
 
-    }
+//    }
 
-    public Task? Read(int id)
-    {
+//    public Task? Read(int id)
+//    {
 
-    }
+//    }
 
-    public Task? Read(Func<Task, bool> filter)
-    {
+//    public Task? Read(Func<Task, bool> filter)
+//    {
 
-    }
+//    }
 
-    public IEnumerable<Task?> ReadAll(Func<Task, bool>? filter = null)
-    {
+//    public IEnumerable<Task?> ReadAll(Func<Task, bool>? filter = null)
+//    {
 
-    }
+//    }
 
-    public void Update(Task item)
-    {
-        List<Task> Tasks = XMLTools.LoadListFromXMLElement<Task>(s_tasks_xml);
-        {
-            {
-                int updatedObjectId = item.Id;
-                bool found = false;
+//    public void Update(Task item)
+//    {
+//        List<Task> Tasks = XMLTools.LoadListFromXMLElement<Task>(s_tasks_xml);
+//        {
+//            {
+//                int updatedObjectId = item.Id;
+//                bool found = false;
 
-                foreach (Task? obj in DataSource.Tasks)
-                {
-                    if (obj.Id == updatedObjectId)
-                    {
-                        DataSource.Tasks.Remove(obj);
-                        DataSource.Tasks.Add(item);
-                        found = true;
-                        break;
-                    }
-                }
+//                foreach (Task? obj in DataSource.Tasks)
+//                {
+//                    if (obj.Id == updatedObjectId)
+//                    {
+//                        DataSource.Tasks.Remove(obj);
+//                        DataSource.Tasks.Add(item);
+//                        found = true;
+//                        break;
+//                    }
+//                }
 
-                if (!found)
-                {
-                    throw new ArgumentException($"Task with ID {updatedObjectId} does not exist.");
-                }
-            }
+//                if (!found)
+//                {
+//                    throw new ArgumentException($"Task with ID {updatedObjectId} does not exist.");
+//                }
+//            }
 
-        }
-    }*/
+//        }
+//    }
