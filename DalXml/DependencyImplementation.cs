@@ -21,11 +21,9 @@ internal class DependencyImplementation : IDependency
     {
         XElement xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
 
-        
-
         XElement? dep = (from d in xml.Elements()
-                        where GetDependency(d).Id == id 
-                        select d).FirstOrDefault();
+                         where Convert.ToInt32(d.Element("Id")) == id
+                         select d).FirstOrDefault();
         if (dep == null)
         {
             throw new DalDoesNotExistException($"Dependency with ID {id} does not exist.");
@@ -34,7 +32,6 @@ internal class DependencyImplementation : IDependency
         {
             dep.Remove();
         }
-        //xml.Elements().Where(Dependency => (int?)Dependency.Element("Id") == id).Remove();
 
         XMLTools.SaveListToXMLElement(xml, s_dependencies_xml);
     }
@@ -87,13 +84,13 @@ internal class DependencyImplementation : IDependency
     {
         XElement xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
         XElement? dep = (from d in xml.Elements()
-                        where GetDependency(d) == item
-                        select d).FirstOrDefault();
+                         where GetDependency(d) == item
+                         select d).FirstOrDefault();
         if (dep == null)
         {
             throw new DalDoesNotExistException($"Dependency with ID {item.Id} does not exist.");
         }
-        else 
+        else
         {
             int id = Convert.ToInt32(dep.Element("Id"));
             dep.Remove();
@@ -110,7 +107,7 @@ internal class DependencyImplementation : IDependency
             int Id = Convert.ToInt32(item.Element("DependentTask"));
             int DependentTask = Convert.ToInt32(item.Element("DependentTask"));
             int DependsOnTask = Convert.ToInt32(item.Element("DependsOnTask"));
-            Dependency? dependency = new Dependency(Id, DependentTask, DependsOnTask);
+            Dependency dependency = new Dependency(Id, DependentTask, DependsOnTask);
             return dependency;
         }
     }
