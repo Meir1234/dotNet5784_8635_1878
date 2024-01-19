@@ -9,7 +9,6 @@ using System.Xml.Linq;
 internal class DependencyImplementation : IDependency
 {
     readonly string s_dependencies_xml = "dependencies";
-
     public int Create(Dependency item)
     {
         XElement xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
@@ -18,43 +17,55 @@ internal class DependencyImplementation : IDependency
         XMLTools.SaveListToXMLElement(xml, s_dependencies_xml);
         return idNum;
     }
-
     public void Delete(int id)
     {
         XElement xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
 
-        xml.Elements().Where(Dependency => (int?)Dependency.Element("Id") == id).Remove();
+        
+
+        XElement? dep = (from d in xml.Elements()
+                        where GetDependency(d).Id == id 
+                        select d).FirstOrDefault();
+        if (dep == null)
+        {
+            throw new DalDoesNotExistException($"Dependency with ID {id} does not exist.");
+        }
+        else
+        {
+            dep.Remove();
+        }
+        //xml.Elements().Where(Dependency => (int?)Dependency.Element("Id") == id).Remove();
 
         XMLTools.SaveListToXMLElement(xml, s_dependencies_xml);
     }
-
     public Dependency? Read(int id)
     {
         XElement? xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
-        XElement? foundDependency = xml.Elements().FirstOrDefault(dependency => (int?)dependency.Element("Id") == id);
-        Dependency? dependency = GetDependency(foundDependency);
-        return dependency;
+        XElement? dep = (from d in xml.Elements()
+                         where Convert.ToInt32(GetDependency(d.Element("Id"))) == id
+                         select d).FirstOrDefault();
+        if (dep == null)
+            throw new DalDoesNotExistException($"Dependency with ID {id} does not exist.");
+        else
+        {
+            //XElement? foundDependency = xml.Elements().FirstOrDefault(dependency => (int?)dependency.Element("Id") == id);
+            Dependency? dependency = GetDependency(dep);
+            return dependency;
+        }
     }
-
-    public Dependency? Read(Func<Dependency?, bool>? filter)
+    public Dependency? Read(Func<Dependency?, bool> filter)
     {
 
         XElement? xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
         XElement? foundDependency;
-        if (filter == null)
-        {
-            foundDependency = xml.Elements().FirstOrDefault();
-        }
-        else
-        {
-            foundDependency = (from dep in xml.Elements()
-                               where filter(GetDependency(dep))
-                               select dep).FirstOrDefault();
-        }
+
+        foundDependency = (from dep in xml.Elements()
+                           where filter(GetDependency(dep))
+                           select dep).FirstOrDefault();
+
         Dependency? dependency = GetDependency(foundDependency);
         return dependency;
     }
-
     public IEnumerable<Dependency?> ReadAll(Func<Dependency?, bool>? filter)
     {
         XElement? xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
@@ -72,7 +83,6 @@ internal class DependencyImplementation : IDependency
         }
         return list;
     }
-
     public void Update(Dependency item)
     {
         XElement xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
@@ -91,13 +101,17 @@ internal class DependencyImplementation : IDependency
         }
         XMLTools.SaveListToXMLElement(xml, s_dependencies_xml);
     }
-
     internal Dependency? GetDependency(XElement? item)
     {
-        int Id = Convert.ToInt32(item.Element("Id").Value);
-        int DependentTask = Convert.ToInt32(item.Element("DependentTask").Value);
-        int DependsOnTask = Convert.ToInt32(item.Element("DependsOnTask").Value);
-        Dependency? dependency = new Dependency(Id, DependentTask, DependsOnTask);
-        return dependency;
+        if (item == null)
+            return null;
+        else
+        {
+            int Id = Convert.ToInt32(item.Element("DependentTask"));
+            int DependentTask = Convert.ToInt32(item.Element("DependentTask"));
+            int DependsOnTask = Convert.ToInt32(item.Element("DependsOnTask"));
+            Dependency? dependency = new Dependency(Id, DependentTask, DependsOnTask);
+            return dependency;
+        }
     }
 }

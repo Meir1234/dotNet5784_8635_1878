@@ -6,7 +6,6 @@ using System.Linq;
 
 internal class DependencyImplementation : IDependency
 {
-
     public int Create(Dependency item)
     {
         int idNum = DataSource.Config.NextDependencyId;
@@ -27,29 +26,15 @@ internal class DependencyImplementation : IDependency
             DataSource.Dependenceis.Remove(dependency);
         }
     }
-
-    //public Dependency? Read(int ID)
-    //{
-    //    foreach (Dependency? Dep in DataSource.Dependencys)
-    //    {
-    //        if (Dep.Id == ID)
-    //        {
-    //            return Dep;
-    //        }
-
-    //    }
-    //    return null;
-    //}
-    public Dependency? Read(int ID)//function work with linq
+    public Dependency? Read(int ID)
     {
         Dependency? foundDependency = DataSource.Dependenceis.FirstOrDefault(dependency => dependency.Id == ID);
         return foundDependency;
     }
-    public Dependency? Read(Func<Dependency?, bool>? filter)
+    public Dependency? Read(Func<Dependency?, bool> filter)
     {
         return DataSource.Dependenceis.FirstOrDefault(filter);
     }
-    
     public IEnumerable<Dependency?> ReadAll(Func<Dependency?, bool>? filter = null)
     {
         if (filter == null)
@@ -57,7 +42,6 @@ internal class DependencyImplementation : IDependency
         else
             return DataSource.Dependenceis.Where(filter);
     }
-
     public void Update(Dependency item)
     {
         {
