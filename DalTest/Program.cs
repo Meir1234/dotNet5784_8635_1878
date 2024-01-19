@@ -10,7 +10,8 @@ using DO;
 internal class Program
 {
 
-    static readonly IDal s_dal = new DalList(); 
+    //static readonly IDal s_dal = new DalList();
+    static readonly IDal s_dal = new DalXml();
 
     public static object? Do { get; private set; }
 
@@ -37,8 +38,6 @@ internal class Program
         Console.WriteLine("3. Task");
         Console.Write("Enter your choice: ");
         int entityChoice = int.Parse(Console.ReadLine()!);
-
-       
 
         switch (entityChoice)
         {

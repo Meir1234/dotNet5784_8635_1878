@@ -9,7 +9,6 @@ public static class Initialization
     
     private static IDal? s_dal; 
 
-
     private static readonly Random s_rand = new();
 
     private static void CreateEngineers()
@@ -77,7 +76,6 @@ public static class Initialization
             {
                 Dependency newDep = new(0, j - 2 - k, j - 2);
 
-                //s_dalDependency!.Create(newDep);
                 s_dal.Dependency!.Create(newDep);
             }
         }
@@ -134,21 +132,14 @@ public static class Initialization
             string? _deliverables = Deliverables[i];
 
             Task newTask = new(0, _alias, _description, null, RequiredEffortTime, IsMilestone,
-             StartDate, DeadlineDate, null, _deliverables, 0, _level);
+            StartDate, DeadlineDate, null, _deliverables, 0, _level);
 
             //s_dalTask!.Create(newTask);
             s_dal.Task!.Create(newTask);
         };
     }
-
-    //public static void Do(IEngineer? dalEngineer, ITask? dalTask, IDependency? dalDependency)
-    public static void Do(IDal dal) //stage 2
-
-
+    public static void Do(IDal? dal)
     {
-        //s_dalEngineer = dalEngineer ?? throw new NullReferenceException("DAL can not be null!");
-        //s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");
-        //s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
         s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
 
         CreateEngineers();
