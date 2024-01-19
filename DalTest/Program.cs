@@ -20,7 +20,9 @@ internal class Program
     {
         try
         {
-            Initialization.Do(s_dal);
+            //Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
+            Initialization.Do(s_dal); //stage 2
+
             MainMnue();
         }
         catch (Exception exp)
@@ -40,7 +42,12 @@ internal class Program
         int entityChoice = int.Parse(Console.ReadLine()!);
         //Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
 
-           
+            Console.WriteLine("Choose an entity:");
+            Console.WriteLine("1. Engineer");
+            Console.WriteLine("2. Dependency");
+            Console.WriteLine("3. Task");
+            Console.Write("Enter your choice: ");
+            int entityChoice = int.Parse(Console.ReadLine());
 
         switch (entityChoice)
         {
@@ -234,6 +241,8 @@ internal class Program
     }
     private static void DisplayAllEngineers()
     {
+        //Console.WriteLine(s_dalEngineer!.ReadAll());
+        //Console.WriteLine(s_dal.Engineer!.ReadAll());
         //List<Engineer> engineers = s_dalEngineer!.ReadAll();
         IEnumerable<Engineer?> engineers = s_dal!.Engineer.ReadAll();
         foreach (Engineer? engineer in engineers)
