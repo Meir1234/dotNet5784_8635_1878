@@ -2,6 +2,9 @@
 
 using DalApi;
 using DO;
+using System;
+using System.Xml.Linq;
+
 
 internal class DependencyImplementation : IDependency
 {
@@ -9,32 +12,92 @@ internal class DependencyImplementation : IDependency
 
     public int Create(Dependency item)
     {
-        throw new NotImplementedException();
+        XElement xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
+        int idNum = Config.NextDependencyId;
+        xml.Add(item with { Id = idNum });
+        XMLTools.SaveListToXMLElement(xml, s_dependencies_xml);
+        return idNum;
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        XElement xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
+
+        xml.Elements().Where(Dependency => (int?)Dependency.Element("Id") == id).Remove();
+
+        XMLTools.SaveListToXMLElement(xml, s_dependencies_xml);
     }
 
     public Dependency? Read(int id)
     {
-        throw new NotImplementedException();
+        XElement? xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
+        XElement? foundDependency = xml.Elements().FirstOrDefault(dependency => (int?)dependency.Element("Id") == id);
+        Dependency? dependency = GetDependency(foundDependency);
+        return dependency;
     }
 
-    public Dependency? Read(Func<Dependency, bool> filter)
+    public Dependency? Read(Func<Dependency?, bool>? filter)
     {
-        throw new NotImplementedException();
+
+        XElement? xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
+        XElement? foundDependency;
+        if (filter == null)
+        {
+            foundDependency = xml.Elements().FirstOrDefault();
+        }
+        else
+        {
+            foundDependency = (from dep in xml.Elements()
+                               where filter(GetDependency(dep))
+                               select dep).FirstOrDefault();
+        }
+        Dependency? dependency = GetDependency(foundDependency);
+        return dependency;
     }
 
-    public IEnumerable<Dependency?> ReadAll(Func<Dependency, bool>? filter = null)
+    public IEnumerable<Dependency?> ReadAll(Func<Dependency?, bool>? filter)
     {
-        throw new NotImplementedException();
+        XElement? xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
+        IEnumerable<Dependency?> list;
+        if (filter == null)
+        {
+            list = from dep in xml.Elements()
+                   select GetDependency(dep);
+        }
+        else
+        {
+            list = from dep in xml.Elements()
+                   where filter(GetDependency(dep))
+                   select GetDependency(dep);
+        }
+        return list;
     }
 
     public void Update(Dependency item)
     {
-        throw new NotImplementedException();
+        XElement xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
+        XElement? dep = (from d in xml.Elements()
+                        where GetDependency(d) == item
+                        select d).FirstOrDefault();
+        if (dep == null)
+        {
+            throw new DalDoesNotExistException($"Dependency with ID {item.Id} does not exist.");
+        }
+        else 
+        {
+            int id = Convert.ToInt32(dep.Element("Id"));
+            dep.Remove();
+            xml.Add(item);
+        }
+        XMLTools.SaveListToXMLElement(xml, s_dependencies_xml);
     }
-    // ...
+
+    internal Dependency? GetDependency(XElement? item)
+    {
+        int Id = Convert.ToInt32(item.Element("Id").Value);
+        int DependentTask = Convert.ToInt32(item.Element("DependentTask").Value);
+        int DependsOnTask = Convert.ToInt32(item.Element("DependsOnTask").Value);
+        Dependency? dependency = new Dependency(Id, DependentTask, DependsOnTask);
+        return dependency;
+    }
 }

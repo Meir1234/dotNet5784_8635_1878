@@ -10,19 +10,12 @@ internal class DependencyImplementation : IDependency
     public int Create(Dependency item)
     {
         int idNum = DataSource.Config.NextDependencyId;
-
-        // בדיקה אם יש תלות קיימת עם אותו Id
-        //bool dependencyExists = DataSource.Dependencys.Any(existingDependency => existingDependency.Id == item.Id);
-        //if (dependencyExists)
-        //{
-        //    throw new Exception($"Dependency with ID={item.Id} already exists");
-        //}
-        DataSource.Dependencys.Add(item with { Id = idNum });
+        DataSource.Dependenceis.Add(item with { Id = idNum });
         return idNum;
     }
     public void Delete(int id)
     {
-        List<Dependency> dependenciesToDelete = DataSource.Dependencys
+        List<Dependency> dependenciesToDelete = DataSource.Dependenceis
             .Where(dependency => dependency.Id == id)
             .ToList();
 
@@ -31,7 +24,7 @@ internal class DependencyImplementation : IDependency
 
         foreach (Dependency dependency in dependenciesToDelete)
         {
-            DataSource.Dependencys.Remove(dependency);
+            DataSource.Dependenceis.Remove(dependency);
         }
     }
 
@@ -49,24 +42,20 @@ internal class DependencyImplementation : IDependency
     //}
     public Dependency? Read(int ID)//function work with linq
     {
-        Dependency? foundDependency = DataSource.Dependencys.FirstOrDefault(dependency => dependency.Id == ID);
+        Dependency? foundDependency = DataSource.Dependenceis.FirstOrDefault(dependency => dependency.Id == ID);
         return foundDependency;
     }
-    public Dependency? Read(Func<Dependency, bool> filter)
+    public Dependency? Read(Func<Dependency?, bool>? filter)
     {
-        return DataSource.Dependencys.FirstOrDefault(filter);
+        return DataSource.Dependenceis.FirstOrDefault(filter);
     }
     
-    //public List<Dependency> ReadAll()
-    //{
-    //    return DataSource.Dependencys;
-    //}
-    public IEnumerable<Dependency?> ReadAll(Func<Dependency, bool>? filter = null)
+    public IEnumerable<Dependency?> ReadAll(Func<Dependency?, bool>? filter = null)
     {
         if (filter == null)
-            return DataSource.Dependencys.Select(item => item);
+            return DataSource.Dependenceis.Select(item => item);
         else
-            return DataSource.Dependencys.Where(filter);
+            return DataSource.Dependenceis.Where(filter);
     }
 
     public void Update(Dependency item)
@@ -75,12 +64,12 @@ internal class DependencyImplementation : IDependency
             int updatedObjectId = item.Id;
             bool found = false;
 
-            foreach (Dependency? obj in DataSource.Dependencys)
+            foreach (Dependency? obj in DataSource.Dependenceis)
             {
                 if (obj.Id == updatedObjectId)
                 {
-                    DataSource.Dependencys.Remove(obj);
-                    DataSource.Dependencys.Add(item);
+                    DataSource.Dependenceis.Remove(obj);
+                    DataSource.Dependenceis.Add(item);
                     found = true;
                     break;
                 }
