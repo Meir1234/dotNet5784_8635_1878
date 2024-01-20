@@ -15,9 +15,35 @@ public record Task
     DateTime? CompleteDate,
     string? Deliverables,
 
-    int Engineerld,
+    int EngineerId,
     Level Hardness
-);
+)
+{
+    // בנאי ריק עם אתחול פרמטרים ברירת מחדל
+    public Task()
+        : this(
+              Id: 0,
+              Alias: null,
+              Description: null,
+              CreatedAtDate: null,
+              RequiredEffortTime: TimeSpan.Zero,
+              IsMilestone: null,
+              StartDate: DateTime.Now,
+              DeadlineDate: DateTime.Now,
+              CompleteDate: null,
+              Deliverables: null,
+              EngineerId: 0,
+              Hardness: Level.Beginner
+          )
+    {
+    }
+}//empty ctor for stage 3
+
+
+
+
+
+
 
 
 
