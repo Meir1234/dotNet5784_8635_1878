@@ -9,10 +9,9 @@ using DO;
 
 internal class Program
 {
-    //private static IEngineer? s_dalEngineer = new EngineerImplementation(); //stage 1
-    //private static readonly IDependency? s_dalDependency = new DependencyImplementation(); //stage 1
-    //private static ITask? s_dalTask = new TaskImplementation(); //stage 1
-    static readonly IDal s_dal = new DalList(); //stage 2
+
+    //static readonly IDal s_dal = new DalList();
+    static readonly IDal s_dal = new DalXml();
 
     public static object? Do { get; private set; }
 
@@ -20,14 +19,13 @@ internal class Program
     {
         try
         {
-            //Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
-            Initialization.Do(s_dal); //stage 2
-
+            Initialization.Do(s_dal);
             MainMnue();
         }
         catch (Exception exp)
         {
             Console.WriteLine(exp);
+            MainMnue();
         }
     }
 
@@ -40,14 +38,6 @@ internal class Program
         Console.WriteLine("3. Task");
         Console.Write("Enter your choice: ");
         int entityChoice = int.Parse(Console.ReadLine()!);
-        //Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
-
-            Console.WriteLine("Choose an entity:");
-            Console.WriteLine("1. Engineer");
-            Console.WriteLine("2. Dependency");
-            Console.WriteLine("3. Task");
-            Console.Write("Enter your choice: ");
-            int entityChoice = int.Parse(Console.ReadLine());
 
         switch (entityChoice)
         {

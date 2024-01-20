@@ -80,7 +80,6 @@ public static class Initialization
             {
                 Dependency newDep = new(0, j - 2 - k, j - 2);
 
-                //s_dalDependency!.Create(newDep);
                 s_dal.Dependency!.Create(newDep);
             }
         }
@@ -137,7 +136,7 @@ public static class Initialization
             string? _deliverables = Deliverables[i];
 
             Task newTask = new(0, _alias, _description, null, RequiredEffortTime, IsMilestone,
-             StartDate, DeadlineDate, null, _deliverables, 0, _level);
+            StartDate, DeadlineDate, null, _deliverables, 0, _level);
 
             //s_dalTask!.Create(newTask);
             s_dal.Task!.Create(newTask);

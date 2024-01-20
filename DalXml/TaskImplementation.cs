@@ -10,7 +10,6 @@ using DO;
 
 internal class TaskImplementation : ITask
 {
-    readonly string s_tasks_xml = "tasks";
     public int Create(Task item)
     {
         List<Task> tasks = XMLTools.LoadListFromXMLSerializer<Task>(s_tasks_xml);
@@ -41,7 +40,7 @@ internal class TaskImplementation : ITask
         return foundTask;
     }
 
-    public Task? Read(Func<Task, bool> filter)
+    public Task? Read(Func<Task?, bool> filter)
     {
         List<Task> tasks = XMLTools.LoadListFromXMLSerializer<Task>(s_tasks_xml);
         tasks.FirstOrDefault(filter);
@@ -49,7 +48,7 @@ internal class TaskImplementation : ITask
         return tasks;
     }
 
-    public IEnumerable<Task?> ReadAll(Func<Task, bool>? filter = null)
+    public IEnumerable<Task?> ReadAll(Func<Task?, bool>? filter = null)
     {
         List<Task> tasks = XMLTools.LoadListFromXMLSerializer<Task>(s_tasks_xml);
         if (filter == null) 
@@ -79,11 +78,47 @@ internal class TaskImplementation : ITask
                     }
                 }
 
-                if (!found)
-                {
-                    throw new ArgumentException($"Task with ID {updatedObjectId} does not exist.");
-                }
-            }
+//    }
+
+//    public Task? Read(int id)
+//    {
+
+//    }
+
+//    public Task? Read(Func<Task, bool> filter)
+//    {
+
+//    }
+
+//    public IEnumerable<Task?> ReadAll(Func<Task, bool>? filter = null)
+//    {
+
+//    }
+
+//    public void Update(Task item)
+//    {
+//        List<Task> Tasks = XMLTools.LoadListFromXMLElement<Task>(s_tasks_xml);
+//        {
+//            {
+//                int updatedObjectId = item.Id;
+//                bool found = false;
+
+//                foreach (Task? obj in DataSource.Tasks)
+//                {
+//                    if (obj.Id == updatedObjectId)
+//                    {
+//                        DataSource.Tasks.Remove(obj);
+//                        DataSource.Tasks.Add(item);
+//                        found = true;
+//                        break;
+//                    }
+//                }
+
+//                if (!found)
+//                {
+//                    throw new ArgumentException($"Task with ID {updatedObjectId} does not exist.");
+//                }
+//            }
 
         }
         XMLTools.SaveListToXMLSerializer(Tasks, s_tasks_xml);
