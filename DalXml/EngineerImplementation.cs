@@ -51,16 +51,12 @@ internal class EngineerImplementation : IEngineer
     public Engineer? Read(Func<Engineer, bool> filter)
     {
         List<Engineer> engineers = XMLTools.LoadListFromXMLSerializer<Engineer>(s_engineers_xml);
-        engineers.FirstOrDefault(filter);
+        Engineer? foundEngineer = engineers.FirstOrDefault(filter);
         XMLTools.SaveListToXMLSerializer(engineers, s_engineers_xml);
-        return engineers;
-
+        return foundEngineer;
     }
 
-    //public List<Engineer> ReadAll()
-    //{
-    //    return DataSource.Engineers;
-    //}
+
     public IEnumerable<Engineer?> ReadAll(Func<Engineer, bool>? filter = null)
     {
         List<Engineer> engineers = XMLTools.LoadListFromXMLSerializer< Engineer>(s_engineers_xml);
