@@ -20,16 +20,16 @@ internal class Program
         try
         {
             Initialization.Do(s_dal);
-            MainMnue();
+            MainMenu();
         }
         catch (Exception exp)
         {
             Console.WriteLine(exp);
-            MainMnue();
+            MainMenu();
         }
     }
 
-    static void MainMnue()
+    static void MainMenu()
     {
 
         Console.WriteLine("Choose an entity:");
@@ -54,7 +54,7 @@ internal class Program
                 Console.WriteLine("Invalid choice!");
                 break;
         }
-        MainMnue();
+        MainMenu();
     }
     private static void DisplayEngineerOptions()
     {
@@ -112,7 +112,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                MainMnue();
+                MainMenu();
                 break;
             case 2:
                 AddNewEngineer();
@@ -139,7 +139,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                MainMnue();
+                MainMenu();
                 break;
             case 2:
                 AddNewTask();
@@ -166,7 +166,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                MainMnue();
+                MainMenu();
                 break;
             case 2:
                 AddNewDependency();
