@@ -23,7 +23,7 @@ public static class Initialization
         "Ariela Levin", "Dina Klein", "Shira Israelof"
         };
 
-        
+
         static string GenerateEmails(string name)
         {
             string result = "";
@@ -31,7 +31,7 @@ public static class Initialization
             // המרת שם המהנדס לכתובת מייל בפורמט קבוע
             string email = $"{name.Replace(" ", "_")}@gmail.com";
 
-                // הוספת הכתובת לתוצאה
+            // הוספת הכתובת לתוצאה
             result += email + Environment.NewLine;
 
             return result;
