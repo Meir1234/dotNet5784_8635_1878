@@ -37,26 +37,46 @@ public static class Initialization
         };
 
 
-        foreach (var _name in EngineerNames)
+        //    foreach (var _name in EngineerNames)
+        //    {
+        //        int _id;
+        //        do
+        //            _id = s_rand.Next(200000000, 400000000);
+        //        while (s_dal!.Engineer.Read(_id) != null);
+
+        //        string _email = GenerateEmails(_name);
+
+        //        Level _level = (Level)s_rand.Next(1, 5);
+
+        //        double _cost = s_rand.NextDouble() * 200 + 200;
+
+        //        Engineer newEng = new(_id, _name, _email, _level, _cost);
+
+        //        //s_dalEngineer!.Create(newEng);
+        //        s_dal.Engineer!.Create(newEng);
+        //    }
+
+        foreach (var engineerName in EngineerNames)
         {
-            int _id;
+            int engineerId;
             do
-                _id = s_rand.Next(200000000, 400000000);
-            while (s_dal!.Engineer.Read(_id) != null);
+            {
+                engineerId = s_rand.Next(200000000, 400000000);
+            }
+            while (s_dal!.Engineer.Read(engineerId) != null);
 
-            string _email = GenerateEmails(_name);
+    string engineerEmail = GenerateEmails(engineerName);
 
-            Level _level = (Level)s_rand.Next(1, 5);
+    Level engineerLevel = (Level)s_rand.Next(1, 5);
 
-            double _cost = s_rand.NextDouble() * 200 + 200;
+    double engineerCost = s_rand.NextDouble() * 200 + 200;
 
-            Engineer newEng = new(_id, _name, _email, _level, _cost);
+    Engineer newEngineer = new(engineerId, engineerName, engineerEmail, engineerLevel, engineerCost);
 
-            //s_dalEngineer!.Create(newEng);
-            s_dal.Engineer!.Create(newEng);
-        }
-    }
-    private static void CreateDependencies()
+    s_dal.Engineer!.Create(newEngineer);
+            }
+}
+private static void CreateDependencies()
     {
         // Function to add random dependencies for a task
         for (int i = 1; i < 5; i++)

@@ -4,8 +4,9 @@
 namespace Dal;
 using DalApi;
 using DO;
-using System.Data.Common;
-using System.Threading.Tasks;
+//using System;
+//using System.Data.Common;
+//using System.Threading.Tasks;
 
 internal class EngineerImplementation : IEngineer
 {
@@ -47,6 +48,26 @@ internal class EngineerImplementation : IEngineer
         XMLTools.SaveListToXMLSerializer(engineers, s_engineers_xml);
         return foundEngineer;
     }
+
+
+    //public Engineer? Read(int ID)
+    //    {
+    //        List<Engineer> engineers = XMLTools.LoadListFromXMLSerializer<Engineer>(s_engineers_xml);
+
+    //        // ניתן לשדרג את הביצוע על ידי שמירת הרשימה פעם אחת ושליפה ממנה במהלך הפונקציה
+    //        // זה יפעיל טעינה רק פעם אחת מהקובץ XML, ולא בכל פעם שהפונקציה נקראת
+    //        Engineer? foundEngineer = engineers.FirstOrDefault(engineer => engineer.Id == ID);
+
+    //        if (foundEngineer != null)
+    //        {
+    //            // נוכל להוסיף בדיקה כדי למנוע כתיבה לקובץ XML אם המהנדס לא נמצא
+    //            // זה יתרום לבטחון ולמניעת שגיאות לא נדרשות
+    //            engineers.Remove(foundEngineer);
+    //            XMLTools.SaveListToXMLSerializer(engineers, s_engineers_xml);
+    //        }
+
+    //        return foundEngineer;
+    //    }
 
     public Engineer? Read(Func<Engineer, bool> filter)
     {
