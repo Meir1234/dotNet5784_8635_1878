@@ -17,14 +17,12 @@ internal class Program
 
     public static void Main(string[] obj)
     {
-        Console.Write("Would you like to create Initial data? (Y/N)"); //stage 3
-        string? ans = Console.ReadLine() ?? throw new FormatException("Wrong input"); //stage 3
-        if (ans == "Y") //stage 3
-            Initialization.Do(s_dal); //stage 2
         try
         {
-
-            Initialization.Do(s_dal);
+            Console.WriteLine("Would you like to create Initial data? (Y/N)"); //stage 3
+            string? ans = Console.ReadLine() ?? throw new FormatException("Wrong input"); //stage 3
+            if (ans == "Y") //stage 3
+                Initialization.Do(s_dal);
             MainMenu();
         }
         catch (Exception exp)
@@ -211,7 +209,7 @@ internal class Program
 
         Console.Write("Level: Beginner, AdvancedBeginner, Intermediate, Advanced, Expert. choice 1-5");
         int _level = int.Parse(Console.ReadLine()!);
-        Enum level = (Level)_level;
+        Level level = (Level)_level;
 
         Console.Write("Cost: ");
         double cost = double.Parse(Console.ReadLine()!);
@@ -256,7 +254,7 @@ internal class Program
 
         Console.Write("Level: Beginner, AdvancedBeginner, Intermediate, Advanced, Expert. choice 1-5");
         int _level = int.Parse(Console.ReadLine()!);
-        Enum level = (Level)_level;
+        Level level = (Level)_level;
 
         Console.Write("Cost: ");
         double cost = double.Parse(Console.ReadLine()!);

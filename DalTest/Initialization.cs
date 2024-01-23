@@ -169,7 +169,7 @@ private static void CreateDependencies()
         
         CreateDependencies();
         CreateEngineers();
-        //CreateTasks();
+        CreateTasks();
     }
 
 }
