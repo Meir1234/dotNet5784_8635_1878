@@ -17,24 +17,22 @@ internal class Program
 
     public static void Main(string[] obj)
     {
-        //Console.Write("Would you like to create Initial data? (Y/N)"); //stage 3
-        //string? ans = Console.ReadLine() ?? throw new FormatException("Wrong input"); //stage 3
-        //if (ans == "Y") //stage 3
-        //Initialization.Do(s_dal); //stage 2
         try
         {
-
-            Initialization.Do(s_dal);
-            MainMnue();
+            Console.WriteLine("Would you like to create Initial data? (Y/N)"); //stage 3
+            string? ans = Console.ReadLine() ?? throw new FormatException("Wrong input"); //stage 3
+            if (ans == "Y") //stage 3
+                Initialization.Do(s_dal);
+            MainMenu();
         }
         catch (Exception exp)
         {
             Console.WriteLine(exp);
-            MainMnue();
+            MainMenu();
         }
     }
 
-    static void MainMnue()
+    static void MainMenu()
     {
 
         Console.WriteLine("Choose an entity:");
@@ -59,7 +57,7 @@ internal class Program
                 Console.WriteLine("Invalid choice!");
                 break;
         }
-        MainMnue();
+        MainMenu();
     }
     private static void DisplayEngineerOptions()
     {
@@ -117,7 +115,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                MainMnue();
+                MainMenu();
                 break;
             case 2:
                 AddNewEngineer();
@@ -144,7 +142,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                MainMnue();
+                MainMenu();
                 break;
             case 2:
                 AddNewTask();
@@ -171,7 +169,7 @@ internal class Program
         switch (choice)
         {
             case 1:
-                MainMnue();
+                MainMenu();
                 break;
             case 2:
                 AddNewDependency();
@@ -211,7 +209,7 @@ internal class Program
 
         Console.Write("Level: Beginner, AdvancedBeginner, Intermediate, Advanced, Expert. choice 1-5");
         int _level = int.Parse(Console.ReadLine()!);
-        Enum level = (Level)_level;
+        Level level = (Level)_level;
 
         Console.Write("Cost: ");
         double cost = double.Parse(Console.ReadLine()!);
@@ -256,7 +254,7 @@ internal class Program
 
         Console.Write("Level: Beginner, AdvancedBeginner, Intermediate, Advanced, Expert. choice 1-5");
         int _level = int.Parse(Console.ReadLine()!);
-        Enum level = (Level)_level;
+        Level level = (Level)_level;
 
         Console.Write("Cost: ");
         double cost = double.Parse(Console.ReadLine()!);

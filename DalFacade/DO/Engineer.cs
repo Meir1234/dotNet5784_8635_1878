@@ -7,7 +7,7 @@ namespace DO
         int Id,
         string? Name,
         string? Email,
-        Enum? Level,
+        Level Level,
         double? Cost
     )
     {
@@ -17,7 +17,7 @@ namespace DO
               Id: 0,
               Name: null,
               Email: null,
-              Level: null,
+              Level: Level.Beginner,
               Cost: null
           )
     {
