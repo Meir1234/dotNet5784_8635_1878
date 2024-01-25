@@ -73,7 +73,7 @@ public static class Initialization
 
     Engineer newEngineer = new(engineerId, engineerName, engineerEmail, engineerLevel, engineerCost);
 
-    s_dal.Engineer!.Create(newEngineer);
+    s_dal!.Engineer!.Create(newEngineer);
             }
 }
 private static void CreateDependencies()
@@ -158,7 +158,7 @@ private static void CreateDependencies()
              StartDate, DeadlineDate, null, _deliverables, 0, _level);
 
             //s_dalTask!.Create(newTask);
-            s_dal.Task!.Create(newTask);
+            s_dal!.Task!.Create(newTask);
         };
     }
 
@@ -166,9 +166,9 @@ private static void CreateDependencies()
     public static void Do(IDal dal) //stage 2   
     {
         s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
-        
-        CreateDependencies();
         CreateEngineers();
+        CreateDependencies();
+        
         //CreateTasks();
     }
 

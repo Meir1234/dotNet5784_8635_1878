@@ -48,7 +48,7 @@ public static class Initialization
 
             string _email = GenerateEmails(_name);
 
-            Level _level = (Level)s_rand.Next(1, 5);
+            Level _level = Level(1);
 
             double _cost = s_rand.NextDouble() * 200 + 200;
 
@@ -58,6 +58,12 @@ public static class Initialization
             s_dal.Engineer!.Create(newEng);
         }
     }
+
+    private static Level Level(int v)
+    {
+        throw new NotImplementedException();
+    }
+
     private static void CreateDependencies()
     {
         // Function to add random dependencies for a task
