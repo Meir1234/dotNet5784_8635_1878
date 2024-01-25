@@ -2,6 +2,7 @@
 namespace DalTest;
 using Dal;
 using DalApi;
+
 using DO;
 
 
@@ -11,7 +12,7 @@ internal class Program
 {
 
     //static readonly IDal s_dal = new DalList();
-    static readonly IDal s_dal = new DalXml();
+    static readonly IDal s_dal = Factory.Get;
 
     public static object? Do { get; private set; }
 
@@ -22,7 +23,7 @@ internal class Program
             Console.WriteLine("Would you like to create Initial data? (Y/N)"); //stage 3
             string? ans = Console.ReadLine() ?? throw new FormatException("Wrong input"); //stage 3
             if (ans == "Y") //stage 3
-                Initialization.Do(s_dal);
+                Initialization.Do();
             MainMenu();
         }
         catch (Exception exp)

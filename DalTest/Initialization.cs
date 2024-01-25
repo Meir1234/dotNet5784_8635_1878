@@ -161,14 +161,9 @@ private static void CreateDependencies()
             s_dal!.Task!.Create(newTask);
         };
     }
-
-    //public static void Do(IEngineer? dalEngineer, ITask? dalTask, IDependency? dalDependency)
-    public static void Do(IDal dal) //stage 2   
+    public static void Do()   
     {
-        s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
-        CreateEngineers();
-        CreateDependencies();
-        
+        s_dal = DalApi.Factory.Get;
         CreateDependencies();
         CreateEngineers();
         CreateTasks();

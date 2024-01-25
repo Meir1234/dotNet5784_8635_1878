@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using static DalApi.Config;
 
-namespace DalFacade.DalApi;
+namespace DalApi;
 
 public static class Factory
 {
