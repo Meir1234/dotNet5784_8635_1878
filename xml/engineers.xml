@@ -288,4 +288,52 @@
     <Level>Intermediate</Level>
     <Cost>245.07277346094241</Cost>
   </Engineer>
+  <Engineer>
+    <Id>382601145</Id>
+    <Name>Dani Levi</Name>
+    <Email>Dani_Levi@gmail.com
+</Email>
+    <Level>Advanced</Level>
+    <Cost>363.27710947793366</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>379580548</Id>
+    <Name>Eli Amar</Name>
+    <Email>Eli_Amar@gmail.com
+</Email>
+    <Level>Advanced</Level>
+    <Cost>355.4782925497699</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>292431304</Id>
+    <Name>Yair Cohen</Name>
+    <Email>Yair_Cohen@gmail.com
+</Email>
+    <Level>AdvancedBeginner</Level>
+    <Cost>325.5663687731692</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>284963622</Id>
+    <Name>Ariela Levin</Name>
+    <Email>Ariela_Levin@gmail.com
+</Email>
+    <Level>AdvancedBeginner</Level>
+    <Cost>222.69243366584152</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>368141217</Id>
+    <Name>Dina Klein</Name>
+    <Email>Dina_Klein@gmail.com
+</Email>
+    <Level>AdvancedBeginner</Level>
+    <Cost>225.92937034099253</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>394078528</Id>
+    <Name>Shira Israelof</Name>
+    <Email>Shira_Israelof@gmail.com
+</Email>
+    <Level>Intermediate</Level>
+    <Cost>209.7438856580434</Cost>
+  </Engineer>
 </ArrayOfEngineer>
