@@ -1,3 +1,1 @@
-﻿
-
-namespace BO;
+﻿namespace BO;
