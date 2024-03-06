@@ -18,11 +18,6 @@ internal interface ITaskInList
     public void Delete(int id);
 
 
-    public int Create(BO.Student item);
-    public BO.Student? Read(int id);
-    public IEnumerable<BO.StudentInList> ReadAll();
-    public void Update(BO.Student item);
-    public void Delete(int id);
-    public BO.StudentInCourse GetDetailedCourseForStudent(int StudentId, int CourseId);
+
 
 }
