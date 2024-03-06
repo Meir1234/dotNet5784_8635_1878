@@ -1,4 +1,6 @@
-﻿namespace BO;
+﻿using System.Diagnostics.Contracts;
+
+namespace BO;
 public enum Level
 {
     Beginner,
@@ -6,4 +8,13 @@ public enum Level
     Intermediate,
     Advanced,
     Expert
+}
+
+public enum Status
+{
+  Unscheduled,
+  Scheduled,
+  OnTrack,
+  InJeopardy,
+  Done
 }

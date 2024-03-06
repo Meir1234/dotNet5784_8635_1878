@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BO;
 
-internal class Engineer
+public class Engineer
 {
 
     public int Id { get; init; }
