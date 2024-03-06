@@ -8,14 +8,22 @@ namespace BO;
 
 public class Task
 {
-public int id
-        Id int
-  string Alias
-  string Description
-  datetime CreatedAtDate
- TimeSpan RequiredEffortTime 
-  bool IsMilestone
-   DO.EngineerExperience Copmlexity
-  datetime StartDate
-  datetime ScheduledDate
+    public int Id { get; init; }
+
+    public string Alias { get; set; }
+
+    public string Description { get; set; }
+
+    DateTime CreatedAtDate { get; init; }
+
+    TimeSpan RequiredEffortTime { get; set; }
+
+
+
+    Level  Copmlexity { get; set; }
+
+    DateTime StartDate { get; set; }
+
+    DateTime ScheduledDate { get; set; }
+
 }
