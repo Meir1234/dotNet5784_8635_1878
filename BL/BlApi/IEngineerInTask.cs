@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace BlApi;
 
-internal interface IEngineerInTask
+public interface IEngineerInTask
 {
+    public IEnumerable<BO.EngineerInTask> ReadAll();
+
 }
