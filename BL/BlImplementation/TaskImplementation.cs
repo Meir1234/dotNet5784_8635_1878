@@ -21,6 +21,19 @@ namespace BlImplementation
         //}
         public int Create(BO.Task task)
         {
+            DO.Task doTask = new DO.Task
+            (boTask.Id, boTask.Alias, boTask.CreatedAtDate, boTask.RequiredEffortTime,(DO.Level)boTask.Copmlexity, boTask.StartDate, boTask.ScheduledDate);
+            try
+            {
+                int idEng = _dal.Task.Create(doTask);
+                return idEng;
+            }
+            catch (DO.DalAlreadyExistsException ex)
+            {
+                throw new BO.BlAlreadyExistsException($"Task with ID={boEngineer.Id} already exists", ex);
+            }
+        }
+        {
             return (from DO.Task doTask in _dal.Task.ReadAll()
                     select new BO.Task
                     {
