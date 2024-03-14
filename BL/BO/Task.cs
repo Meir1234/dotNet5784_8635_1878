@@ -14,16 +14,16 @@ public class Task
 
     public string Description { get; set; }
 
-    DateTime CreatedAtDate { get; init; }
+    public DateTime? CreatedAtDate { get; init; }
 
-    TimeSpan RequiredEffortTime { get; set; }
+    public TimeSpan RequiredEffortTime { get; set; }
 
 
 
-    Level  Copmlexity { get; set; }
+    public Level Complexity { get; set; }
 
-    DateTime StartDate { get; set; }
+    public DateTime StartDate { get; set; }
 
-    DateTime ScheduledDate { get; set; }
+    public DateTime ScheduledDate { get; set; }
 
 }

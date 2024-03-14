@@ -8,7 +8,7 @@ namespace BlApi;
 
 public interface ITask
 {
-    public IEnumerable<BO.Task> ReadAll();
+    //public IEnumerable<BO.Task> ReadAll();
     public int Create(BO.Task task );
     public BO.Task? Read(int Id);
     public void Update(BO.Task item);
