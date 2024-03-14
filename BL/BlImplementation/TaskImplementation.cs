@@ -34,7 +34,7 @@ namespace BlImplementation
                 throw new BO.BlAlreadyExistsException($"Task with ID={boEngineer.Id} already exists", ex);
             }
         }
-        {
+        
             return (from DO.Task doTask in _dal.Task.ReadAll()
                     select new BO.Task
                     {
