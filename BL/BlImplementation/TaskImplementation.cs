@@ -22,6 +22,19 @@ namespace BlImplementation
         public IEnumerable<BO.Task> ReadAll() { }
         public int Create(BO.Task task)
         {
+            DO.Task doTask = new DO.Task
+            (boTask.Id, boTask.Alias, boTask.CreatedAtDate, boTask.RequiredEffortTime,(DO.Level)boTask.Copmlexity, boTask.StartDate, boTask.ScheduledDate);
+            try
+            {
+                int idEng = _dal.Task.Create(doTask);
+                return idEng;
+            }
+            catch (DO.DalAlreadyExistsException ex)
+            {
+                throw new BO.BlAlreadyExistsException($"Task with ID={boEngineer.Id} already exists", ex);
+            }
+        }
+        {
             return (from DO.Task doTask in _dal.Task.ReadAll()
                     select new BO.Task
                     {
@@ -50,7 +63,34 @@ namespace BlImplementation
                 Name = doTask.Name,
                 level = (BO.Level)doTask.Level
             }
-        public void Update(BO.Task item) { }
-        public void Delete(int id) { }
+        }
+            public void Update(BO.Task item)
+        {
+            DO.Task doTask = new DO.Task
+               (boTask.Id, boTask.Alias, boTask.CreatedAtDate, boTask.RequiredEffortTime, (DO.Level)boTask.Copmlexity, boTask.StartDate, boTask.ScheduledDate);
+            try
+            {
+                _dal.Engineer.Update(doTask);
+                return;
+            }
+            catch (DO.DalAlreadyExistsException ex)
+            {
+                throw new BO.BlAlreadyExistsException($"Task with ID={boTask.Id} already exists", ex);
+            }
+        }
+    }
+       
+            public void Delete(int id)
+            {
+                try
+                {
+                    _dal.Task.Delete(id);
+                    return;
+                }
+                catch (DO.DalDoesNotExistException ex)
+                {
+                    throw new BO.DalNotExistsException($"Task with ID={id} already exists", ex);
+                }
+            }
     }
 }
