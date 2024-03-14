@@ -48,23 +48,26 @@ namespace BlImplementation
                         Copmlexity = (BO.Level)doTask.Copmlexity,
                              StartDate = doTask.StartDate,
                               ScheduledDate = doTask.ScheduledDate
-                    });
+                    })
         }
-        public BO.Task? Read(int Id)
-        {
-            DO.Task? doTask = _dal.Task.Read(id);
-            if (doTask == null)
-                throw new BO.BlNotExistException($"Task with ID={id} does Not exist");
-            return new BO.Task()
-            {
-                Id = doTask.Id,
-                Email = doTask.Email,
-                Cost = doTask.Cost,
-                Name = doTask.Name,
-                level = (BO.Level)doTask.Level
-            }
-        }
-            public void Update(BO.Task item)
+public BO.Task? Read(int Id)
+{
+    DO.Task? doTask = _dal.Task.Read(Id);
+    if (doTask == null)
+        throw new BO.BlDoesNotExistException($"Task with ID={Id} does Not exist");
+    return new BO.Task()
+    {
+        Id = doTask.Id,
+        Alias = doTask.Alias ?? string.Empty,
+        Description = doTask.Description ?? string.Empty,
+        CreatedAtDate = doTask.CreatedAtDate,
+        RequiredEffortTime = doTask.RequiredEffortTime,
+        Complexity = (BO.Level)doTask.Hardness,
+        StartDate = doTask.StartDate,
+        ScheduledDate = doTask.DeadlineDate
+    };
+}
+public void Update(BO.Task item)
         {
             DO.Task doTask = new DO.Task
                (boTask.Id, boTask.Alias, boTask.CreatedAtDate, boTask.RequiredEffortTime, (DO.Level)boTask.Copmlexity, boTask.StartDate, boTask.ScheduledDate);
