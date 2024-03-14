@@ -8,16 +8,5 @@ namespace BlApi;
 
 public interface ITaskInList
 {
-    public List<Task> ReadAll();
-    public Task? Build(int id);
-
-    public int Add(BO.Task item);
-
-    public void Update(BO.Task item);
-
-    public void Delete(int id);
-
-
-
-
+    public IEnumerable<BO.TaskInList> ReadAll();
 }

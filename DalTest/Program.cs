@@ -66,7 +66,6 @@ internal class Program
 
     public static void Exit()
     {
-        //if (s_dal != null && s_dal.GetType() == typeof(XmlDocument))
         ClearXml.Do();
 
         Environment.Exit(0);

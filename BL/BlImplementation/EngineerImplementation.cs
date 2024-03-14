@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlImplementation;
 using BlApi;
+using BO;
 
 internal class EngineerImplementation : IEngineer
 {
@@ -36,7 +37,7 @@ internal class EngineerImplementation : IEngineer
         }
         catch (DO.DalDoesNotExistException ex)
         {
-            throw new BO.DalNotExistsException($"Engineer with ID={id} already exists", ex);
+            throw new BO.BlDoesNotExistException($"Engineer with ID={id} already exists", ex);
         }
     }
 
@@ -44,7 +45,7 @@ internal class EngineerImplementation : IEngineer
     {
         DO.Engineer? doEngineer = _dal.Engineer.Read(id);
         if (doEngineer == null)
-            throw new BO.BlNotExistException($"Engineer with ID={id} does Not exist");
+            throw new BO.BlDoesNotExistException($"Engineer with ID={id} does Not exist");
         return new BO.Engineer()
         {
             Id = doEngineer.Id,

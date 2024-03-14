@@ -9,5 +9,4 @@ namespace BlApi;
 public interface IEngineerInTask
 {
     public IEnumerable<BO.EngineerInTask> ReadAll();
-
 }
