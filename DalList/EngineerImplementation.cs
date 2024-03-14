@@ -6,6 +6,8 @@ using System.Linq;
 
 internal class EngineerImplementation : IEngineer
 {
+    public void Clear() { }
+
     public int Create(Engineer item)
     {
         if (Read(item.Id) is not null)

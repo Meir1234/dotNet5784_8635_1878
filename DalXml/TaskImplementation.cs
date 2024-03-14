@@ -2,6 +2,8 @@
 namespace Dal;
 using DalApi;
 using DO;
+using System.Xml.Linq;
+
 //using System;
 //using System.Data.Common;
 
@@ -11,6 +13,7 @@ using DO;
 internal class TaskImplementation : ITask
 {
     readonly string s_tasks_xml = "tasks";
+    readonly string s_config_xml = "data-config";
 
     public int Create(Task item)
     {
@@ -81,5 +84,17 @@ internal class TaskImplementation : ITask
             }
         }
         XMLTools.SaveListToXMLSerializer(Tasks, s_tasks_xml);
+    }
+
+    public void Clear()
+    {
+        XElement xml = XMLTools.LoadListFromXMLElement(s_tasks_xml);
+        XElement config = XMLTools.LoadListFromXMLElement(s_config_xml);
+
+        xml.RemoveAll();
+        config.Element("NextTaskId").SetValue(1);
+
+        XMLTools.SaveListToXMLElement(xml, s_tasks_xml);
+        XMLTools.SaveListToXMLElement(config, s_config_xml);
     }
 }

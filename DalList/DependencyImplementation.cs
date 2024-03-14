@@ -3,9 +3,20 @@ namespace Dal;
 using DalApi;
 using DO;
 using System.Linq;
+using System.Xml.Linq;
+
 
 internal class DependencyImplementation : IDependency
 {
+    readonly string s_config_xml = "data-config";
+
+    public void Clear()
+    {
+        XElement config = XElement.Load(s_config_xml);
+
+        config.Element("NextDependencyId").SetValue(1);
+    }
+
     public int Create(Dependency item)
     {
         int idNum = DataSource.Config.NextDependencyId;

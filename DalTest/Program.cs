@@ -4,9 +4,7 @@ using Dal;
 using DalApi;
 
 using DO;
-
-
-
+using System.Xml;
 
 internal class Program
 {
@@ -14,7 +12,7 @@ internal class Program
     //static readonly IDal s_dal = new DalList();
     static readonly IDal s_dal = Factory.Get;
 
-    public static object? Do { get; private set; }
+    //public static object? Do { get; private set; }
 
     public static void Main(string[] obj)
     {
@@ -40,6 +38,7 @@ internal class Program
         Console.WriteLine("1. Engineer");
         Console.WriteLine("2. Dependency");
         Console.WriteLine("3. Task");
+        Console.WriteLine("4. Exit");
         Console.Write("Enter your choice: ");
         int entityChoice = int.Parse(Console.ReadLine()!);
 
@@ -54,11 +53,23 @@ internal class Program
             case 3:
                 DisplayTaskOptions();
                 break;
+            case 4:
+                Exit();
+                break;
             default:
                 Console.WriteLine("Invalid choice!");
                 break;
         }
         MainMenu();
+    }
+
+
+    public static void Exit()
+    {
+        //if (s_dal != null && s_dal.GetType() == typeof(XmlDocument))
+        ClearXml.Do();
+
+        Environment.Exit(0);
     }
     private static void DisplayEngineerOptions()
     {

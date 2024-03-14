@@ -4,6 +4,8 @@
 namespace Dal;
 using DalApi;
 using DO;
+using System.Xml.Linq;
+
 //using System;
 //using System.Data.Common;
 //using System.Threading.Tasks;
@@ -114,6 +116,15 @@ internal class EngineerImplementation : IEngineer
             }
             XMLTools.SaveListToXMLSerializer(engineers, s_engineers_xml);
         }
+    }
+
+    public void Clear()
+    {
+        XElement xml = XMLTools.LoadListFromXMLElement(s_engineers_xml);
+
+        xml.RemoveAll();
+
+        XMLTools.SaveListToXMLElement(xml, s_engineers_xml);
     }
 }
 

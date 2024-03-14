@@ -9,6 +9,20 @@ using System.Xml.Linq;
 internal class DependencyImplementation : IDependency
 {
     readonly string s_dependencies_xml = "dependencies";
+    readonly string s_config_xml = "data-config";
+
+    public void Clear()
+    {
+        XElement xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);
+        XElement config = XMLTools.LoadListFromXMLElement(s_config_xml);
+
+        xml.RemoveAll();
+        config.Element("NextDependencyId").SetValue(1);
+
+        XMLTools.SaveListToXMLElement(xml, s_dependencies_xml);
+        XMLTools.SaveListToXMLElement(config, s_config_xml);
+    }
+
     public int Create(Dependency item)
     {
         XElement xml = XMLTools.LoadListFromXMLElement(s_dependencies_xml);

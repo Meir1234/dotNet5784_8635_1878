@@ -69,9 +69,9 @@ public static class Initialization
 
     Level engineerLevel = (Level)s_rand.Next(1, 5);
 
-    double engineerCost = s_rand.NextDouble() * 200 + 200;
+    double engineerCost = s_rand.Next(20000, 40000) / 100.0;
 
-    Engineer newEngineer = new(engineerId, engineerName, engineerEmail, engineerLevel, engineerCost);
+            Engineer newEngineer = new(engineerId, engineerName, engineerEmail, engineerLevel, engineerCost);
 
     s_dal!.Engineer!.Create(newEngineer);
             }
@@ -170,11 +170,3 @@ private static void CreateDependencies()
     }
 
 }
-
-
-
-
-
-
-
-

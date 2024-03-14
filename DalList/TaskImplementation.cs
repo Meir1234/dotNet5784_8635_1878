@@ -1,12 +1,13 @@
 ﻿namespace Dal;
 using DalApi;
 using DO;
+using System.Xml.Linq;
 
 
 
 internal class TaskImplementation : ITask
-
 {
+    readonly string s_config_xml = "data-config";
     public int Create(Task item)
     {
         int idNum = DataSource.Config.NextTaskid;
@@ -80,6 +81,13 @@ internal class TaskImplementation : ITask
             return DataSource.Tasks.Select(item => item);
         else
             return DataSource.Tasks.Where(filter);
+    }
+
+    public void Clear()
+    {
+        XElement config = XElement.Load(s_config_xml);
+
+        config.Element("NextTaskId").SetValue(1);
     }
 }
 
