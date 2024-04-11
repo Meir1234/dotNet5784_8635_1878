@@ -154,7 +154,7 @@ private static void CreateDependencies()
             DateTime? CompleteDate = null;
             string? _deliverables = Deliverables[i];
 
-            Task newTask = new(0, _alias, _description, null, RequiredEffortTime, IsMilestone,
+            Task newTask = new(0, _alias, _description, DateTime.Now, RequiredEffortTime, IsMilestone,
              StartDate, DeadlineDate, null, _deliverables, 0, _level);
 
             //s_dalTask!.Create(newTask);

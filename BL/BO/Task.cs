@@ -14,16 +14,20 @@ public class Task
 
     public string Description { get; set; }
 
-    public DateTime? CreatedAtDate { get; init; }
+    public DateTime CreatedAtDate { get; init; }
 
     public TimeSpan RequiredEffortTime { get; set; }
 
-
-
-    public Level Complexity { get; set; }
+    public bool? IsMilestone { get; set; }
 
     public DateTime StartDate { get; set; }
 
-    public DateTime ScheduledDate { get; set; }
+    public DateTime DeadlineDate { get; set; }
 
+
+    public string Deliverables {  get; set; }
+
+    public int EngineerId {  get; set; }
+
+    public Level Complexity { get; set; }
 }

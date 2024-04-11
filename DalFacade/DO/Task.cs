@@ -14,7 +14,6 @@ public record Task
     DateTime DeadlineDate,
     DateTime? CompleteDate,
     string? Deliverables,
-
     int EngineerId,
     Level Hardness
 )
@@ -25,9 +24,9 @@ public record Task
               Id: 0,
               Alias: null,
               Description: null,
-              CreatedAtDate: null,
+              CreatedAtDate: DateTime.Now,
               RequiredEffortTime: TimeSpan.Zero,
-              IsMilestone: null,
+              IsMilestone: false,
               StartDate: DateTime.Now,
               DeadlineDate: DateTime.Now,
               CompleteDate: null,
@@ -37,21 +36,10 @@ public record Task
           )
     {
     }
-}//empty ctor for stage 3
+}
 
 
 
 
 
 
-
-
-
-//    public object EngineerId { get; set; }
-//    public object Hardness { get; set; }
-
-//    public void createTasks()
-//    {
-//        throw new NotImplementedException();
-//    }
-//}
