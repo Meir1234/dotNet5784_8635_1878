@@ -15,7 +15,21 @@ internal class TaskImlementation : ITask
 
     public IEnumerable<BO.Task> ReadAll()
     {
-        return null;
+
+        return from DO.Task doTask in _dal.Task.ReadAll()
+               select new BO.Task
+                        (doTask.Id,
+            doTask.Alias ?? string.Empty,
+            doTask.Description ?? string.Empty,
+            doTask.CreatedAtDate,
+            doTask.RequiredEffortTime,
+            doTask.IsMilestone,
+            doTask.StartDate,
+            doTask.DeadlineDate,
+            doTask.Deliverables,
+            doTask.EngineerId,
+            (BO.Level)doTask.Hardness);
+
     }
     public int Create(BO.Task boTask)
     {
@@ -37,20 +51,18 @@ internal class TaskImlementation : ITask
         DO.Task? doTask = _dal.Task.Read(Id);
         if (doTask == null)
             throw new BO.BlDoesNotExistException($"Task with ID={Id} does Not exist");
-        return new BO.Task()
-        {
-            Id = doTask.Id,
-            Alias = doTask.Alias ?? string.Empty,
-            Description = doTask.Description ?? string.Empty,
-            CreatedAtDate = doTask.CreatedAtDate,
-            RequiredEffortTime = doTask.RequiredEffortTime,
-            IsMilestone = doTask.IsMilestone,
-            StartDate = doTask.StartDate,
-            DeadlineDate = doTask.DeadlineDate,
-            Deliverables = doTask.Deliverables,
-            EngineerId = doTask.EngineerId,
-            Complexity = (BO.Level)doTask.Hardness,
-        };
+        return new BO.Task
+            (doTask.Id,
+            doTask.Alias ?? string.Empty,
+            doTask.Description ?? string.Empty,
+            doTask.CreatedAtDate,
+            doTask.RequiredEffortTime,
+            doTask.IsMilestone,
+            doTask.StartDate,
+            doTask.DeadlineDate,
+            doTask.Deliverables,
+            doTask.EngineerId,
+            (BO.Level)doTask.Hardness);
     }
     public void Update(BO.Task boTask)
     {

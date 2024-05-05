@@ -8,7 +8,7 @@ namespace BlImplementation;
 using BlApi;
 using DalApi;
 
-internal class ITaskInListImplementation : ITaskInList
+internal class TaskInListImplementation : ITaskInList
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
     public IEnumerable<BO.TaskInList> ReadAll()

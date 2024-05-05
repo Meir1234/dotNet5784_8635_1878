@@ -13,4 +13,9 @@ public class TaskInList
     public string? Alias { get; set; }
     //public Status Status { get; set; }
     public Level Level { get; set; }
+
+    public override string ToString()
+    {
+        return $"Id: {Id}, Alias: {Alias}, Level: {Level}";
+    }
 }

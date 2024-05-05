@@ -30,4 +30,26 @@ public class Task
     public int EngineerId {  get; set; }
 
     public Level Complexity { get; set; }
+
+    public Task(int id, string alias, string description, DateTime createdAtDate, TimeSpan requiredEffortTime, bool? isMilestone, DateTime startDate, DateTime deadlineDate, string deliverables, int engineerId, Level complexity)
+    {
+        Id = id;
+        Alias = alias;
+        Description = description;
+        CreatedAtDate = createdAtDate;
+        RequiredEffortTime = requiredEffortTime;
+        IsMilestone = isMilestone;
+        StartDate = startDate;
+        DeadlineDate = deadlineDate;
+        Deliverables = deliverables;
+        EngineerId = engineerId;
+        Complexity = complexity;
+    }
+
+    public override string ToString()
+    {
+        return $"Id: {Id}, Alias: {Alias}, Description: {Description}, CreatedAtDate: {CreatedAtDate}, RequiredEffortTime: {RequiredEffortTime}, IsMilestone: {IsMilestone?.ToString() ?? "null"}, StartDate: {StartDate}, DeadlineDate: {DeadlineDate}, Deliverables: {Deliverables}, EngineerId: {EngineerId}, Complexity: {Complexity}";
+    }
+
 }
+

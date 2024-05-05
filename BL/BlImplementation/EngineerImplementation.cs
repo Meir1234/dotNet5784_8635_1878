@@ -46,27 +46,23 @@ internal class EngineerImplementation : IEngineer
         DO.Engineer? doEngineer = _dal.Engineer.Read(id);
         if (doEngineer == null)
             throw new BO.BlDoesNotExistException($"Engineer with ID={id} does Not exist");
-        return new BO.Engineer()
-        {
-            Id = doEngineer.Id,
-            Email = doEngineer.Email,
-            Cost = doEngineer.Cost,
-            Name = doEngineer.Name,
-            level = (BO.Level)doEngineer.Level
-        };
+        return new BO.Engineer
+            (doEngineer.Id,
+            doEngineer.Email,
+            doEngineer.Name,
+            (BO.Level)doEngineer.Level,
+            doEngineer.Cost);
     }
 
     public IEnumerable<BO.Engineer> ReadAll()
     {
-        return (from DO.Engineer doEngineer in _dal.Engineer.ReadAll()
+        return from DO.Engineer doEngineer in _dal.Engineer.ReadAll()
                 select new BO.Engineer
-                {
-                    Id = doEngineer.Id,
-                    Email = doEngineer.Email,
-                    Cost = doEngineer.Cost,
-                    Name = doEngineer.Name,
-                    level = (BO.Level)doEngineer.Level
-                });
+                (doEngineer.Id,
+                    doEngineer.Email,
+                    doEngineer.Name,
+                    (BO.Level)doEngineer.Level,
+                    doEngineer.Cost);
     }
 
     public void Update(BO.Engineer boEngineer)
