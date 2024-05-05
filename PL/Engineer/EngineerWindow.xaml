@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.Engineer"
         mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="EngineerWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0"  HorizontalAlignment="Right" Margin="10">
+            <Label Content="ID: " Width="120" Margin="10"/>
+            <Label Content="Mail: " Width="120" Margin="10"/>
+            <Label Content="Cost: " Width="120" Margin="10"/>
+            <Label Content="Name " Width="120" Margin="10"/>
+            <Label Content="Level: " Width="120" Margin="10"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="10">
+            <Label Content="{Binding Engineer.Id}" Width="120" Margin="10"/>
+            <TextBox Text="{Binding Engineer.Email}" Width="120" Margin="10"/>
+            <TextBox Text="{Binding Engineer.Cost}" Width="120" Margin="10"/>
+            <TextBox Text="{Binding Engineer.Name}" Width="120" Margin="10"/>
+            <ComboBox Text="{Binding Engineer.level}" ItemsSource="{StaticResource EngineersLevelKey}" IsEnabled="{Binding IsManager}" Width="120" Margin="10"/>
+        </StackPanel>
         
+        <StackPanel Grid.Column="2"  HorizontalAlignment="Right" Margin="10">
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="3"  HorizontalAlignment="Left" Margin="10">
+
+        </StackPanel>
     </Grid>
 </Window>

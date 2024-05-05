@@ -16,17 +16,7 @@ public class Engineer
     public double? Cost { get; set; }
     public string Name { get; set; }
     public Level level { get; set; }
-
-
-    public Engineer(int id, string? email, string? name, Level level, double? cost)
-    {
-        Id = id;
-        Email = email;
-        Name = name;
-        level = level;
-        Cost = cost;
-
-    }
+    public TaskInEngineer EngineerTask { get; set; }
 
     public override string ToString()
     {

@@ -10,7 +10,5 @@ public interface IBl
 {
     public IEngineer Engineer { get; } 
     public ITask Task { get; }
-    public ITaskInList TaskInList { get; }
-    public IEngineerInTask EngineerInTask { get; }
 
 }

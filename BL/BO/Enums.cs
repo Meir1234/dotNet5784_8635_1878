@@ -7,7 +7,8 @@ public enum Level
     AdvancedBeginner,
     Intermediate,
     Advanced,
-    Expert
+    Expert,
+    All
 }
 
 public enum Status
@@ -16,5 +17,6 @@ public enum Status
   Scheduled,
   OnTrack,
   InJeopardy,
-  Done
+  Done,
+  All
 }
