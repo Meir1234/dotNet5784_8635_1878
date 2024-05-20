@@ -9,7 +9,7 @@ namespace DalTest;
 using DalApi;
 using DO;
 
-public class ClearXml
+public static class ClearXml
 {
     static readonly IDal? s_dal = Factory.Get;
 

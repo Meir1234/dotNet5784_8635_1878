@@ -1,4 +1,5 @@
-﻿using DO;
+﻿using BlImplementation;
+using DO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,7 @@ public class Engineer
     public Level level { get; set; }
     public TaskInEngineer EngineerTask { get; set; }
 
-    public override string ToString()
-    {
-        return $"Id: {Id}, Email: {Email}, Cost: {Cost?.ToString() ?? "null"}, Name: {Name}, Level: {level}";
-    }
+    public override string ToString() => this.ToStringProperty();
 
 }
 

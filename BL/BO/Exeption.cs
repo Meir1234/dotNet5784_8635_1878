@@ -20,3 +20,10 @@ public class BlAlreadyExistsException : Exception
     public BlAlreadyExistsException(string message, Exception innerException)
     : base(message, innerException) { }
 }
+
+public class BlInvalidData : Exception
+{
+    public BlInvalidData(string? message) : base(message) { }
+    public BlInvalidData(string message, Exception innerException)
+    : base(message, innerException) { }
+}

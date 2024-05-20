@@ -10,7 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -24,7 +24,7 @@
             <Button Content="Gantt" Click="Gant_btn" Width="120" Height="40" Margin="10"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
             <Button Content="Add Hour" Click="ChangeDate" Margin="10" Width="100" Height="40" />
             <Button Content="Add Day" Click="ChangeDate" Margin="10" Width="100" Height="40" />
             <Button Content="Add Month" Click="ChangeDate" Margin="10" Width="100" Height="40" />

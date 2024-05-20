@@ -392,7 +392,7 @@ internal class Program
         hardness = (Level)Enum.Parse(typeof(Level), Console.ReadLine()!);
 
         // Create Task object using the provided input
-        DO.Task newTask = new DO.Task(id, Alias, Description, CreatedAtDate, RequiredEffortTime, IsMilestone,
+        DO.Task newTask = new DO.Task(id,"", Alias, Description, CreatedAtDate,null, RequiredEffortTime, IsMilestone,
                              StartDate, DeadlineDate, CompleteDate, Deliverables, EngineerId, hardness);
         s_dal.Task!.Create(newTask);
 

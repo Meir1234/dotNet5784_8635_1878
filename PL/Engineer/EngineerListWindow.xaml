@@ -26,7 +26,7 @@
 
         </Grid>
 
-        <ListView Grid.Row="1" ItemsSource="{Binding Engineers}"/>
+        <ListView Grid.Row="1"  MouseDoubleClick="OpenDetails"  ItemsSource="{Binding Engineers}"/>
 
         <Button  Click="AddEngineer_btn" Content="Add" Grid.Row="2" Width="50" Height="20"/>
     </Grid>

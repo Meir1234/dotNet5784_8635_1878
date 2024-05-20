@@ -37,8 +37,10 @@ public partial class EngineerListWindow : Window
     public static readonly DependencyProperty EngineersProp =
         DependencyProperty.Register(nameof(Engineers), typeof(ObservableCollection<BO.Engineer>), typeof(EngineerListWindow));
 
+    public bool IsManager { set; get; }
     public EngineerListWindow(bool isManager)
     {
+        IsManager= isManager;
         Engineers = new(_bl.Engineer.ReadAll());
         InitializeComponent();
     }
@@ -60,4 +62,15 @@ public partial class EngineerListWindow : Window
     }
 
     private void AddEngineer_btn(object sender, RoutedEventArgs e) => new EngineerWindow(true).Show();
+
+    private void OpenDetails(object sender, MouseButtonEventArgs e)
+    {
+        try
+        {
+            ListView listView = sender as ListView;
+            BO.Engineer selected = listView.SelectedItem as BO.Engineer;
+            new EngineerWindow(IsManager,selected.Id).Show();
+        }
+        catch { }
+    }
 }

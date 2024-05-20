@@ -17,7 +17,7 @@ internal class DependencyImplementation : IDependency
         XElement config = XMLTools.LoadListFromXMLElement(s_config_xml);
 
         xml.RemoveAll();
-        config.Element("NextDependencyId").SetValue(1);
+        config.Element("NextDependecyId").SetValue(1);
 
         XMLTools.SaveListToXMLElement(xml, s_dependencies_xml);
         XMLTools.SaveListToXMLElement(config, s_config_xml);

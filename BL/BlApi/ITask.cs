@@ -14,4 +14,7 @@ public interface ITask
     public BO.Task? Read(int Id);
     public void Update(BO.Task item);
     public void Delete(int id);
+    public IEnumerable<BO.TaskInGantt> GanttList();
+    public void ScheduleTasks(DateTime startDate);
+    public IEnumerable<TaskInList> EngineerTasks(int id, bool allMyTasks);
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlImplementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace BO;
 public class Task
 {
     public int Id { get; init; }
+    public string Remarks { get; set; }
 
     public string Alias { get; set; }
 
@@ -18,13 +20,13 @@ public class Task
 
     public bool? IsMilestone { get; set; }
 
-    public DateTime CreatedAtDate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public DateTime? ScheduleDate { get; set; }
+    public DateTime? ScheduledDate { get; set; }
 
     public DateTime? StartDate { get; set; }
 
-    public DateTime? DeadlineDate { get; set; }
+    public DateTime? DeadLine { get; set; }
 
     public DateTime? CompliteDate { get; set; }
 
@@ -35,10 +37,10 @@ public class Task
     public int EngineerId {  get; set; }
 
     public Level Complexity { get; set; }
-    public override string ToString()
-    {
-        return $"Id: {Id}, Alias: {Alias}, Description: {Description}, CreatedAtDate: {CreatedAtDate}, RequiredEffortTime: {RequiredEffortTime}, IsMilestone: {IsMilestone?.ToString() ?? "null"}, StartDate: {StartDate}, DeadlineDate: {DeadlineDate}, Deliverables: {Deliverables}, EngineerId: {EngineerId}, Complexity: {Complexity}";
-    }
+
+    public List<TaskInList> Dependencies { get; set; }
+    public override string ToString() => this.ToStringProperty();
+
 
 }
 

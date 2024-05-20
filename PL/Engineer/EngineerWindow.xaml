@@ -8,35 +8,48 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="EngineerWindow" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
 
-        <StackPanel Grid.Column="0"  HorizontalAlignment="Right" Margin="10">
-            <Label Content="ID: " Width="120" Margin="10"/>
-            <Label Content="Mail: " Width="120" Margin="10"/>
-            <Label Content="Cost: " Width="120" Margin="10"/>
-            <Label Content="Name " Width="120" Margin="10"/>
-            <Label Content="Level: " Width="120" Margin="10"/>
-        </StackPanel>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="10">
-            <Label Content="{Binding Engineer.Id}" Width="120" Margin="10"/>
-            <TextBox Text="{Binding Engineer.Email}" Width="120" Margin="10"/>
-            <TextBox Text="{Binding Engineer.Cost}" Width="120" Margin="10"/>
-            <TextBox Text="{Binding Engineer.Name}" Width="120" Margin="10"/>
-            <ComboBox Text="{Binding Engineer.level}" ItemsSource="{StaticResource EngineersLevelKey}" IsEnabled="{Binding IsManager}" Width="120" Margin="10"/>
-        </StackPanel>
-        
-        <StackPanel Grid.Column="2"  HorizontalAlignment="Right" Margin="10">
+            <StackPanel Margin="10" HorizontalAlignment="Right" Width="150" Grid.Column="0">
+                <Label Content="ID" Margin="5"/>
+                <Label Content="Name" Margin="5"/>
+                <Label Content="Mail" Margin="5"/>
+                <Label Content="Level" Margin="5"/>
+                <Label Content="Cost" Margin="5"/>
+                <Label Content="Task ID" Margin="5"/>
+                <Label Content="Task Description" Margin="5"/>
+                <Label Content="Task Alias" Margin="5"/>
+                <Label Content="Task Status" Margin="5"/>
+            </StackPanel>
 
-        </StackPanel>
+            <StackPanel DataContext="{Binding Engineer}" Margin="10" Grid.Column="1" HorizontalAlignment="Left" Width="150">
+                <TextBox Text="{Binding Id ,Mode=TwoWay}" Margin="5" IsEnabled="{Binding AddMode, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                <TextBox Text="{Binding Name,Mode=TwoWay}" Margin="5"/>
+                <TextBox Text="{Binding Email,Mode=TwoWay}" Margin="5"/>
+                <ComboBox ItemsSource="{Binding Source={StaticResource EngineersLevelKey}}" Text="{Binding level,Mode=TwoWay}" 
+                      IsEnabled="{Binding IsManager, RelativeSource={RelativeSource AncestorType={x:Type local:EngineerWindow}}}" Margin="5"/>
+                <TextBox Text="{Binding Cost,Mode=TwoWay}" Margin="5" IsEnabled="{Binding IsManager, RelativeSource={RelativeSource AncestorType={x:Type local:EngineerWindow}}}"/>
+                <TextBox Text="{Binding EngineerTask.Id,Mode=TwoWay}" Margin="5"/>
+                <TextBox Text="{Binding EngineerTask.Alias,Mode=TwoWay}" Margin="5"/>
+            </StackPanel>
 
-        <StackPanel Grid.Column="3"  HorizontalAlignment="Left" Margin="10">
+            <ListView ItemsSource="{Binding MyTasks}" Grid.Column="2" MouseDoubleClick="ViewTask"/> 
+        </Grid>
 
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button  Width="100" Content="All Task" Click="FindTask" Margin="10"/>
+
+            <Button  Width="100" Content="Update" Click="Update" Margin="10"/>
         </StackPanel>
     </Grid>
 </Window>

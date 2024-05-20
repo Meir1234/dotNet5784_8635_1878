@@ -1,51 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfEngineer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Engineer>
-    <Id>225137820</Id>
+    <Id>217227825</Id>
     <Name>Dani Levi</Name>
-    <Email>Dani_Levi@gmail.com
-</Email>
-    <Level>Advanced</Level>
-    <Cost>236.26</Cost>
+    <Email>Dani_Levi@gmail.com</Email>
+    <Level>Expert</Level>
+    <Cost>351.55</Cost>
   </Engineer>
   <Engineer>
-    <Id>217463637</Id>
+    <Id>266434962</Id>
     <Name>Eli Amar</Name>
-    <Email>Eli_Amar@gmail.com
-</Email>
+    <Email>Eli_Amar@gmail.com</Email>
     <Level>Intermediate</Level>
-    <Cost>268.75</Cost>
+    <Cost>239.25</Cost>
   </Engineer>
   <Engineer>
-    <Id>374791657</Id>
+    <Id>371275393</Id>
     <Name>Yair Cohen</Name>
-    <Email>Yair_Cohen@gmail.com
-</Email>
-    <Level>Advanced</Level>
-    <Cost>346.83</Cost>
+    <Email>Yair_Cohen@gmail.com</Email>
+    <Level>AdvancedBeginner</Level>
+    <Cost>296.16</Cost>
   </Engineer>
   <Engineer>
-    <Id>257615138</Id>
+    <Id>333175262</Id>
     <Name>Ariela Levin</Name>
-    <Email>Ariela_Levin@gmail.com
-</Email>
-    <Level>Intermediate</Level>
-    <Cost>378.85</Cost>
-  </Engineer>
-  <Engineer>
-    <Id>398767139</Id>
-    <Name>Dina Klein</Name>
-    <Email>Dina_Klein@gmail.com
-</Email>
+    <Email>Ariela_Levin@gmail.com</Email>
     <Level>Advanced</Level>
-    <Cost>370.12</Cost>
+    <Cost>279.4</Cost>
   </Engineer>
   <Engineer>
-    <Id>384155072</Id>
+    <Id>205205620</Id>
+    <Name>Dina Klein</Name>
+    <Email>Dina_Klein@gmail.com</Email>
+    <Level>Advanced</Level>
+    <Cost>331.08</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>350113470</Id>
     <Name>Shira Israelof</Name>
-    <Email>Shira_Israelof@gmail.com
-</Email>
-    <Level>Intermediate</Level>
-    <Cost>222.5</Cost>
+    <Email>Shira_Israelof@gmail.com</Email>
+    <Level>AdvancedBeginner</Level>
+    <Cost>285.07</Cost>
   </Engineer>
 </ArrayOfEngineer>

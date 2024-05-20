@@ -1,4 +1,5 @@
-﻿using PL.Engineer;
+﻿using BlApi;
+using PL.Engineer;
 using PL.Manager;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace PL
     public partial class ManagerMain : Window
     {
 
-
+        private readonly IBl _bl = Factory.Get();
 
         public DateTime Clock
         {
@@ -42,26 +43,28 @@ namespace PL
             InitializeComponent();
         }
 
-        private void InitData_btn(object sender, RoutedEventArgs e)=> DalTest.Initialization.Do();
-        
+        private void InitData_btn(object sender, RoutedEventArgs e) => DalTest.Initialization.Do();
 
-        private void EmployeeList_btn(object sender, RoutedEventArgs e)=> new EngineerListWindow().Show();
+
+        private void EmployeeList_btn(object sender, RoutedEventArgs e) => new EngineerListWindow(true).Show();
 
         private void AutoSchedule_btn(object sender, RoutedEventArgs e)
         {
-            //TODO
+            try
+            {
+                _bl.Task.ScheduleTasks(DateTime.Now);
+                MessageBox.Show("The tasks are scheduale now");
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void Taskslist_btn(object sender, RoutedEventArgs e) => new TasksListWindows().Show();
 
-        private void Gant_btn(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private void Gant_btn(object sender, RoutedEventArgs e) => new Gantt().Show();
 
         private void ChangeDate(object sender, RoutedEventArgs e)
         {
-            e.Handled = true;   
+            e.Handled = true;
             try
             {
                 Button button = (Button)sender;

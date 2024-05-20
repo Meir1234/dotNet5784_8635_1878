@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BO;
+using System.Windows.Controls.Primitives;
 
 namespace PL.Manager;
 
@@ -39,9 +40,18 @@ public partial class TasksListWindows : Window
     public static readonly DependencyProperty TasksProp =
         DependencyProperty.Register(nameof(Tasks), typeof(ObservableCollection<BO.TaskInList>), typeof(TasksListWindows));
 
-    public TasksListWindows()
+    public bool IsManager { set; get; }
+    private BO.Engineer engineer;
+    public TasksListWindows(int id= 0)
     {
-        Tasks = new(_bl.Task.ReadAll());
+        IsManager = id == 0;
+        if (IsManager)
+            Tasks = new(_bl.Task.ReadAll());
+        else {
+            engineer = _bl.Engineer.Read(id)!;
+            Tasks = new(_bl.Task.ReadAll(t => t.Level <=engineer.level ));
+        }
+
         InitializeComponent();
     }
 
@@ -58,6 +68,30 @@ public partial class TasksListWindows : Window
 
     private void AddTask_btn(object sender, RoutedEventArgs e)
     {
-
+        new TaskWindow(true).ShowDialog();
+        Tasks= new(_bl.Task.ReadAll());
     }
+
+    private void OpenDetails(object sender, MouseButtonEventArgs e){
+        try
+        {
+            ListView listView = sender as ListView;
+            TaskInList selected =listView.SelectedItem as TaskInList;
+            if (IsManager)
+            {
+                new TaskWindow(true, selected.Id).ShowDialog();
+                Tasks = new(_bl.Task.ReadAll());
+            }
+            else
+            {
+                BO.Task t = _bl.Task.Read(selected.Id);
+                t.EngineerId = engineer.Id;
+                _bl.Task.Update(t);
+                this.Close();
+            }
+
+        }
+        catch { }
+
+    } 
 }
