@@ -7,30 +7,28 @@
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="ManagerMain" Height="450" Width="800">
+
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
         <Label Content="{Binding Clock}" Grid.Row="0" HorizontalAlignment="Center" FontSize="20"/>
         
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <Button Content="Init Data" Click="InitData_btn" Width="120" Height="40" Margin="10"/>
-            <Button Content="Employee" Click="EmployeeList_btn" Width="120" Height="40" Margin="10"/>
-            <Button Content="Auto Schedule" Click="AutoSchedule_btn" Width="120" Height="40" Margin="10"/>
-            <Button Content="Tasks" Click="Taskslist_btn" Width="120" Height="40" Margin="10"/>
-            <Button Content="Gantt" Click="Gant_btn" Width="120" Height="40" Margin="10"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <Button Content="Init Data" Click="InitData_btn" Width="140" Height="40" Margin="10"/>
+            <Button Content="Employee" Click="EmployeeList_btn" Width="140" Height="40" Margin="10"/>
+            <Button Content="Auto Schedule" Click="AutoSchedule_btn" Width="140" Height="40" Margin="10"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
+            <Button Content="Tasks" Click="Taskslist_btn" Width="140" Height="40" Margin="10"/>
+            <Button Content="Gantt" Click="Gant_btn" Width="140" Height="40" Margin="10"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
-            <Button Content="Add Hour" Click="ChangeDate" Margin="10" Width="100" Height="40" />
-            <Button Content="Add Day" Click="ChangeDate" Margin="10" Width="100" Height="40" />
-            <Button Content="Add Month" Click="ChangeDate" Margin="10" Width="100" Height="40" />
-            <Button Content="Add Year" Click="ChangeDate" Margin="10" Width="100" Height="40" />
-            <Button Content="Reset Clock" Click="ChangeDate" Margin="10" Width="100" Height="40" />
-
-        </StackPanel>
+        
     </Grid>
 </Window>

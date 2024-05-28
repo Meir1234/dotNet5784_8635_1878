@@ -94,6 +94,7 @@ public partial class EngineerWindow : Window
             {
                 _bl.Engineer.Create(Engineer);
                 //TODO
+                MessageBox.Show("Succseful create", "Title", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -102,21 +103,19 @@ public partial class EngineerWindow : Window
                 //int index = LastWindowVM.TasksList!.IndexOf(engineer);
                 //LastWindowVM.TasksList[index] = vm.Engineer;
                 //TODO
-
+                MessageBox.Show("Succseful update", "Title", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+
+
+            this.Close();
         }
-        catch (Exception ex) { MessageBox.Show(ex.Message); }
-
-        MessageBox.Show("Succseful update", "Title", MessageBoxButton.OK, MessageBoxImage.Information);
-
-        this.Close();
+        catch (Exception ex) { MessageBox.Show(ex.Message); }   
     }
 
     private void FindTask(object sender, RoutedEventArgs e)
     {
         new TasksListWindows(Engineer.Id).ShowDialog();
-        MyTasks = null;
-        MyTasks =_bl.Task.EngineerTasks(Engineer.Id, true);
+        MyTasks = _bl.Task.EngineerTasks(Engineer.Id, true); 
     }
 
     private void ViewTask(object sender, MouseButtonEventArgs e)

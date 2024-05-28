@@ -18,9 +18,11 @@ internal class Bl : IBl
         get => dal.EndDate;
         set => dal.EndDate = value;
     }
-    public DateTime Clock
+    private static DateTime s_Clock = DateTime.Now;
+    public DateTime Clock { get { return s_Clock; } private set { s_Clock = value; } }
+
+    public void ResetClock()
     {
-        get => dal.Clock;
-        set => dal.Clock = value;
+        Clock = DateTime.Now;
     }
 }

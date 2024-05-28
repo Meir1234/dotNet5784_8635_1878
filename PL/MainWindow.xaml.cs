@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BlApi;
+using System.ComponentModel;
 namespace PL;
 
 /// <summary>
@@ -20,10 +21,25 @@ public partial class MainWindow : Window
 {
     private readonly IBl _bl = Factory.Get();
 
+    private BackgroundWorker clockWorker;
     public MainWindow()
     {
+        Clock = DateTime.Now;
+
         InitializeComponent();
     }
+
+    public DateTime Clock
+    {
+        get { return (DateTime)GetValue(ClockProperty); }
+        set { SetValue(ClockProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for Clock.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty ClockProperty =
+        DependencyProperty.Register("Clock", typeof(DateTime), typeof(ManagerMain), new PropertyMetadata(null));
+
+
 
     private void EngineerHandler_btn(object sender, RoutedEventArgs e)
     {
@@ -52,5 +68,34 @@ public partial class MainWindow : Window
     {
         DalTest.Initialization.Do();
         MessageBox.Show("init Data");
+    }
+
+    private void ChangeDate(object sender, RoutedEventArgs e)
+    {
+        e.Handled = true;
+        try
+        {
+            Button button = (Button)sender;
+
+            switch (button.Content.ToString())
+            {
+                case "Add Hour":
+                    Clock.AddHours(1);
+                    break;
+                case "Add Day":
+                    _bl.Clock.AddDays(1);
+                    break;
+                case "Add Month":
+                    _bl.Clock.AddMonths(1);
+                    break;
+                case "Add Year":
+                    _bl.Clock.AddYears(1);
+                    break;
+                case "Reset Clock":
+                    _bl.ResetClock();
+                    break;
+            }
+        }
+        catch { }
     }
 }

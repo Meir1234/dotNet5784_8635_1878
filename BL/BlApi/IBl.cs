@@ -27,5 +27,7 @@ public interface IBl
     /// </summary>
     DateTime? EndDate { get; set; }
 
-    DateTime Clock { get; set; }
+    DateTime Clock { get; }
+
+    void ResetClock();
 }

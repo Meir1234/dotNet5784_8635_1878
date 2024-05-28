@@ -14,6 +14,14 @@ internal class EngineerImplementation : IEngineer
 
     public int Create(BO.Engineer boEngineer)
     {
+        if(boEngineer.Id is 0 || boEngineer.Name is null || boEngineer.Email is null || boEngineer.Cost is null)
+        {
+            throw new BlInvalidData("missing fields");
+        }
+        if (boEngineer.Id < 200000000 || boEngineer.Id >= 400000000)
+        {
+            throw new BlInvalidData("Invalid ID number");
+        }
         DO.Engineer doEngineer = new DO.Engineer
         (boEngineer.Id, boEngineer.Name, boEngineer.Email, (DO.Level)boEngineer.level, boEngineer.Cost);
         try

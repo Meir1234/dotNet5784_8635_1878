@@ -26,10 +26,9 @@
                 <Label Content="Mail" Margin="5"/>
                 <Label Content="Level" Margin="5"/>
                 <Label Content="Cost" Margin="5"/>
-                <Label Content="Task ID" Margin="5"/>
-                <Label Content="Task Description" Margin="5"/>
+                <!--<Label Content="Task ID" Margin="5"/>
                 <Label Content="Task Alias" Margin="5"/>
-                <Label Content="Task Status" Margin="5"/>
+                <Label Content="Task Status" Margin="5"/>-->
             </StackPanel>
 
             <StackPanel DataContext="{Binding Engineer}" Margin="10" Grid.Column="1" HorizontalAlignment="Left" Width="150">
@@ -39,11 +38,13 @@
                 <ComboBox ItemsSource="{Binding Source={StaticResource EngineersLevelKey}}" Text="{Binding level,Mode=TwoWay}" 
                       IsEnabled="{Binding IsManager, RelativeSource={RelativeSource AncestorType={x:Type local:EngineerWindow}}}" Margin="5"/>
                 <TextBox Text="{Binding Cost,Mode=TwoWay}" Margin="5" IsEnabled="{Binding IsManager, RelativeSource={RelativeSource AncestorType={x:Type local:EngineerWindow}}}"/>
-                <TextBox Text="{Binding EngineerTask.Id,Mode=TwoWay}" Margin="5"/>
-                <TextBox Text="{Binding EngineerTask.Alias,Mode=TwoWay}" Margin="5"/>
+                <!--<TextBox Text="{Binding EngineerTask.Id}" Margin="5"/>
+                <TextBox Text="{Binding EngineerTask.Alias}" Margin="5"/>
+                <TextBox Text="{Binding EngineerTask.status}" Margin="5"/>-->
             </StackPanel>
 
             <ListView ItemsSource="{Binding MyTasks}" Grid.Column="2" MouseDoubleClick="ViewTask"/> 
+            
         </Grid>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">

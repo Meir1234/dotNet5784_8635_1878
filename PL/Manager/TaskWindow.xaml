@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL.Manager"
         mc:Ignorable="d"
-        DataContext="{Binding Task, RelativeSource={RelativeSource Mode=Self}}"
+        DataContext="{Binding Task, RelativeSource={RelativeSource self}}"
         Title="TaskWindow" Height="480" Width="800">
     <Grid>
         <Grid>
@@ -23,26 +23,26 @@
 
                 <StackPanel>
                     <Label Content="Alias" Width="120"/>
-                    <TextBlock Text="{Binding Alias}"/>
+                    <TextBox Text="{Binding Alias}" IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=AddMode}"/>
 
                     <Label Content="Description" Width="120"/>
-                    <TextBlock Text="{Binding Description}" />
+                    <TextBox Text="{Binding Description}" IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=AddMode}"/>
 
                     <Label Content="Required Effort Time" Width="120" />
-                    <TextBlock Text="{Binding RequiredEffortTime}"/>
+                    <TextBox Text="{Binding RequiredEffortTime}" IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=AddMode}"/>
 
                     <Label Content="Created At Date" Width="120"  />
-                    <Label Content="{Binding CreatedDate,Mode=OneTime}" IsEnabled="False"/>
+                    <Label Content="{Binding CreatedDate,Mode=OneTime}" />
 
                     <Label Content="Schedule Date" Width="120"  />
-                    <DatePicker SelectedDate="{Binding CreatedDate,Mode=TwoWay}" IsEnabled="{Binding IsManager, RelativeSource={RelativeSource AncestorType={x:Type local:TaskWindow}}}"
-                                Text="{Binding ScheduledDate}"/>
+                    <DatePicker SelectedDate="{Binding ScheduledDate,Mode=TwoWay}" IsEnabled="{Binding IsManager, RelativeSource={RelativeSource AncestorType={x:Type local:TaskWindow}}}"/>
 
-                    <Label Content="Start Date" Width="120" />
-                    <DatePicker SelectedDate="{Binding StartDate}" DisplayDateStart="{Binding ScheduledDate}" Text="{Binding StartDate}"/>
-
+                    <Label Content="start Date" Width="120"  />
+                    <DatePicker SelectedDate="{Binding StartDate,Mode=TwoWay}" IsEnabled="{Binding IsManager, RelativeSource={RelativeSource AncestorType={x:Type local:TaskWindow}}}"
+                                DisplayDateStart="{Binding ScheduledDate}"/>
+                    
                     <Label Content="Dead line Date" Width="120"  />
-                    <DatePicker SelectedDate="{Binding DeadLine}" Text="{Binding DeadLine}"   IsEnabled="{Binding IsManager, RelativeSource={RelativeSource AncestorType={x:Type local:TaskWindow}}}"
+                    <DatePicker SelectedDate="{Binding DeadLine}" Text="{Binding DeadLine}" IsEnabled="{Binding IsManager, RelativeSource={RelativeSource AncestorType={x:Type local:TaskWindow}}}"
                                 DisplayDateStart="{Binding StartDate}"/>
 
                     <Label Content="Complite Date" Width="120"/>

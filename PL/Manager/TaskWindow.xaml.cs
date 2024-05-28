@@ -22,6 +22,12 @@ namespace PL.Manager
     public partial class TaskWindow : Window
     {
         private readonly IBl bl = Factory.Get();
+
+        public class DataContext
+        {
+            public BO.Task Task;
+
+        }
         public bool AddMode {  get; set; }
 
         public List<TaskInList> AllTasks { get; set; }  
@@ -55,7 +61,10 @@ namespace PL.Manager
             AddMode = id == 0;
             OpenDialoge = false;
             if (AddMode)
+            {
                 Task = new();
+                Task.CreatedDate = DateTime.Now;  
+            }
             else
                 Task = bl.Task.Read(id)!;
 

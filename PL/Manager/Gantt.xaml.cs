@@ -29,7 +29,10 @@ public partial class Gantt : Window
         {
             GanttList = bl.Task.GanttList();
         }
-        catch { MessageBox.Show("The tasks is not schedule yet\n"); this.Close(); }
+        catch
+        {
+            throw new Exception("The tasks is not schedule yet\n");
+        }
         InitializeComponent();
     }
 }

@@ -69,7 +69,8 @@ public partial class EngineerListWindow : Window
         {
             ListView listView = sender as ListView;
             BO.Engineer selected = listView.SelectedItem as BO.Engineer;
-            new EngineerWindow(IsManager,selected.Id).Show();
+            new EngineerWindow(IsManager,selected.Id).ShowDialog();
+            Engineers = new(_bl.Engineer.ReadAll());
         }
         catch { }
     }
