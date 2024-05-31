@@ -1,59 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfEngineer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Engineer>
-    <Id>323500996</Id>
-    <Name>Eli Amar</Name>
-    <Email>Eli_Amar@gmail.com</Email>
-    <Level>Advanced</Level>
-    <Cost>215.93</Cost>
+    <Id>269728892</Id>
+    <Name>Dani Levi</Name>
+    <Email>Dani_Levi@gmail.com</Email>
+    <Level>Intermediate</Level>
+    <Cost>220.79</Cost>
   </Engineer>
   <Engineer>
-    <Id>394133834</Id>
+    <Id>397090784</Id>
     <Name>Yair Cohen</Name>
     <Email>Yair_Cohen@gmail.com</Email>
-    <Level>AdvancedBeginner</Level>
-    <Cost>393.33</Cost>
+    <Level>Expert</Level>
+    <Cost>323.75</Cost>
   </Engineer>
   <Engineer>
-    <Id>223058392</Id>
+    <Id>351620799</Id>
     <Name>Ariela Levin</Name>
     <Email>Ariela_Levin@gmail.com</Email>
     <Level>AdvancedBeginner</Level>
-    <Cost>396.73</Cost>
+    <Cost>363.23</Cost>
   </Engineer>
   <Engineer>
-    <Id>224228761</Id>
+    <Id>390615235</Id>
     <Name>Dina Klein</Name>
     <Email>Dina_Klein@gmail.com</Email>
-    <Level>AdvancedBeginner</Level>
-    <Cost>326.57</Cost>
+    <Level>Advanced</Level>
+    <Cost>355.54</Cost>
   </Engineer>
   <Engineer>
-    <Id>263337338</Id>
+    <Id>309731045</Id>
     <Name>Shira Israelof</Name>
     <Email>Shira_Israelof@gmail.com</Email>
-    <Level>Advanced</Level>
-    <Cost>239.48</Cost>
-  </Engineer>
-  <Engineer>
-    <Id>375196188</Id>
-    <Name>Dani Levi</Name>
-    <Email>Dani_Levi@gmail.com</Email>
-    <Level>Advanced</Level>
-    <Cost>267.09</Cost>
+    <Level>Expert</Level>
+    <Cost>262.88</Cost>
   </Engineer>
   <Engineer>
     <Id>300000000</Id>
-    <Name>w</Name>
-    <Email>we</Email>
-    <Level>AdvancedBeginner</Level>
-    <Cost>23</Cost>
+    <Name>asd</Name>
+    <Email>asd</Email>
+    <Level>Beginner</Level>
+    <Cost>12</Cost>
   </Engineer>
   <Engineer>
-    <Id>200000000</Id>
-    <Name>r</Name>
-    <Email>e</Email>
+    <Id>210000000</Id>
+    <Name>asd</Name>
+    <Email>asd</Email>
     <Level>Beginner</Level>
-    <Cost>20</Cost>
+    <Cost>12</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>220000000</Id>
+    <Name>asd</Name>
+    <Email>asd</Email>
+    <Level>Beginner</Level>
+    <Cost>12</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>320839905</Id>
+    <Name>Eli Amar</Name>
+    <Email>Eli_Amar@gmail.com</Email>
+    <Level>Beginner</Level>
+    <Cost>367.93</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>240000000</Id>
+    <Name>asd</Name>
+    <Email>asd</Email>
+    <Level>Beginner</Level>
+    <Cost>14</Cost>
   </Engineer>
 </ArrayOfEngineer>
