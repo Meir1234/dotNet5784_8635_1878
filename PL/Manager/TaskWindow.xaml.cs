@@ -104,11 +104,19 @@ namespace PL.Manager
             {
                 ListView listView = sender as ListView;
                 TaskInList selected = listView.SelectedItem as TaskInList;
+                if (Task.Dependencies.Contains(selected))
+                {
+                    MessageBox.Show($"task {selected.Id} is already dependency of this task");
+                    OpenDialoge = false;
+                    return;
+                }
                 if (selected != null) 
                     Task.Dependencies.Add(selected);
-                BO.Task tmp = Task;
-                Task = null;
-                Task = tmp;
+                
+                //BO.Task tmp = Task;
+                //Task = null;
+                //Task = tmp;
+                OpenDialoge = false;
             }
             catch { }
         }

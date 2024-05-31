@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:PL.Manager"
         mc:Ignorable="d"
         DataContext="{Binding Task, RelativeSource={RelativeSource self}}"
-        Title="TaskWindow" Height="480" Width="800">
+        Title="TaskWindow" Height="550" Width="800">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -17,11 +17,17 @@
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Label Content="Id" Width="120"/>
+                    <TextBox Text="{Binding Id}" IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=AddMode}"/>
+
                     <Label Content="Alias" Width="120"/>
                     <TextBox Text="{Binding Alias}" IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=AddMode}"/>
 
@@ -50,7 +56,7 @@
 
                 </StackPanel>
 
-                <StackPanel Grid.Column="1">
+                <StackPanel Grid.Column="3">
 
                     <Label Content="Status" Width="120"/>
                     <Label Content="{Binding Status}" IsEnabled="False"/>

@@ -1,45 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfEngineer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Engineer>
-    <Id>208359290</Id>
-    <Name>Dani Levi</Name>
-    <Email>Dani_Levi@gmail.com</Email>
-    <Level>Intermediate</Level>
-    <Cost>323.02</Cost>
-  </Engineer>
-  <Engineer>
-    <Id>367373456</Id>
+    <Id>323500996</Id>
     <Name>Eli Amar</Name>
     <Email>Eli_Amar@gmail.com</Email>
-    <Level>Expert</Level>
-    <Cost>319.83</Cost>
+    <Level>Advanced</Level>
+    <Cost>215.93</Cost>
   </Engineer>
   <Engineer>
-    <Id>354777464</Id>
+    <Id>394133834</Id>
     <Name>Yair Cohen</Name>
     <Email>Yair_Cohen@gmail.com</Email>
     <Level>AdvancedBeginner</Level>
-    <Cost>370.69</Cost>
+    <Cost>393.33</Cost>
   </Engineer>
   <Engineer>
-    <Id>277390052</Id>
+    <Id>223058392</Id>
     <Name>Ariela Levin</Name>
     <Email>Ariela_Levin@gmail.com</Email>
-    <Level>Advanced</Level>
-    <Cost>283.57</Cost>
+    <Level>AdvancedBeginner</Level>
+    <Cost>396.73</Cost>
   </Engineer>
   <Engineer>
-    <Id>350638089</Id>
+    <Id>224228761</Id>
     <Name>Dina Klein</Name>
     <Email>Dina_Klein@gmail.com</Email>
-    <Level>Intermediate</Level>
-    <Cost>311.52</Cost>
+    <Level>AdvancedBeginner</Level>
+    <Cost>326.57</Cost>
   </Engineer>
   <Engineer>
-    <Id>339873870</Id>
+    <Id>263337338</Id>
     <Name>Shira Israelof</Name>
     <Email>Shira_Israelof@gmail.com</Email>
     <Level>Advanced</Level>
-    <Cost>397.28</Cost>
+    <Cost>239.48</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>375196188</Id>
+    <Name>Dani Levi</Name>
+    <Email>Dani_Levi@gmail.com</Email>
+    <Level>Advanced</Level>
+    <Cost>267.09</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>300000000</Id>
+    <Name>w</Name>
+    <Email>we</Email>
+    <Level>AdvancedBeginner</Level>
+    <Cost>23</Cost>
+  </Engineer>
+  <Engineer>
+    <Id>200000000</Id>
+    <Name>r</Name>
+    <Email>e</Email>
+    <Level>Beginner</Level>
+    <Cost>20</Cost>
   </Engineer>
 </ArrayOfEngineer>
