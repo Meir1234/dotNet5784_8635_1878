@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" VerticalAlignment="Top"/>
-        <Label Content="{Binding Clock, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" FontWeight="UltraBold" Margin="10"/>
+        <Label Name="ClockLabel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" FontWeight="UltraBold" Margin="10"/>
             <!--<Label Content="hi" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Margin="10"/>-->
         <StackPanel/>
 

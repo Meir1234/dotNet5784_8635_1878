@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BlApi;
 using System.ComponentModel;
+using System.Windows.Threading;
 namespace PL;
 
 /// <summary>
@@ -21,25 +22,28 @@ public partial class MainWindow : Window
 {
     private readonly IBl _bl = Factory.Get();
 
-    private BackgroundWorker clockWorker;
+    private DispatcherTimer _timer;
+
+    DateTime _lastUpdate;
+
     public MainWindow()
     {
-        Clock = DateTime.Now;
-
         InitializeComponent();
+        StartClock();
     }
 
-    public DateTime Clock
+    private void StartClock()
     {
-        get { return (DateTime)GetValue(ClockProperty); }
-        set { SetValue(ClockProperty, value); }
+        _timer = new DispatcherTimer();
+        _timer.Interval = TimeSpan.FromSeconds(1); // הגדרת המרווח לעדכון כל שנייה
+        _timer.Tick += Timer_Tick;
+        _timer.Start();
     }
 
-    // Using a DependencyProperty as the backing store for Clock.  This enables animation, styling, binding, etc...
-    public static readonly DependencyProperty ClockProperty =
-        DependencyProperty.Register("Clock", typeof(DateTime), typeof(ManagerMain), new PropertyMetadata(null));
-
-
+    private void Timer_Tick(object sender, EventArgs e)
+    {
+        ClockLabel.Content = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+    }
 
     private void EngineerHandler_btn(object sender, RoutedEventArgs e)
     {
@@ -80,21 +84,24 @@ public partial class MainWindow : Window
             switch (button.Content.ToString())
             {
                 case "Add Hour":
-                    Clock.AddHours(1);
+                    _timer.
+                    ClockLabel.Content;
+                    AddHours(1);
                     break;
                 case "Add Day":
-                    _bl.Clock.AddDays(1);
+                    Clock.AddDays(1);
                     break;
                 case "Add Month":
-                    _bl.Clock.AddMonths(1);
+                    Clock.AddMonths(1);
                     break;
                 case "Add Year":
-                    _bl.Clock.AddYears(1);
+                    Clock.AddYears(1);
                     break;
                 case "Reset Clock":
-                    _bl.ResetClock();
+                    Clock = DateTime.Now;
                     break;
             }
+            ClockLabel.Content = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
         catch { }
     }

@@ -17,17 +17,20 @@ public interface IBl
     /// </summary>
     ITask Task { get; }
 
+
     /// <summary>
     /// Gets or sets the start date used for filtering tasks.
     /// </summary>
-    DateTime? StartDate { get; set; }
 
     /// <summary>
     /// Gets or sets the end date used for filtering tasks.
     /// </summary>
-    DateTime? EndDate { get; set; }
+    /// 
 
-    DateTime Clock { get; }
 
-    void ResetClock();
+    //DateTime? EndDate { get; set; }
+
+    //DateTime Clock { get; }
+
+    //void ResetClock();
 }
